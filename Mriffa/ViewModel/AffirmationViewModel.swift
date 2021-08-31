@@ -8,8 +8,16 @@
 import SwiftUI
 
 class AffirmationViewModel: ObservableObject {
+
     @Published var selectedAffirmation: AffirmationModel?
-    @Published var affirmation = healthData
+    @Published var affirmation: [AffirmationModel]
+//        = testData.filter {
+//        CategoryViewModel
+//            .shared
+//            .selectedCategories.contains(CategoryModel(category: $0.category,
+//                                                       title: $0.category.localizedTitle,
+//                                                       image: $0.category.rawValue))
+//    }.shuffled()
     @Published var showHeart = false {
         didSet {
             if showHeart {
@@ -17,7 +25,6 @@ class AffirmationViewModel: ObservableObject {
                     withAnimation(.easeOut) {
                         self.showHeart = false
                     }
-//                    self.showHeart = false
                 }
             }
         }
@@ -25,5 +32,20 @@ class AffirmationViewModel: ObservableObject {
 
     func checkFavorite(index: Int)->String {
         return affirmation[index].isFavorite ? "heart" : "heart.fill"
+    }
+    
+    init() {
+        if UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
+            affirmation = DataManager.Affirmation.loadAffirmations().shuffled()
+        } else {
+            affirmation = testData.filter {
+                CategoryViewModel
+                    .shared
+                    .selectedCategories.contains(CategoryModel(category: $0.category,
+                                                               title: $0.category.localizedTitle,
+                                                               image: $0.category.rawValue))
+            }
+//            .shuffled()
+        }
     }
 }

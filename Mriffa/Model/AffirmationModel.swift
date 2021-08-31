@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct AffirmationModel: Identifiable {
-    let id = UUID()
-    let chapter: Chapter
+struct AffirmationModel: Identifiable, Codable {
+    var id = UUID()
+    let category: Category
     let text: String
     var isFavorite = false
 }
-
-

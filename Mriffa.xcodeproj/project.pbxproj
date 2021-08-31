@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C85580E426D54E020099CDAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E326D54E020099CDAB /* DataManager.swift */; };
+		C85580E826D65B650099CDAB /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
+		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
+		C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */; };
+		C85580EE26D664640099CDAB /* ShowHeart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580ED26D664630099CDAB /* ShowHeart.swift */; };
 		C8802A0726C76D0E00C3E96E /* AffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0626C76D0E00C3E96E /* AffirmationView.swift */; };
 		C8802A0926C83E7900C3E96E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0826C83E7900C3E96E /* Data.swift */; };
 		C8802A0C26C9B67600C3E96E /* AffirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0B26C9B67600C3E96E /* AffirmationViewModel.swift */; };
@@ -18,11 +23,19 @@
 		C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4618226C43E7F00C8CCDE /* MriffaApp.swift */; };
 		C8A4618726C43E8100C8CCDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A4618626C43E8100C8CCDE /* Assets.xcassets */; };
 		C8A4618A26C43E8100C8CCDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A4618926C43E8100C8CCDE /* Preview Assets.xcassets */; };
-		C8A4619226C440A600C8CCDE /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4619126C440A600C8CCDE /* Chapter.swift */; };
+		C8A4619226C440A600C8CCDE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4619126C440A600C8CCDE /* Category.swift */; };
+		C8CF3DD626D8CBDD0066B614 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */; };
+		C8CF3DD826DBF6BF0066B614 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */; };
+		C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */; };
 		C8E48A9826C444E000C12CE2 /* AffirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C85580E326D54E020099CDAB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C85580E726D65B650099CDAB /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
+		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationTabView.swift; sourceTree = "<group>"; };
+		C85580ED26D664630099CDAB /* ShowHeart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHeart.swift; sourceTree = "<group>"; };
 		C8802A0626C76D0E00C3E96E /* AffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationView.swift; sourceTree = "<group>"; };
 		C8802A0826C83E7900C3E96E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		C8802A0B26C9B67600C3E96E /* AffirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationViewModel.swift; sourceTree = "<group>"; };
@@ -36,7 +49,10 @@
 		C8A4618626C43E8100C8CCDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8A4618926C43E8100C8CCDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C8A4618B26C43E8100C8CCDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8A4619126C440A600C8CCDE /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		C8A4619126C440A600C8CCDE /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonLabel.swift; sourceTree = "<group>"; };
 		C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,11 +67,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C85580E526D659D40099CDAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8A4618226C43E7F00C8CCDE /* MriffaApp.swift */,
+				C85580E626D659F80099CDAB /* AffirmationView */,
+				C8CF3DDB26DC16910066B614 /* CategoryView */,
+				C85580ED26D664630099CDAB /* ShowHeart.swift */,
+				C8802A1426D17F5C00C3E96E /* Blur.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C85580E626D659F80099CDAB /* AffirmationView */ = {
+			isa = PBXGroup;
+			children = (
+				C8802A0626C76D0E00C3E96E /* AffirmationView.swift */,
+				C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */,
+				C8802A0D26CFB27A00C3E96E /* AffirmationButtons.swift */,
+				C8802A1226D1781F00C3E96E /* TabButton.swift */,
+			);
+			path = AffirmationView;
+			sourceTree = "<group>";
+		};
 		C8802A0A26C83EE400C3E96E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C8A4619126C440A600C8CCDE /* Chapter.swift */,
 				C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */,
+				C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */,
 				C8802A1626D180DA00C3E96E /* ThemeModel.swift */,
 			);
 			path = Model;
@@ -65,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				C8802A0B26C9B67600C3E96E /* AffirmationViewModel.swift */,
+				C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */,
 				C8802A0F26CFB31400C3E96E /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -89,14 +129,13 @@
 		C8A4618126C43E7F00C8CCDE /* Mriffa */ = {
 			isa = PBXGroup;
 			children = (
+				C8A4619126C440A600C8CCDE /* Category.swift */,
 				C8802A0826C83E7900C3E96E /* Data.swift */,
+				C85580E326D54E020099CDAB /* DataManager.swift */,
 				C8802A0A26C83EE400C3E96E /* Model */,
 				C8802A1126CFB89A00C3E96E /* ViewModel */,
-				C8A4618226C43E7F00C8CCDE /* MriffaApp.swift */,
-				C8802A0626C76D0E00C3E96E /* AffirmationView.swift */,
-				C8802A0D26CFB27A00C3E96E /* AffirmationButtons.swift */,
-				C8802A1226D1781F00C3E96E /* TabButton.swift */,
-				C8802A1426D17F5C00C3E96E /* Blur.swift */,
+				C85580E526D659D40099CDAB /* View */,
+				C85580E726D65B650099CDAB /* UDKeys.swift */,
 				C8A4618626C43E8100C8CCDE /* Assets.xcassets */,
 				C8A4618B26C43E8100C8CCDE /* Info.plist */,
 				C8A4618826C43E8100C8CCDE /* Preview Content */,
@@ -110,6 +149,15 @@
 				C8A4618926C43E8100C8CCDE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C8CF3DDB26DC16910066B614 /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				C85580E926D661D60099CDAB /* CategoryView.swift */,
+				C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */,
+			);
+			path = CategoryView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,16 +230,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8802A1326D1781F00C3E96E /* TabButton.swift in Sources */,
-				C8A4619226C440A600C8CCDE /* Chapter.swift in Sources */,
+				C8A4619226C440A600C8CCDE /* Category.swift in Sources */,
+				C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */,
 				C8802A1526D17F5C00C3E96E /* Blur.swift in Sources */,
 				C8802A1726D180DA00C3E96E /* ThemeModel.swift in Sources */,
+				C85580E826D65B650099CDAB /* UDKeys.swift in Sources */,
+				C85580E426D54E020099CDAB /* DataManager.swift in Sources */,
+				C8CF3DD826DBF6BF0066B614 /* CategoryModel.swift in Sources */,
 				C8802A0C26C9B67600C3E96E /* AffirmationViewModel.swift in Sources */,
 				C8802A0E26CFB27A00C3E96E /* AffirmationButtons.swift in Sources */,
+				C8CF3DD626D8CBDD0066B614 /* CategoryViewModel.swift in Sources */,
 				C8802A0926C83E7900C3E96E /* Data.swift in Sources */,
 				C8E48A9826C444E000C12CE2 /* AffirmationModel.swift in Sources */,
 				C8802A0726C76D0E00C3E96E /* AffirmationView.swift in Sources */,
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C8802A1026CFB31400C3E96E /* SettingsViewModel.swift in Sources */,
+				C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */,
+				C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */,
+				C85580EE26D664640099CDAB /* ShowHeart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -263,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -324,7 +382,7 @@
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Mriffa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,7 +404,7 @@
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Mriffa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

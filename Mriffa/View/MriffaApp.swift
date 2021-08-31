@@ -11,15 +11,17 @@ import SwiftUI
 struct MriffaApp: App {
     
     let affirmationVM = AffirmationViewModel()
+    let categoryVM = CategoryViewModel.shared
     let settingsVM = SettingsViewModel.shared
     
     var body: some Scene {
         WindowGroup {
             AffirmationView()
-                .colorScheme(.dark)
+//                .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
                 .environmentObject(settingsVM)
+                .environmentObject(categoryVM)
         }
     }
 }

@@ -20,11 +20,11 @@ struct TabButton: View {
             action()
         } label: {
             Image(systemName: imageSystemName)
-                .foregroundColor(Color(UIColor.label))
-                .font(.system(size: settingsVM.affirmationFontSize/1.3))
+                .foregroundColor(.white)
+                .font(.system(size: settingsVM.affirmationFontSize/1.5))
                 .frame(width: settingsVM.affirmationFontSize + 16, height: settingsVM.affirmationFontSize + 16, alignment: .center)
                 .background(
-                    Blur(style: .systemChromeMaterialDark)
+                    Blur(style: .systemUltraThinMaterialDark)
                 )
                 .cornerRadius(10)
         }
