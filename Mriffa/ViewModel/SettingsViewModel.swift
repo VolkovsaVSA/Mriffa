@@ -21,7 +21,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     var categoryBackgroundFrame: CGFloat {
-        print(UIScreen.main.bounds.width)
+//        print(UIScreen.main.bounds.width)
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
             switch UIScreen.main.bounds.width {

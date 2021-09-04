@@ -8,16 +8,19 @@
 import SwiftUI
 
 class AffirmationViewModel: ObservableObject {
+    
+    static let shared = AffirmationViewModel()
+    
+    init() {
+        if UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
+            affirmation = DataManager.Affirmation.loadAffirmations()
+        } else {
+            affirmation = AffirmationDefaultData
+        }
+    }
 
     @Published var selectedAffirmation: AffirmationModel?
     @Published var affirmation: [AffirmationModel]
-//        = testData.filter {
-//        CategoryViewModel
-//            .shared
-//            .selectedCategories.contains(CategoryModel(category: $0.category,
-//                                                       title: $0.category.localizedTitle,
-//                                                       image: $0.category.rawValue))
-//    }.shuffled()
     @Published var showHeart = false {
         didSet {
             if showHeart {
@@ -29,23 +32,43 @@ class AffirmationViewModel: ObservableObject {
             }
         }
     }
+    @Published var index = 0
+    @Published var updatedID = UUID()
+    @Published var filteredAffirmation: [AffirmationModel] = [] {
+        didSet{
+//            print(AffirmationViewModel.shared.filteredAffirmation)
+            print(AffirmationViewModel.shared.filteredAffirmation.count)
+        }
+    }
+//    var shuffled = false
+//    var filteredAffirmation: [AffirmationModel] {
+//        let array = affirmation.filter {
+//            CategoryViewModel.shared.selectedCategories.contains(CategoryModel(category: $0.category,
+//                                                                               title: $0.category.localizedTitle,
+//                                                                               image: $0.category.rawValue))
+//        }
+//        return shuffled ? array.shuffled() : array
+////        .shuffled()
+//    }
 
     func checkFavorite(index: Int)->String {
         return affirmation[index].isFavorite ? "heart" : "heart.fill"
     }
-    
-    init() {
-        if UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
-            affirmation = DataManager.Affirmation.loadAffirmations().shuffled()
-        } else {
-            affirmation = testData.filter {
-                CategoryViewModel
-                    .shared
-                    .selectedCategories.contains(CategoryModel(category: $0.category,
-                                                               title: $0.category.localizedTitle,
-                                                               image: $0.category.rawValue))
+    func dragGestureFunction(_ value: _ChangedGesture<DragGesture>.Value, scrollProxy: ScrollViewProxy) {
+        let horizontalAmount = value.translation.width as CGFloat
+        let verticalAmount = value.translation.height as CGFloat
+        
+        if abs(horizontalAmount) < abs(verticalAmount) {
+            if verticalAmount < 0 {
+                guard (index + 1) < affirmation.count else {return}
+                index += 1
+            } else {
+                guard (index - 1) >= 0 else {return}
+                index -= 1
             }
-//            .shuffled()
+        }
+        withAnimation {
+            scrollProxy.scrollTo(index, anchor: .center)
         }
     }
 }

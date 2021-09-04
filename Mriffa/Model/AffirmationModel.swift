@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AffirmationModel: Identifiable, Codable {
+struct AffirmationModel: Identifiable, Codable, Equatable {
     var id = UUID()
     let category: Category
     let text: String

@@ -25,7 +25,7 @@ struct DataManager {
             guard let data = try? Data.init(contentsOf: affirmationURL),
                   let preferences = try? decoder.decode([AffirmationModel].self, from: data)
             else
-            { return testData }
+            { return AffirmationDefaultData }
             
             return preferences
         }
@@ -59,10 +59,7 @@ struct DataManager {
         }
         static func saveSelectedCategory(categories: Set<CategoryModel>) {
             let encoder = PropertyListEncoder()
-            print(selectedCategoriesURL)
-            print(Array(categories))
             if let data = try? encoder.encode(Array(categories)) {
-                
                 if FileManager.default.fileExists(atPath: selectedCategoriesURL.path) {
                     try? data.write(to: selectedCategoriesURL)
                 } else {

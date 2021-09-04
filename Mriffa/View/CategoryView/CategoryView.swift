@@ -23,15 +23,7 @@ struct CategoryView: View {
     }
     
     private func udateData() {
-        affrimationVM.affirmation = testData.filter {
-            CategoryViewModel
-                .shared
-                .selectedCategories.contains(CategoryModel(category: $0.category,
-                                                           title: $0.category.localizedTitle,
-                                                           image: $0.category.rawValue))
-        }
-//        .shuffled()
-        
+        affrimationVM.index = 0
         DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
     
@@ -43,16 +35,12 @@ struct CategoryView: View {
                     ForEach(0..<categoryVM.categories.count) { index in
                         
                         Button(action: {
-                            
                             if categoryVM.selectedCategories.contains(categoryVM.categories[index]) {
-//                                if categoryVM.selectedCategories.count != 1 {
-//                                    categoryVM.selectedCategories.remove(categoryVM.categories[index])
-////                                    udateData()
-//                                }
-                                categoryVM.selectedCategories.remove(categoryVM.categories[index])
+                                if categoryVM.selectedCategories.count != 1 {
+                                    categoryVM.selectedCategories.remove(categoryVM.categories[index])
+                                }
                             } else {
                                 categoryVM.selectedCategories.update(with: categoryVM.categories[index])
-//                                udateData()
                             }
                             udateData()
                         }, label: {

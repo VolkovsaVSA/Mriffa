@@ -83,8 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				C8802A0626C76D0E00C3E96E /* AffirmationView.swift */,
-				C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */,
 				C8802A0D26CFB27A00C3E96E /* AffirmationButtons.swift */,
+				C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */,
 				C8802A1226D1781F00C3E96E /* TabButton.swift */,
 			);
 			path = AffirmationView;

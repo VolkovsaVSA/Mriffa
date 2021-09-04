@@ -16,6 +16,14 @@ enum Category: String, CaseIterable, Codable {
     case stressAndAnxiety = "Stress and anxiety"
     case personalGrowth = "Personal growth"
     
+    case positiveThinking = "Positive thinking"
+    case relationship = "Relationship"
+    case womans = "Woman's"
+    case gratitude = "Gratitude"
+    case money = "Money"
+    case wisdom = "Wisdom"
+    case love = "Love"
+    
     
     var localizedTitle: String {
         return NSLocalizedString(self.rawValue, comment: "enum category")

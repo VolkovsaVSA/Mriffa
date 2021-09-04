@@ -7,15 +7,83 @@
 
 import SwiftUI
 
+
+//struct AffirmationButtons1: View {
+//
+//    @EnvironmentObject var affirmationVM: AffirmationViewModel
+//    @EnvironmentObject var settingsVM: SettingsViewModel
+//    @EnvironmentObject var categoryVM: CategoryViewModel
+//
+//    @State var affirmation: AffirmationModel
+//
+//    private var globalAffirmation: AffirmationModel {
+//        return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first!
+//    }
+//    private func isFavoriteToggle() {
+//        for (index, value) in affirmationVM.affirmation.enumerated() {
+//            if value.id == affirmation.id {
+//                affirmationVM.affirmation[index].isFavorite.toggle()
+//                withAnimation(.interactiveSpring()) {
+//                    if affirmationVM.affirmation[index].isFavorite {
+//                        affirmationVM.showHeart = true
+//                    }
+//                }
+//            }
+//        }
+//        DataManager.Affirmation.saveAffirmations(affirmations: affirmationVM.affirmation)
+//    }
+//
+//    var body: some View {
+//        if categoryVM.selectedCategories.isEmpty {
+//            EmptyView()
+//        } else {
+//            HStack(alignment: .center, spacing: settingsVM.affirmationFontSize + 10) {
+//                Button {
+//
+//                } label: {
+//                    Image(systemName: "square.and.arrow.up")
+//                }
+//                Button {
+//                    isFavoriteToggle()
+//                } label: {
+//                    Image(systemName: globalAffirmation.isFavorite ? "heart.fill" : "heart")
+//                }
+//            }
+//            .font(.system(size: settingsVM.affirmationFontSize, weight: .light, design: .default))
+//            .offset(y: -140)
+//        }
+//
+//    }
+//}
+
+
 struct AffirmationButtons: View {
     
-    @EnvironmentObject var affrimationVM: AffirmationViewModel
+    @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
 
+    let affirmation: AffirmationModel
     
-    let localIndex: Int!
+    private var globalAffirmation: AffirmationModel {
+        return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first!
+    }
     
+    
+    private func isFavoriteToggle() {
+        for (index, value) in affirmationVM.affirmation.enumerated() {
+            if value.id == affirmation.id {
+                affirmationVM.affirmation[index].isFavorite.toggle()
+                withAnimation(.interactiveSpring()) {
+                    if affirmationVM.affirmation[index].isFavorite {
+                        affirmationVM.showHeart = true
+                    }
+                }
+            }
+        }
+        DataManager.Affirmation.saveAffirmations(affirmations: affirmationVM.affirmation)
+    }
+
     var body: some View {
         if categoryVM.selectedCategories.isEmpty {
             EmptyView()
@@ -27,22 +95,21 @@ struct AffirmationButtons: View {
                     Image(systemName: "square.and.arrow.up")
                 }
                 Button {
-                    affrimationVM.affirmation[localIndex].isFavorite.toggle()
-                    DataManager.Affirmation.saveAffirmations(affirmations: affrimationVM.affirmation)
-                    withAnimation(.interactiveSpring()) {
-                        if affrimationVM.affirmation[localIndex].isFavorite {
-                            affrimationVM.showHeart = true
-                        }
-                    }
+                    isFavoriteToggle()
                 } label: {
-                    Image(systemName: affrimationVM.affirmation[localIndex].isFavorite ? "heart.fill" : "heart")
+                    Image(systemName: globalAffirmation.isFavorite ? "heart.fill" : "heart")
                 }
             }
-//            .foregroundColor(Color(UIColor.label))
             .font(.system(size: settingsVM.affirmationFontSize, weight: .light, design: .default))
             .offset(y: -140)
         }
         
     }
 }
+
+//extension View {
+//    func getRect()->CGRect {
+//        return UIScreen.main.bounds
+//    }
+//}
 
