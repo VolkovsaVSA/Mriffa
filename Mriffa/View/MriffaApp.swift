@@ -30,8 +30,8 @@ struct MriffaApp: App {
                             .contains(CategoryModel(category: $0.category,
                                                     title: $0.category.localizedTitle,
                                                     image: $0.category.rawValue))
-                    }.shuffled()
-//                    print(AffirmationViewModel.shared.filteredAffirmation)
+                    }
+                    .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
                 }
         }
