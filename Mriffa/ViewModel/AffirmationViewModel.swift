@@ -60,4 +60,13 @@ class AffirmationViewModel: ObservableObject {
             scrollProxy.scrollTo(index, anchor: .center)
         }
     }
+    func updateAffirmation() {
+        AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.lazy.filter {
+            CategoryViewModel.shared.selectedCategories.contains(CategoryModel(category: $0.category,
+                                                                               title: $0.category.localizedTitle,
+                                                                               image: $0.category.rawValue))
+        }
+        .shuffled()
+        AffirmationViewModel.shared.updatedID = UUID()
+    }
 }

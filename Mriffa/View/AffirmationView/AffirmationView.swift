@@ -99,10 +99,8 @@ struct AffirmationView: View {
                                 affirmationVM.dragGestureFunction(value, scrollProxy: scrollProxy)
                             }
                     )
-
                 }
             }
-            
             
             VStack {
                 Spacer()

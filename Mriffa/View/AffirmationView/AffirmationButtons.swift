@@ -68,8 +68,6 @@ struct AffirmationButtons: View {
     private var globalAffirmation: AffirmationModel {
         return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first!
     }
-    
-    
     private func isFavoriteToggle() {
         for (index, value) in affirmationVM.affirmation.enumerated() {
             if value.id == affirmation.id {

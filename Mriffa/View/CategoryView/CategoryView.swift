@@ -22,7 +22,14 @@ struct CategoryView: View {
         self.columns = [GridItem(.adaptive(minimum: columnWidth))]
     }
     
-    private func udateData() {
+    private func updateCategories(index: Int) {
+        if categoryVM.selectedCategories.contains(categoryVM.categories[index]) {
+            if categoryVM.selectedCategories.count != 1 {
+                categoryVM.selectedCategories.remove(categoryVM.categories[index])
+            }
+        } else {
+            categoryVM.selectedCategories.update(with: categoryVM.categories[index])
+        }
         affrimationVM.index = 0
         DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
@@ -33,20 +40,11 @@ struct CategoryView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(0..<categoryVM.categories.count) { index in
-                        
                         Button(action: {
-                            if categoryVM.selectedCategories.contains(categoryVM.categories[index]) {
-                                if categoryVM.selectedCategories.count != 1 {
-                                    categoryVM.selectedCategories.remove(categoryVM.categories[index])
-                                }
-                            } else {
-                                categoryVM.selectedCategories.update(with: categoryVM.categories[index])
-                            }
-                            udateData()
+                            updateCategories(index: index)
                         }, label: {
                             CategoryButtonLabel(item: $categoryVM.categories[index], columnWidth: columnWidth)
                         })
-                        
                     }
                 }
                 .padding()
@@ -57,17 +55,12 @@ struct CategoryView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Text("Cancel")
+                        Text("Back")
                     })
-//                    .buttonStyle(PlainButtonStyle())
-//                ,
-//                trailing:
-//                    Button(action: {
-//
-//                    }, label: {
-//                        Text("Unlock all")
-//                    })
             )
+        }
+        .onDisappear() {
+            AffirmationViewModel.shared.updateAffirmation()
         }
         
     }
