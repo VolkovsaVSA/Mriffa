@@ -12,14 +12,18 @@ struct AffirmationTabView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
     @State var showSheet = false
+    @State var sheet: SheetTypes? = nil
     
     var body: some View {
         HStack(alignment: .center, spacing: settingsVM.affirmationFontSize/2) {
             TabButton(imageSystemName: "square.grid.2x2") {
-                showSheet.toggle()
+                sheet = .categories
             }
             TabButton(imageSystemName: "play") {
               
+            }
+            TabButton(imageSystemName: "heart.fill") {
+                sheet = .favorites
             }
             Spacer()
             TabButton(imageSystemName: "paintbrush") {
@@ -30,11 +34,19 @@ struct AffirmationTabView: View {
             }
         }
         .padding(.horizontal, settingsVM.affirmationFontSize)
-        .sheet(isPresented: $showSheet, content: {
-            CategoryView(columnWidth: settingsVM.categoryBackgroundFrame)
-                .environmentObject(settingsVM)
-                .environmentObject(categoryVM)
-        })
+        .fullScreenCover(item: $sheet) { item in
+            switch item {
+            case .categories:
+                CategoryView(columnWidth: settingsVM.categoryBackgroundFrame)
+                    .environmentObject(settingsVM)
+                    .environmentObject(categoryVM)
+            case .favorites:
+                FavoritesView()
+                    .ignoresSafeArea()
+            default: EmptyView()
+            }
+        }
+        
     }
 }
 

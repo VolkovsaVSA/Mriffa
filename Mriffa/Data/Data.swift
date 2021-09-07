@@ -316,302 +316,302 @@ let Success = [
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I have many opportunities today to show my worth",
-                                comment: "luck001")
+                                comment: "success001")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Things are going to turn out for the best",
-                                comment: "luck002")
+                                comment: "success002")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am constantly lucky. Success comes my way in all my undertakings",
-                                comment: "luck003")
+                                comment: "success003")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I get everything I want",
-                                comment: "luck004")
+                                comment: "success004")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am prosperous, for God loves me",
-                                comment: "luck005")
+                                comment: "success005")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am mentally and physically strong",
-                                comment: "luck006")
+                                comment: "success006")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Every inhalation fills me with self-confidence, and each exhalation removes my fears and doubts",
-                                comment: "luck007")
+                                comment: "success007")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Inside I bubble with inexhaustible energy. I can do anything",
-                                comment: "luck008")
+                                comment: "success008")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I draw into my life only open and positive people",
-                                comment: "luck009")
+                                comment: "success009")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I'm happy to be in control of my life and confident in my future",
-                                comment: "luck010")
+                                comment: "success010")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I easily find a way out of any situation, think out of the box and creatively generate the best solutions",
-                                comment: "luck011")
+                                comment: "success011")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My professional career is my conscious choice that will bring me success and respect",
-                                comment: "luck012")
+                                comment: "success012")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My own eyes shine with happiness",
-                                comment: "luck013")
+                                comment: "success013")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I attract success",
-                                comment: "luck014")
+                                comment: "success014")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Incredible success accompanies all my work",
-                                comment: "luck015")
+                                comment: "success015")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("All my ventures are doomed to success",
-                                comment: "luck016")
+                                comment: "success016")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Fortune is always with me",
-                                comment: "luck017")
+                                comment: "success017")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I'm always lucky in a big way",
-                                comment: "luck018")
+                                comment: "success018")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Every day of my life breathes with happiness",
-                                comment: "luck019")
+                                comment: "success019")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My instincts never fail me",
-                                comment: "luck020")
+                                comment: "success020")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("The world is wide open to me with all its possibilities",
-                                comment: "luck021")
+                                comment: "success021")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am hugely happy with life",
-                                comment: "luck022")
+                                comment: "success022")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My lifestyle is my only pleasure",
-                                comment: "luck023")
+                                comment: "success023")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Every day is mine",
-                                comment: "luck024")
+                                comment: "success024")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am the author of my own way of life, it all depends on me",
-                                comment: "luck025")
+                                comment: "success025")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am pleased with my achievements, so they are always with me",
-                                comment: "luck026")
+                                comment: "success026")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am constantly in tune with the wave of good fortune and success",
-                                comment: "luck027")
+                                comment: "success027")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am capable of anything",
-                                comment: "luck028")
+                                comment: "success028")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I know that I'm so lucky",
-                                comment: "luck029")
+                                comment: "success029")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I have faith in myself so I can face any challenge",
-                                comment: "luck030")
+                                comment: "success030")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Life is not what is ordained, but what I decide",
-                                comment: "luck031")
+                                comment: "success031")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I choose happiness",
-                                comment: "luck032")
+                                comment: "success032")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I succeed because I always know what I really want",
-                                comment: "luck033")
+                                comment: "success033")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Losing is just an opportunity to assess my weaknesses and correct them",
-                                comment: "luck034")
+                                comment: "success034")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I stand ready to win and sincerely believe in myself",
-                                comment: "luck035")
+                                comment: "success035")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Success is with me: in love, in business, in work",
-                                comment: "luck036")
+                                comment: "success036")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am lucky because I trust in myself",
-                                comment: "luck037")
+                                comment: "success037")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My life is full of positivity",
-                                comment: "luck038")
+                                comment: "success038")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My wishes always become true, because I want them to",
-                                comment: "luck039")
+                                comment: "success039")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("The Universe always supports me with luck and success",
-                                comment: "luck040")
+                                comment: "success040")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Success is the norm for me",
-                                comment: "luck041")
+                                comment: "success041")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My endeavors will succeed because I believe in myself",
-                                comment: "luck042")
+                                comment: "success042")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I choose joy and success",
-                                comment: "luck043")
+                                comment: "success043")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am opening a flood of joy, success, and plenty in my life!",
-                                comment: "luck044")
+                                comment: "success044")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am a magnet for success",
-                                comment: "luck045")
+                                comment: "success045")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I make the good resolutions easily and pleasantly",
-                                comment: "luck046")
+                                comment: "success046")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I allow me to achieve what I want to achieve quickly and easily",
-                                comment: "luck047")
+                                comment: "success047")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I walk on the road to success",
-                                comment: "luck048")
+                                comment: "success048")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I embrace the blessings of life and am thankful for them",
-                                comment: "luck050")
+                                comment: "success050")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I find a successful mentor",
-                                comment: "luck051")
+                                comment: "success051")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I allow myself to thrive in all aspects of lifer",
-                                comment: "luck052")
+                                comment: "success052")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My unconscious mind finds the shortest route to my goal",
-                                comment: "luck053")
+                                comment: "success053")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I sense that I am good Enable myself to enjoy the fruits of success",
-                                comment: "luck054")
+                                comment: "success054")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I allow myself to act in the most effective way with ease and pleasure",
-                                comment: "luck055")
+                                comment: "success055")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I do things that bring success!",
-                                comment: "luck056")
+                                comment: "success056")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I give up small things that do not make a difference",
-                                comment: "luck057")
+                                comment: "success057")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("Every day brings new ideas that inspire and motivate me",
-                                comment: "luck058")
+                                comment: "success058")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I boldly step out of my comfort zone",
-                                comment: "luck059")
+                                comment: "success059")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I succeed in whatever I do, success comes effortlessly to me",
-                                comment: "luck060")
+                                comment: "success060")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I trust my instincts and make the right decisions",
-                                comment: "luck061")
+                                comment: "success061")
     ),
     AffirmationModel(
         category: .success,
@@ -621,32 +621,32 @@ let Success = [
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I have the strength to thrive in all that I desire",
-                                comment: "luck063")
+                                comment: "success063")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I am thankful for my talents and abilities that help me achieve what I desire",
-                                comment: "luck064")
+                                comment: "success064")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I see prosperity everywhere!",
-                                comment: "luck065")
+                                comment: "success065")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("My past is a part of my journey to more success and prosperity!",
-                                comment: "luck066")
+                                comment: "success066")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I manage my time effectively",
-                                comment: "luck067")
+                                comment: "success067")
     ),
     AffirmationModel(
         category: .success,
         text: NSLocalizedString("I only do the things that matter, that bring results!",
-                                comment: "luck068")
+                                comment: "success068")
     ),
     
 ]

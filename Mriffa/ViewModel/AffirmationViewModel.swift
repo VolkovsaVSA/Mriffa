@@ -39,6 +39,9 @@ class AffirmationViewModel: ObservableObject {
             print(AffirmationViewModel.shared.filteredAffirmation.count)
         }
     }
+    var favorites: [AffirmationModel] {
+        return affirmation.filter { $0.isFavorite }
+    }
 
     func checkFavorite(index: Int)->String {
         return affirmation[index].isFavorite ? "heart" : "heart.fill"

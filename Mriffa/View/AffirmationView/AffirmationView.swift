@@ -54,52 +54,53 @@ struct AffirmationView: View {
                     .padding()
             } else {
                 
-                ScrollViewReader { scrollProxy in
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ForEach(0..<affirmationVM.filteredAffirmation.count) { localIndex in
-
-                            ZStack {
-                                ShowHeart(showHeart: $affirmationVM.showHeart)
-
-                                VStack {
-                                    if localIndex < affirmationVM.filteredAffirmation.count {
-                                        Spacer()
-                                        Text(affirmationVM.filteredAffirmation[localIndex].text)
-                                            .font(.system(size: settingsVM.affirmationFontSize, weight: .bold, design: .default))
-                                            .multilineTextAlignment(.center)
-                                            .padding()
-                                        Spacer()
-                                        AffirmationButtons(affirmation: affirmationVM.filteredAffirmation[localIndex])
-                                    } else {
-                                        EmptyView()
-                                    }
-                                }
-                                .id(localIndex)
-                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-                            }.foregroundColor(.white)
-
-                        }
-                        .padding(.horizontal)
-                    }
-                    .id(affirmationVM.updatedID)
-                    .onAppear() {
-                        if affirmationVM.index == 0 {
-                            withAnimation {
-                                scrollProxy.scrollTo(affirmationVM.index)
-                            }
-                        }
-                    }
-                    .gesture(
-                        DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                            .onChanged { value in
-//                                print(value.location)
-//                                dragGestureFunction(value, scrollProxy: scrollProxy)
-                            }
-                            .onEnded { value in
-                                affirmationVM.dragGestureFunction(value, scrollProxy: scrollProxy)
-                            }
-                    )
-                }
+                AffirmationScroll(affirmations: affirmationVM.filteredAffirmation)
+                
+//                ScrollViewReader { scrollProxy in
+//                    ScrollView(.vertical, showsIndicators: false) {
+//                        ForEach(0..<affirmationVM.filteredAffirmation.count) { localIndex in
+//
+//                            ZStack {
+//                                ShowHeart(showHeart: $affirmationVM.showHeart)
+//                                VStack {
+//                                    if localIndex < affirmationVM.filteredAffirmation.count {
+//                                        Spacer()
+//                                        Text(affirmationVM.filteredAffirmation[localIndex].text)
+//                                            .font(.system(size: settingsVM.affirmationFontSize, weight: .bold, design: .default))
+//                                            .multilineTextAlignment(.center)
+//                                            .padding()
+//                                        Spacer()
+//                                        AffirmationButtons(affirmation: affirmationVM.filteredAffirmation[localIndex])
+//                                    } else {
+//                                        EmptyView()
+//                                    }
+//                                }
+//                                .id(localIndex)
+//                                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+//                            }.foregroundColor(.white)
+//
+//                        }
+//                        .padding(.horizontal)
+//                    }
+//                    .id(affirmationVM.updatedID)
+//                    .onAppear() {
+//                        if affirmationVM.index == 0 {
+//                            withAnimation {
+//                                scrollProxy.scrollTo(affirmationVM.index)
+//                            }
+//                        }
+//                    }
+//                    .gesture(
+//                        DragGesture(minimumDistance: 0, coordinateSpace: .local)
+//                            .onChanged { value in
+//                               print(value.location)
+//                               dragGestureFunction(value, scrollProxy: scrollProxy)
+//                            }
+//                            .onEnded { value in
+//                                affirmationVM.dragGestureFunction(value, scrollProxy: scrollProxy)
+//                            }
+//                    )
+//                }
             }
             
             VStack {
