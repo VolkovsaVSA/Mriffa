@@ -10,25 +10,36 @@ import SwiftUI
 struct FavoritesView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var affirmationVM: AffirmationViewModel
+    @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     var body: some View {
         
         ZStack {
-            AffirmationScroll(affirmations: affirmationVM.favorites)
-                .background(Color.red)
-            VStack {
-                HStack {
-                    Spacer()
-                    TabButton(imageSystemName: "clear.fill") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    .padding(.trailing, 30)
-                }
-                .padding(.top, 50)
-                Spacer()
+            if affirmationVM.favorites.isEmpty {
+                Text("No favorite affirmations")
+                    .foregroundColor(.white)
+                    .font(.system(size: settingsVM.affirmationFontSize, weight: .bold, design: .default))
+                    .multilineTextAlignment(.center)
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding()
+            } else {
+                AffirmationScroll(affirmations: affirmationVM.favorites)
             }
+            FavoritesDismissButton {
+                presentationMode.wrappedValue.dismiss()
+            }
+            .padding(.top, 50)
+            .padding(.trailing, 30)
         }
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+        .background(
+            Image(uiImage: themeVM.selectedTheme.image)
+                .resizable()
+                .scaledToFill()
+                .overlay(Color.black.opacity(0.6))
+                .blur(radius: 4)
+        )
         
     }
 }

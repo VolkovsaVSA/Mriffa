@@ -13,9 +13,11 @@ struct CategoryView: View {
     @EnvironmentObject var affrimationVM: AffirmationViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     private let columnWidth: CGFloat!
     private let columns: [GridItem]!
+    @State private var incomeCategories = Set<CategoryModel>()
 
     init(columnWidth: CGFloat) {
         self.columnWidth = columnWidth
@@ -51,16 +53,31 @@ struct CategoryView: View {
             }
             .navigationTitle("Categories")
             .navigationBarItems(
-                leading:
-                    Button(action: {
+                trailing:
+                    NavDismissButton() {
                         presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Text("Back")
-                    })
+                    }
+            )
+            .background(
+                ZStack {
+                    Image(uiImage: themeVM.selectedTheme.image)
+                        .resizable()
+                        .overlay(Color.black.opacity(0.6))
+                        .scaledToFill()
+                        .blur(radius: 4)
+//                    Blur(style: .light)
+                }
+                .ignoresSafeArea()
             )
         }
+        .colorScheme(.dark)
+        .onAppear() {
+            incomeCategories = categoryVM.selectedCategories
+        }
         .onDisappear() {
-            AffirmationViewModel.shared.updateAffirmation()
+            if incomeCategories != categoryVM.selectedCategories {
+                AffirmationViewModel.shared.updateAffirmation()
+            }
         }
         
     }

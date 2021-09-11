@@ -20,14 +20,14 @@ struct AffirmationTabView: View {
                 sheet = .categories
             }
             TabButton(imageSystemName: "play") {
-              
+                sheet = .fonts
             }
             TabButton(imageSystemName: "heart.fill") {
                 sheet = .favorites
             }
             Spacer()
             TabButton(imageSystemName: "paintbrush") {
-                
+                sheet = .themes
             }
             TabButton(imageSystemName: "gear") {
                 
@@ -43,6 +43,10 @@ struct AffirmationTabView: View {
             case .favorites:
                 FavoritesView()
                     .ignoresSafeArea()
+            case .themes:
+                ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
+            case .fonts:
+                FontsView()
             default: EmptyView()
             }
         }

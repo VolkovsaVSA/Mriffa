@@ -10,6 +10,7 @@ import SwiftUI
 struct AffirmationScroll: View {
     @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var themeVM: ThemeViewModel
     
     let affirmations: [AffirmationModel]
     @State private var index: Int = 0
@@ -43,7 +44,7 @@ struct AffirmationScroll: View {
                             if localIndex < affirmations.count {
                                 Spacer()
                                 Text(affirmations[localIndex].text)
-                                    .font(.system(size: settingsVM.affirmationFontSize, weight: .bold, design: .default))
+                                    .font(themeVM.selectedTheme.font)
                                     .multilineTextAlignment(.center)
                                     .padding()
                                 Spacer()

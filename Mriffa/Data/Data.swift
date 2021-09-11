@@ -5,7 +5,7 @@
 //  Created by Sergei Volkov on 14.08.2021.
 //
 
-import Foundation
+import SwiftUI
 
 
 let Health = [
@@ -3468,4 +3468,6 @@ let Love = [
 
 
 let AffirmationDefaultData = Health + Success + Energy + Luck + SelfConfidence + StressAndAnxiety + PersonalGrowth + PositiveThinking + Relationship + Womans + Gratitude + Money + Wisdom + Love
+
+let Fonts = UIFont.familyNames
 

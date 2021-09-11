@@ -46,6 +46,7 @@ struct CategoryButtonLabel: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: columnWidth, height: columnWidth/1.5, alignment: .center)
                 .cornerRadius(12)
+                .shadow(color: .black, radius: 10, x: 4, y: 4)
         )
     }
 }

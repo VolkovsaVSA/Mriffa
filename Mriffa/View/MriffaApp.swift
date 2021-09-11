@@ -13,15 +13,17 @@ struct MriffaApp: App {
     let affirmationVM = AffirmationViewModel.shared
     let categoryVM = CategoryViewModel.shared
     let settingsVM = SettingsViewModel.shared
+    let themeVM = ThemeViewModel()
     
     var body: some Scene {
         WindowGroup {
             AffirmationView()
-//                .colorScheme(.dark)
+                .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
                 .environmentObject(settingsVM)
                 .environmentObject(categoryVM)
+                .environmentObject(themeVM)
                 .onAppear() {
                     AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.filter {
                         CategoryViewModel
@@ -30,9 +32,11 @@ struct MriffaApp: App {
                             .contains(CategoryModel(category: $0.category,
                                                     title: $0.category.localizedTitle,
                                                     image: $0.category.rawValue))
+                        
                     }
                     .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
+                    print("\(UIFont.familyNames.count) \(UIFont.familyNames)")                                             
                 }
         }
     }

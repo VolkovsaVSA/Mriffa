@@ -8,9 +8,12 @@
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
+    init() {
+//        selectedTheme = ThemeModel(backround: "01", font: <#T##Font#>, fontColor: <#T##Color#>)
+    }
     
     static let shared = SettingsViewModel()
-    
+
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
@@ -19,6 +22,8 @@ class SettingsViewModel: ObservableObject {
             return 32
         }
     }
+    
+    var selectedTheme: ThemeModel!
     
     var categoryBackgroundFrame: CGFloat {
 //        print(UIScreen.main.bounds.width)

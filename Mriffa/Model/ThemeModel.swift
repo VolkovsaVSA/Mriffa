@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ThemeModel {
-    let backround: String
+struct ThemeModel: Hashable {
+    let image: UIImage
     let font: Font
-    let fontColor: Color
+    let index: Int
 }

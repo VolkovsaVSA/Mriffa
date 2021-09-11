@@ -9,7 +9,7 @@ import Foundation
 
 enum SheetTypes: Identifiable {
     
-    case categories, favorites, settings, sendMail
+    case categories, favorites, themes, fonts, settings, sendMail
     
     var id: Int {
         hashValue
