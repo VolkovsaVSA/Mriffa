@@ -60,7 +60,7 @@ struct CategoryView: View {
             )
             .background(
                 ZStack {
-                    Image(uiImage: themeVM.selectedTheme.image)
+                    Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
                         .resizable()
                         .overlay(Color.black.opacity(0.6))
                         .scaledToFill()

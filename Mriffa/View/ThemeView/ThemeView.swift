@@ -1,0 +1,107 @@
+//
+//  ThemeView.swift
+//  Mriffa
+//
+//  Created by Sergei Volkov on 10.09.2021.
+//
+
+import SwiftUI
+
+struct ThemeView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var settingsVM: SettingsViewModel
+    
+    private let columnWidth: CGFloat!
+    private let columns: [GridItem]!
+    
+    init(columnWidth: CGFloat) {
+        self.columnWidth = columnWidth
+        self.columns = [GridItem(.adaptive(minimum: columnWidth))]
+    }
+    
+    private var fontSize: CGFloat {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return 50
+        @unknown default:
+            return 24
+        }
+    }
+    
+    var body: some View {
+        
+        
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+
+                    ForEach(themeVM.themes) { theme in
+                        
+                        if theme.index == 80 {
+                            ThemeCard(text: "Mriffa",
+                                      font: Font.custom(theme.font, size: fontSize).bold(),
+                                      columnWidth: columnWidth,
+                                      theme: theme,
+                                      colors: []) {
+                                themeVM.selectedTheme = theme
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } else {
+                            ThemeCard(text: "Mriffa",
+                                      font: Font.custom(theme.font, size: theme.fontSize).bold(),
+                                      columnWidth: columnWidth,
+                                      theme: theme,
+                                      colors: []) {
+                                themeVM.selectedTheme = theme
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                        
+                    }
+                    
+                    ThemeCard(text: "Random",
+                              font: .system(size: settingsVM.affirmationFontSize),
+                              columnWidth: columnWidth,
+                              theme: nil,
+                              colors: [.purple, .black]) {
+                        themeVM.selectedTheme = themeVM.randomTheme()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    
+//                    ThemeCard(text: "Custom",
+//                              font: .system(size: settingsVM.affirmationFontSize),
+//                              columnWidth: columnWidth,
+//                              theme: nil,
+//                              colors: [.black, .purple]) {
+//                        
+//                    }
+
+                    
+                }
+                .padding(.horizontal)
+            }
+            .background(
+                ZStack {
+                    Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
+                        .resizable()
+                        .scaledToFill()
+                        .overlay(Color.black.opacity(0.6))
+                        .blur(radius: 4)
+                }
+                .ignoresSafeArea()
+                
+            )
+            .navigationTitle("Themes")
+            .navigationBarItems(
+                trailing:
+                    NavDismissButton() {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+            )
+        }
+        .colorScheme(.dark)
+        
+    }
+}

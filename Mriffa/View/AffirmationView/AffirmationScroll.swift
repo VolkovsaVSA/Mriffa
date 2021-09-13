@@ -44,7 +44,7 @@ struct AffirmationScroll: View {
                             if localIndex < affirmations.count {
                                 Spacer()
                                 Text(affirmations[localIndex].text)
-                                    .font(themeVM.selectedTheme.font)
+                                    .font(.custom(themeVM.selectedTheme.font, size: themeVM.selectedTheme.fontSize).bold())
                                     .multilineTextAlignment(.center)
                                     .padding()
                                 Spacer()

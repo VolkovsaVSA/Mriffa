@@ -17,6 +17,10 @@ struct DataManager {
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documents.appendingPathComponent("selectedCategories.plist")
     }
+    static private var selectedThemeURL: URL {
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return documents.appendingPathComponent("selectedTheme.plist")
+    }
     
     struct Affirmation {
         static func loadAffirmations() -> [AffirmationModel] {
@@ -68,5 +72,27 @@ struct DataManager {
                 
             }
         }
+    }
+    
+    struct Theme {
+        static func loadSelectedTheme() -> ThemeModel? {
+            let decoder = PropertyListDecoder()
+            
+            guard let data = try? Data.init(contentsOf: selectedThemeURL),
+                  let theme = try? decoder.decode(ThemeModel.self, from: data)
+            else { return nil }
+            return theme
+        }
+        static func saveSelectedTheme(theme: ThemeModel) {
+            let encoder = PropertyListEncoder()
+            if let data = try? encoder.encode(theme) {
+                if FileManager.default.fileExists(atPath: selectedThemeURL.path) {
+                    try? data.write(to: selectedThemeURL)
+                } else {
+                    FileManager.default.createFile(atPath: selectedThemeURL.path, contents: data, attributes: nil)
+                }
+            }
+        }
+        
     }
 }

@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct ThemeModel: Hashable {
-    let image: UIImage
-    let font: Font
+struct ThemeModel: Hashable, Identifiable, Codable {
+    var id = UUID()
+    let image: String
+    let font: String
     let index: Int
+    let fontSize: CGFloat
 }

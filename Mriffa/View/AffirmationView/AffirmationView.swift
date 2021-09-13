@@ -37,7 +37,7 @@ struct AffirmationView: View {
            
         }
         .background(
-            Image(uiImage: themeVM.selectedTheme.image)
+            Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
                 .resizable()
                 .scaledToFill()
                 .overlay(Color.black.opacity(0.4))

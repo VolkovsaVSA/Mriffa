@@ -32,13 +32,18 @@ struct FavoritesView: View {
             .padding(.top, 50)
             .padding(.trailing, 30)
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+6, alignment: .center)
+       
         .background(
-            Image(uiImage: themeVM.selectedTheme.image)
-                .resizable()
-                .scaledToFill()
-                .overlay(Color.black.opacity(0.6))
-                .blur(radius: 4)
+            ZStack {
+                Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
+                    .resizable()
+                    .scaledToFill()
+                    .overlay(Color.black.opacity(0.7))
+                Blur(style: .systemUltraThinMaterialDark)
+            }
+            .ignoresSafeArea()
+            
         )
         
     }

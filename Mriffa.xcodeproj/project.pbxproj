@@ -15,6 +15,7 @@
 		C83BD56526EBDC62001FE902 /* NavDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56426EBDC62001FE902 /* NavDismissButton.swift */; };
 		C83BD56726ED0976001FE902 /* FontsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56626ED0976001FE902 /* FontsView.swift */; };
 		C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56826ED11A1001FE902 /* ThemeViewModel.swift */; };
+		C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56A26EE48D8001FE902 /* ThemeCard.swift */; };
 		C85580E426D54E020099CDAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E326D54E020099CDAB /* DataManager.swift */; };
 		C85580E826D65B650099CDAB /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
 		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
@@ -47,6 +48,7 @@
 		C83BD56426EBDC62001FE902 /* NavDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDismissButton.swift; sourceTree = "<group>"; };
 		C83BD56626ED0976001FE902 /* FontsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsView.swift; sourceTree = "<group>"; };
 		C83BD56826ED11A1001FE902 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
+		C83BD56A26EE48D8001FE902 /* ThemeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCard.swift; sourceTree = "<group>"; };
 		C85580E326D54E020099CDAB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C85580E726D65B650099CDAB /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -94,14 +96,23 @@
 			path = SupportedViews;
 			sourceTree = "<group>";
 		};
+		C83BD56C26EE4CBB001FE902 /* ThemeView */ = {
+			isa = PBXGroup;
+			children = (
+				C83BD56226EBD397001FE902 /* ThemeView.swift */,
+				C83BD56A26EE48D8001FE902 /* ThemeCard.swift */,
+			);
+			path = ThemeView;
+			sourceTree = "<group>";
+		};
 		C85580E526D659D40099CDAB /* View */ = {
 			isa = PBXGroup;
 			children = (
 				C8A4618226C43E7F00C8CCDE /* MriffaApp.swift */,
 				C85580E626D659F80099CDAB /* AffirmationView */,
 				C8CF3DDB26DC16910066B614 /* CategoryView */,
+				C83BD56C26EE4CBB001FE902 /* ThemeView */,
 				C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */,
-				C83BD56226EBD397001FE902 /* ThemeView.swift */,
 				C83BD56626ED0976001FE902 /* FontsView.swift */,
 				C83BD4F926E7C8FD001FE902 /* SupportedViews */,
 			);
@@ -292,6 +303,7 @@
 				C8802A0726C76D0E00C3E96E /* AffirmationView.swift in Sources */,
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */,
+				C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */,
 				C8802A1026CFB31400C3E96E /* SettingsViewModel.swift in Sources */,
 				C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */,
 				C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */,
