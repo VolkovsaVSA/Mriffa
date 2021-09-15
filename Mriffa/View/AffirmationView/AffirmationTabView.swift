@@ -19,9 +19,9 @@ struct AffirmationTabView: View {
             TabButton(imageSystemName: "square.grid.2x2") {
                 sheet = .categories
             }
-            TabButton(imageSystemName: "play") {
-                sheet = .fonts
-            }
+//            TabButton(imageSystemName: "play") {
+//                sheet = .fonts
+//            }
             TabButton(imageSystemName: "heart.fill") {
                 sheet = .favorites
             }
@@ -30,10 +30,16 @@ struct AffirmationTabView: View {
                 sheet = .themes
             }
             TabButton(imageSystemName: "gear") {
-                
+                sheet = .settings
             }
         }
         .padding(.horizontal, settingsVM.affirmationFontSize)
+//        .sheet(item: $sheet) { item in
+//            switch item {
+//            case .settings: SettingsView()
+//            default: EmptyView()
+//            }
+//        }
         .fullScreenCover(item: $sheet) { item in
             switch item {
             case .categories:
@@ -47,9 +53,12 @@ struct AffirmationTabView: View {
                 ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
             case .fonts:
                 FontsView()
+            case .settings:
+                SettingsView()
             default: EmptyView()
             }
         }
+        
         
     }
 }

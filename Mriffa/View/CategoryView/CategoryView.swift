@@ -64,7 +64,7 @@ struct CategoryView: View {
                         .resizable()
                         .overlay(Color.black.opacity(0.6))
                         .scaledToFill()
-                        .blur(radius: 4)
+                        .blur(radius: 20)
 //                    Blur(style: .light)
                 }
                 .ignoresSafeArea()

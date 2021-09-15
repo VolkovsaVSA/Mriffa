@@ -16,8 +16,8 @@ struct NavDismissButton: View {
             action()
         }, label: {
             Image(systemName: "xmark.circle.fill")
-                .foregroundColor(.gray)
-                .font(.system(size: 24))
+                .foregroundColor(.white)
+                .font(.system(size: SettingsViewModel.shared.affirmationFontSize/1.5))
         })
     }
 }
