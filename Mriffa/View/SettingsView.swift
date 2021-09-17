@@ -21,6 +21,11 @@ struct SettingsView: View {
         NavigationView {
             
             Form {
+                Section(header: Text("Purchases")) {
+                    Label("Remove ads", systemImage: "nosign")
+                    Label("Restore purchases", systemImage: "purchased.circle")
+                }
+                Text("Hello, World!")
                 Text("Hello, World!")
             }
             

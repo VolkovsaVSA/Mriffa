@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct ThemeView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
+//    @EnvironmentObject var adsVM: AdsViewModel
+    
     
     private let columnWidth: CGFloat!
     private let columns: [GridItem]!
     
+     
     init(columnWidth: CGFloat) {
         self.columnWidth = columnWidth
         self.columns = [GridItem(.adaptive(minimum: columnWidth))]
@@ -34,6 +38,7 @@ struct ThemeView: View {
         
         
         NavigationView {
+            
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
 
@@ -75,7 +80,7 @@ struct ThemeView: View {
 //                              columnWidth: columnWidth,
 //                              theme: nil,
 //                              colors: [.black, .purple]) {
-//                        
+//
 //                    }
 
                     
@@ -100,6 +105,9 @@ struct ThemeView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
             )
+            .onDisappear() {
+                AdsViewModel.shared.showInterstitial = true
+            }
         }
         .colorScheme(.dark)
         

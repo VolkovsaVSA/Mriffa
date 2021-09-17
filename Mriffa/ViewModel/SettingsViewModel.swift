@@ -10,6 +10,15 @@ import SwiftUI
 class SettingsViewModel: ObservableObject {
     static let shared = SettingsViewModel()
 
+    @Published var ads = AdsManager.init()
+//    @Published var showAds = false {
+//        didSet {
+//            if showAds {
+//                ads.interstitialScreen?.showAd()
+//            }
+//        }
+//    }
+    
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:

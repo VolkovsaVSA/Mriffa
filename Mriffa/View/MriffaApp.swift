@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 @main
 struct MriffaApp: App {
@@ -14,6 +15,11 @@ struct MriffaApp: App {
     let categoryVM = CategoryViewModel.shared
     let settingsVM = SettingsViewModel.shared
     let themeVM = ThemeViewModel()
+    let adsVM = AdsViewModel.shared
+    
+    init() {
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -24,6 +30,7 @@ struct MriffaApp: App {
                 .environmentObject(settingsVM)
                 .environmentObject(categoryVM)
                 .environmentObject(themeVM)
+                .environmentObject(adsVM)
                 .onAppear() {
                     AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.filter {
                         CategoryViewModel

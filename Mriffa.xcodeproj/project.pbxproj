@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56A26EE48D8001FE902 /* ThemeCard.swift */; };
 		C83BD56E26EFBDCC001FE902 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56D26EFBDCC001FE902 /* SettingsView.swift */; };
 		C83BD57026F24EF1001FE902 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56F26F24EF1001FE902 /* AdsManager.swift */; };
+		C83BD58D26F4B6BC001FE902 /* AdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD58C26F4B6BC001FE902 /* AdsViewModel.swift */; };
+		C83BD58F26F4D3F4001FE902 /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD58E26F4D3F4001FE902 /* ShareManager.swift */; };
 		C85580E426D54E020099CDAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E326D54E020099CDAB /* DataManager.swift */; };
 		C85580E826D65B650099CDAB /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
 		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
@@ -39,9 +41,13 @@
 		C8CF3DD826DBF6BF0066B614 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */; };
 		C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */; };
 		C8E48A9826C444E000C12CE2 /* AffirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */; };
+		D8B74872A771FEDC78A23BE8 /* Pods_Mriffa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88E024EBA739EB656CFAAB17 /* Pods-Mriffa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.release.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.release.xcconfig"; sourceTree = "<group>"; };
+		9C23E771FF3D91DB3FE12C81 /* Pods-Mriffa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.debug.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.debug.xcconfig"; sourceTree = "<group>"; };
+		C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mriffa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83BD4F726E7C524001FE902 /* SheetTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTypes.swift; sourceTree = "<group>"; };
 		C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		C83BD4FC26E7CC68001FE902 /* AffirmationScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationScroll.swift; sourceTree = "<group>"; };
@@ -53,6 +59,8 @@
 		C83BD56A26EE48D8001FE902 /* ThemeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCard.swift; sourceTree = "<group>"; };
 		C83BD56D26EFBDCC001FE902 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C83BD56F26F24EF1001FE902 /* AdsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
+		C83BD58C26F4B6BC001FE902 /* AdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewModel.swift; sourceTree = "<group>"; };
+		C83BD58E26F4D3F4001FE902 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
 		C85580E326D54E020099CDAB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C85580E726D65B650099CDAB /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -83,15 +91,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B74872A771FEDC78A23BE8 /* Pods_Mriffa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAEE2A4C37330849882732A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C83BD4F926E7C8FD001FE902 /* SupportedViews */ = {
 			isa = PBXGroup;
 			children = (
+				C83BD56626ED0976001FE902 /* FontsView.swift */,
 				C85580ED26D664630099CDAB /* ShowHeart.swift */,
 				C8802A1426D17F5C00C3E96E /* Blur.swift */,
 				C83BD56026EBC472001FE902 /* FavoritesDismissButton.swift */,
@@ -109,6 +127,16 @@
 			path = ThemeView;
 			sourceTree = "<group>";
 		};
+		C83BD59026F4D49B001FE902 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C83BD56F26F24EF1001FE902 /* AdsManager.swift */,
+				C85580E326D54E020099CDAB /* DataManager.swift */,
+				C83BD58E26F4D3F4001FE902 /* ShareManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		C85580E526D659D40099CDAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +145,6 @@
 				C8CF3DDB26DC16910066B614 /* CategoryView */,
 				C83BD56C26EE4CBB001FE902 /* ThemeView */,
 				C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */,
-				C83BD56626ED0976001FE902 /* FontsView.swift */,
 				C83BD56D26EFBDCC001FE902 /* SettingsView.swift */,
 				C83BD4F926E7C8FD001FE902 /* SupportedViews */,
 			);
@@ -141,7 +168,6 @@
 			children = (
 				C8A4619126C440A600C8CCDE /* Category.swift */,
 				C8802A0826C83E7900C3E96E /* Data.swift */,
-				C85580E326D54E020099CDAB /* DataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -164,6 +190,7 @@
 				C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */,
 				C8802A0F26CFB31400C3E96E /* SettingsViewModel.swift */,
 				C83BD56826ED11A1001FE902 /* ThemeViewModel.swift */,
+				C83BD58C26F4B6BC001FE902 /* AdsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -173,6 +200,8 @@
 			children = (
 				C8A4618126C43E7F00C8CCDE /* Mriffa */,
 				C8A4618026C43E7F00C8CCDE /* Products */,
+				EED83DEBE36388C941382CC6 /* Pods */,
+				AAEE2A4C37330849882732A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,8 +220,8 @@
 				C8802A0A26C83EE400C3E96E /* Model */,
 				C8802A1126CFB89A00C3E96E /* ViewModel */,
 				C85580E526D659D40099CDAB /* View */,
+				C83BD59026F4D49B001FE902 /* Managers */,
 				C85580E726D65B650099CDAB /* UDKeys.swift */,
-				C83BD56F26F24EF1001FE902 /* AdsManager.swift */,
 				C8A4618626C43E8100C8CCDE /* Assets.xcassets */,
 				C8A4618B26C43E8100C8CCDE /* Info.plist */,
 				C8A4618826C43E8100C8CCDE /* Preview Content */,
@@ -217,6 +246,15 @@
 			path = CategoryView;
 			sourceTree = "<group>";
 		};
+		EED83DEBE36388C941382CC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C23E771FF3D91DB3FE12C81 /* Pods-Mriffa.debug.xcconfig */,
+				88E024EBA739EB656CFAAB17 /* Pods-Mriffa.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,9 +262,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8A4618E26C43E8100C8CCDE /* Build configuration list for PBXNativeTarget "Mriffa" */;
 			buildPhases = (
+				0091B5EC1286CD06B810AB1A /* [CP] Check Pods Manifest.lock */,
 				C8A4617B26C43E7F00C8CCDE /* Sources */,
 				C8A4617C26C43E7F00C8CCDE /* Frameworks */,
 				C8A4617D26C43E7F00C8CCDE /* Resources */,
+				9B7C5A034796464F73E17FD3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,7 +297,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = C8A4617626C43E7F00C8CCDE;
 			productRefGroup = C8A4618026C43E7F00C8CCDE /* Products */;
@@ -280,6 +319,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0091B5EC1286CD06B810AB1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mriffa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B7C5A034796464F73E17FD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mriffa/Pods-Mriffa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mriffa/Pods-Mriffa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mriffa/Pods-Mriffa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8A4617B26C43E7F00C8CCDE /* Sources */ = {
@@ -309,9 +390,11 @@
 				C83BD56726ED0976001FE902 /* FontsView.swift in Sources */,
 				C8802A0726C76D0E00C3E96E /* AffirmationView.swift in Sources */,
 				C83BD57026F24EF1001FE902 /* AdsManager.swift in Sources */,
+				C83BD58D26F4B6BC001FE902 /* AdsViewModel.swift in Sources */,
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */,
 				C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */,
+				C83BD58F26F4D3F4001FE902 /* ShareManager.swift in Sources */,
 				C8802A1026CFB31400C3E96E /* SettingsViewModel.swift in Sources */,
 				C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */,
 				C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */,
@@ -442,6 +525,7 @@
 		};
 		C8A4618F26C43E8100C8CCDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C23E771FF3D91DB3FE12C81 /* Pods-Mriffa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,6 +548,7 @@
 		};
 		C8A4619026C43E8100C8CCDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88E024EBA739EB656CFAAB17 /* Pods-Mriffa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

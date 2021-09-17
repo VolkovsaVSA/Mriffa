@@ -17,7 +17,6 @@ struct AffirmationView: View {
     var body: some View {
         
         ZStack {
-
             if categoryVM.selectedCategories.isEmpty {
                 Text("No selected category")
                     .foregroundColor(.white)
@@ -27,8 +26,12 @@ struct AffirmationView: View {
             } else {
                 AffirmationScroll(affirmations: affirmationVM.filteredAffirmation)
             }
-            
             VStack {
+                AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))
+                    .frame(width: UIScreen.main.bounds.width,
+                           height: 80,
+                           alignment: .center)
+                    .offset(y: 36)
                 Spacer()
                 AffirmationTabView()
             }

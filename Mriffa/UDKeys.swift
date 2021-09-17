@@ -9,4 +9,5 @@ import Foundation
 
 struct UDKeys {
     static let noFirstRun = "noFirstRun"
+    static let fv = "fullVersion"
 }

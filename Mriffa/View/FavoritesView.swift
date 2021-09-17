@@ -13,6 +13,7 @@ struct FavoritesView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
+    
     var body: some View {
         
         ZStack {
@@ -32,19 +33,20 @@ struct FavoritesView: View {
             .padding(.top, 50)
             .padding(.trailing, 30)
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+6, alignment: .center)
-       
         .background(
             ZStack {
                 Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
                     .resizable()
                     .scaledToFill()
                     .overlay(Color.black.opacity(0.7))
-                Blur(style: .systemUltraThinMaterialDark)
+                    .blur(radius: 6)
             }
             .ignoresSafeArea()
             
         )
+        .onDisappear() {
+            AdsViewModel.shared.showInterstitial = true
+        }
         
     }
 }

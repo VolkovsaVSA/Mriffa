@@ -77,7 +77,9 @@ struct CategoryView: View {
         .onDisappear() {
             if incomeCategories != categoryVM.selectedCategories {
                 AffirmationViewModel.shared.updateAffirmation()
+                AdsViewModel.shared.showInterstitial = true
             }
+            
         }
         
     }
