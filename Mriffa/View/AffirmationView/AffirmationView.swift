@@ -14,6 +14,8 @@ struct AffirmationView: View {
     @EnvironmentObject var categoryVM: CategoryViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     
+    
+    
     var body: some View {
         
         ZStack {
@@ -25,6 +27,7 @@ struct AffirmationView: View {
                     .padding()
             } else {
                 AffirmationScroll(affirmations: affirmationVM.filteredAffirmation)
+//                    .id(affirmationVM.updatedID)
             }
             VStack {
                 AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))

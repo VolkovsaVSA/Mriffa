@@ -26,23 +26,21 @@ struct FavoritesView: View {
                     .padding()
             } else {
                 AffirmationScroll(affirmations: affirmationVM.favorites)
+                    .id(settingsVM.refreshedID)
             }
+            
             FavoritesDismissButton {
                 presentationMode.wrappedValue.dismiss()
             }
             .padding(.top, 50)
             .padding(.trailing, 30)
         }
+        .ignoresSafeArea()
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 8, alignment: .center)
+        .offset(y: 8)
         .background(
-            ZStack {
-                Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
-                    .resizable()
-                    .scaledToFill()
-                    .overlay(Color.black.opacity(0.7))
-                    .blur(radius: 6)
-            }
-            .ignoresSafeArea()
-            
+            BluredBackgroundView()
+                .id(settingsVM.refreshedID)
         )
         .onDisappear() {
             AdsViewModel.shared.showInterstitial = true

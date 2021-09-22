@@ -34,11 +34,7 @@ class AffirmationViewModel: ObservableObject {
     }
     @Published var index = 0
     @Published var updatedID = UUID()
-    @Published var filteredAffirmation: [AffirmationModel] = [] {
-        didSet{
-            print(AffirmationViewModel.shared.filteredAffirmation.count)
-        }
-    }
+    @Published var filteredAffirmation: [AffirmationModel] = []
     var favorites: [AffirmationModel] {
         return affirmation.filter { $0.isFavorite }
     }

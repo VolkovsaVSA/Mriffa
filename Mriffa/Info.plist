@@ -201,5 +201,19 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    
+    <key>NSUbiquitousContainers</key>
+        <dict>
+            <key>iCloud.VSA.Mriffa</key>
+            <dict>
+                <key>NSUbiquitousContainerIsDocumentScopePublic</key>
+                <true/>
+                <key>NSUbiquitousContainerSupportedFolderLevels</key>
+                <string>Any</string>
+                <key>NSUbiquitousContainerName</key>
+                <string>Mriffa</string>
+            </dict>
+        </dict>
+    
 </dict>
 </plist>

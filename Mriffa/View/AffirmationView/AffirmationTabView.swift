@@ -31,7 +31,7 @@ struct AffirmationTabView: View {
             }
         }
         .padding(.horizontal, settingsVM.affirmationFontSize)
-        .fullScreenCover(item: $sheet) { item in
+        .sheet(item: $sheet) { item in
             switch item {
             case .categories:
                 CategoryView(columnWidth: settingsVM.categoryBackgroundFrame)
@@ -39,9 +39,6 @@ struct AffirmationTabView: View {
                     .environmentObject(categoryVM)
             case .favorites:
                 FavoritesView()
-                    .ignoresSafeArea()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 16, alignment: .center)
-                    .offset(y: -10)
             case .themes:
                 ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
             case .fonts:

@@ -19,7 +19,10 @@
 		C83BD56E26EFBDCC001FE902 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56D26EFBDCC001FE902 /* SettingsView.swift */; };
 		C83BD57026F24EF1001FE902 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD56F26F24EF1001FE902 /* AdsManager.swift */; };
 		C83BD58D26F4B6BC001FE902 /* AdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD58C26F4B6BC001FE902 /* AdsViewModel.swift */; };
-		C83BD58F26F4D3F4001FE902 /* ShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD58E26F4D3F4001FE902 /* ShareManager.swift */; };
+		C83BD58F26F4D3F4001FE902 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD58E26F4D3F4001FE902 /* ShareSheet.swift */; };
+		C83BD59226F4F459001FE902 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59126F4F459001FE902 /* SettingsButton.swift */; };
+		C83BD59526F62239001FE902 /* ICloudDocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */; };
+		C83BD59826F64D17001FE902 /* BluredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59726F64D17001FE902 /* BluredBackgroundView.swift */; };
 		C85580E426D54E020099CDAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E326D54E020099CDAB /* DataManager.swift */; };
 		C85580E826D65B650099CDAB /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
 		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
@@ -60,7 +63,11 @@
 		C83BD56D26EFBDCC001FE902 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C83BD56F26F24EF1001FE902 /* AdsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		C83BD58C26F4B6BC001FE902 /* AdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewModel.swift; sourceTree = "<group>"; };
-		C83BD58E26F4D3F4001FE902 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
+		C83BD58E26F4D3F4001FE902 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		C83BD59126F4F459001FE902 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		C83BD59326F4F6AF001FE902 /* Mriffa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mriffa.entitlements; sourceTree = "<group>"; };
+		C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudDocumentsManager.swift; sourceTree = "<group>"; };
+		C83BD59726F64D17001FE902 /* BluredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluredBackgroundView.swift; sourceTree = "<group>"; };
 		C85580E326D54E020099CDAB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C85580E726D65B650099CDAB /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -109,6 +116,7 @@
 		C83BD4F926E7C8FD001FE902 /* SupportedViews */ = {
 			isa = PBXGroup;
 			children = (
+				C83BD59726F64D17001FE902 /* BluredBackgroundView.swift */,
 				C83BD56626ED0976001FE902 /* FontsView.swift */,
 				C85580ED26D664630099CDAB /* ShowHeart.swift */,
 				C8802A1426D17F5C00C3E96E /* Blur.swift */,
@@ -132,9 +140,19 @@
 			children = (
 				C83BD56F26F24EF1001FE902 /* AdsManager.swift */,
 				C85580E326D54E020099CDAB /* DataManager.swift */,
-				C83BD58E26F4D3F4001FE902 /* ShareManager.swift */,
+				C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */,
+				C83BD58E26F4D3F4001FE902 /* ShareSheet.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		C83BD59626F6354E001FE902 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				C83BD56D26EFBDCC001FE902 /* SettingsView.swift */,
+				C83BD59126F4F459001FE902 /* SettingsButton.swift */,
+			);
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		C85580E526D659D40099CDAB /* View */ = {
@@ -144,8 +162,8 @@
 				C85580E626D659F80099CDAB /* AffirmationView */,
 				C8CF3DDB26DC16910066B614 /* CategoryView */,
 				C83BD56C26EE4CBB001FE902 /* ThemeView */,
+				C83BD59626F6354E001FE902 /* SettingsView */,
 				C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */,
-				C83BD56D26EFBDCC001FE902 /* SettingsView.swift */,
 				C83BD4F926E7C8FD001FE902 /* SupportedViews */,
 			);
 			path = View;
@@ -216,6 +234,7 @@
 		C8A4618126C43E7F00C8CCDE /* Mriffa */ = {
 			isa = PBXGroup;
 			children = (
+				C83BD59326F4F6AF001FE902 /* Mriffa.entitlements */,
 				C86E93C826E569460091D770 /* Data */,
 				C8802A0A26C83EE400C3E96E /* Model */,
 				C8802A1126CFB89A00C3E96E /* ViewModel */,
@@ -377,6 +396,7 @@
 				C85580E426D54E020099CDAB /* DataManager.swift in Sources */,
 				C8CF3DD826DBF6BF0066B614 /* CategoryModel.swift in Sources */,
 				C8802A0C26C9B67600C3E96E /* AffirmationViewModel.swift in Sources */,
+				C83BD59826F64D17001FE902 /* BluredBackgroundView.swift in Sources */,
 				C83BD4F826E7C524001FE902 /* SheetTypes.swift in Sources */,
 				C8802A0E26CFB27A00C3E96E /* AffirmationButtons.swift in Sources */,
 				C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */,
@@ -394,10 +414,12 @@
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */,
 				C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */,
-				C83BD58F26F4D3F4001FE902 /* ShareManager.swift in Sources */,
+				C83BD58F26F4D3F4001FE902 /* ShareSheet.swift in Sources */,
+				C83BD59526F62239001FE902 /* ICloudDocumentsManager.swift in Sources */,
 				C8802A1026CFB31400C3E96E /* SettingsViewModel.swift in Sources */,
 				C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */,
 				C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */,
+				C83BD59226F4F459001FE902 /* SettingsButton.swift in Sources */,
 				C85580EE26D664640099CDAB /* ShowHeart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
@@ -552,6 +575,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;

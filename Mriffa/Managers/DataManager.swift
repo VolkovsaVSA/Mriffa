@@ -9,29 +9,35 @@ import Foundation
 
 struct DataManager {
     
+    static var localFolderURL: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
     static private var affirmationURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documents.appendingPathComponent("affirmationData.plist")
+        return localFolderURL.appendingPathComponent("affirmationData.plist")
     }
     static private var selectedCategoriesURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documents.appendingPathComponent("selectedCategories.plist")
+        return localFolderURL.appendingPathComponent("selectedCategories.plist")
     }
     static private var selectedThemeURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documents.appendingPathComponent("selectedTheme.plist")
+        return localFolderURL.appendingPathComponent("selectedTheme.plist")
     }
-    
+    static func localFilePaths() -> [String] {
+        return [
+            affirmationURL.path,
+            selectedCategoriesURL.path,
+            selectedThemeURL.path
+        ]
+    }
     struct Affirmation {
         static func loadAffirmations() -> [AffirmationModel] {
             let decoder = PropertyListDecoder()
             
             guard let data = try? Data.init(contentsOf: affirmationURL),
-                  let preferences = try? decoder.decode([AffirmationModel].self, from: data)
+                  let affirmations = try? decoder.decode([AffirmationModel].self, from: data)
             else
             { return AffirmationDefaultData }
-            
-            return preferences
+            print(#function, affirmations.filter() {$0.isFavorite}.description)
+            return affirmations
         }
         
         static func saveAffirmations(affirmations: [AffirmationModel]) {
@@ -44,10 +50,13 @@ struct DataManager {
                 } else {
                     FileManager.default.createFile(atPath: affirmationURL.path, contents: data, attributes: nil)
                 }
-                
-                if !UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
-                    UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
+                UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
+                do {
+                    try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [affirmationURL.path], icloudFolder: .iCloudDocumentsFolder)
+                } catch {
+                    print(error.localizedDescription)
                 }
+                
             }
         }
     }
@@ -90,6 +99,12 @@ struct DataManager {
                     try? data.write(to: selectedThemeURL)
                 } else {
                     FileManager.default.createFile(atPath: selectedThemeURL.path, contents: data, attributes: nil)
+                }
+                
+                do {
+                    try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [selectedThemeURL.path], icloudFolder: .iCloudDocumentsFolder)
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
         }

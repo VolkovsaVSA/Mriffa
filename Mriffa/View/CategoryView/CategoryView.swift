@@ -51,6 +51,7 @@ struct CategoryView: View {
                 }
                 .padding()
             }
+            .id(categoryVM.updatedID)
             .navigationTitle("Categories")
             .navigationBarItems(
                 trailing:

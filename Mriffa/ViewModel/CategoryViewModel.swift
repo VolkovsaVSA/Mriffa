@@ -11,8 +11,13 @@ class CategoryViewModel: ObservableObject {
     
     static let shared = CategoryViewModel()
     
-    @Published var selectedCategories: Set<CategoryModel>
+    @Published var selectedCategories: Set<CategoryModel> {
+        didSet {
+            updatedID = UUID()
+        }
+    }
     @Published var categories = [CategoryModel]()
+    @Published var updatedID = UUID()
     
     init() {
         selectedCategories = DataManager.Category.loadSelectedCategory()

@@ -24,6 +24,7 @@ struct MriffaApp: App {
     var body: some Scene {
         WindowGroup {
             AffirmationView()
+//                .id(affirmationVM.updatedID)
                 .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
@@ -43,7 +44,6 @@ struct MriffaApp: App {
                     }
                     .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
-                    print("\(UIFont.familyNames.count) \(UIFont.familyNames)")                                             
                 }
         }
     }

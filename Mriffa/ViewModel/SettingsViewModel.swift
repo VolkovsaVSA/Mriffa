@@ -11,13 +11,8 @@ class SettingsViewModel: ObservableObject {
     static let shared = SettingsViewModel()
 
     @Published var ads = AdsManager.init()
-//    @Published var showAds = false {
-//        didSet {
-//            if showAds {
-//                ads.interstitialScreen?.showAd()
-//            }
-//        }
-//    }
+
+    @Published var refreshedID = UUID()
     
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {

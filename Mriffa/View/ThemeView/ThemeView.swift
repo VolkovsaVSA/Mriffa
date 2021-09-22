@@ -13,8 +13,6 @@ struct ThemeView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
-//    @EnvironmentObject var adsVM: AdsViewModel
-    
     
     private let columnWidth: CGFloat!
     private let columns: [GridItem]!
@@ -87,16 +85,9 @@ struct ThemeView: View {
                 }
                 .padding(.horizontal)
             }
+            
             .background(
-                ZStack {
-                    Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
-                        .resizable()
-                        .scaledToFill()
-                        .overlay(Color.black.opacity(0.6))
-                        .blur(radius: 4)
-                }
-                .ignoresSafeArea()
-                
+                BluredBackgroundView()
             )
             .navigationTitle("Themes")
             .navigationBarItems(

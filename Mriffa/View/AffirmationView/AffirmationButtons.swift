@@ -12,6 +12,7 @@ struct AffirmationButtons: View {
     @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
+    @State var showShareSheet = false
 
     let affirmation: AffirmationModel
     
@@ -38,7 +39,7 @@ struct AffirmationButtons: View {
         } else {
             HStack(alignment: .center, spacing: settingsVM.affirmationFontSize + 10) {
                 Button {
-                    ShareManager.actionSheet(items: [affirmation.text])
+                    showShareSheet = true
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
@@ -50,7 +51,11 @@ struct AffirmationButtons: View {
             }
             .font(.system(size: settingsVM.affirmationFontSize, weight: .light, design: .default))
             .offset(y: -140)
+            .sheet(isPresented: $showShareSheet) {
+                ShareSheet(sharing: [affirmation.text])
+            }
         }
+        
         
     }
 }

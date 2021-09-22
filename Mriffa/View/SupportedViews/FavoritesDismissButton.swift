@@ -15,9 +15,11 @@ struct FavoritesDismissButton: View {
         VStack {
             HStack {
                 Spacer()
-                TabButton(imageSystemName: "xmark.circle.fill") {
+                NavDismissButton {
                     action()
                 }
+                .padding(.top, 6)
+                .padding(.trailing, 6)
             }
             Spacer()
         }
