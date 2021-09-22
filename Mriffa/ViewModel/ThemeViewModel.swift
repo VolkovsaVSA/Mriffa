@@ -8,6 +8,7 @@
 import SwiftUI
 
 class ThemeViewModel: ObservableObject {
+    static let shared = ThemeViewModel()
     @Published var themes: [ThemeModel]
     @Published var selectedTheme: ThemeModel {
         didSet {

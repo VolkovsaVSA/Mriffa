@@ -44,26 +44,13 @@ struct SettingsView: View {
                     if !autoSave {
                         SettingsButton(label: "Save data", systemImage: "icloud.and.arrow.up") {
                             do {
-                                try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: .iCloudDocumentsFolder)
+                                try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: SettingsViewModel.shared.iCloudFolder)
                             } catch {
                                 print(error.localizedDescription)
                             }
                         }
                         SettingsButton(label: "Restore data", systemImage: "icloud.and.arrow.down") {
-                            ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL, folder: .iCloudDocumentsFolder, containerName: "Mriffa") { error in
-                                
-                                if let downloadError = error {
-                                    print("download error: \(downloadError)")
-                                } else {
-                                    UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
-                                    affirmationVM.affirmation = DataManager.Affirmation.loadAffirmations()
-                                    categoryVM.selectedCategories = DataManager.Category.loadSelectedCategory()
-                                    themeVM.selectedTheme = DataManager.Theme.loadSelectedTheme() ?? themeVM.randomTheme()
-                                    AffirmationViewModel.shared.updateAffirmation()
-                                    categoryVM.updatedID = UUID()
-                                }
-                                
-                            }
+                            settingsVM.downloadFromIcloud()
                         }
                     }
                     

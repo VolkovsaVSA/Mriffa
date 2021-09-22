@@ -26,7 +26,6 @@ struct FavoritesView: View {
                     .padding()
             } else {
                 AffirmationScroll(affirmations: affirmationVM.favorites)
-                    .id(settingsVM.refreshedID)
             }
             
             FavoritesDismissButton {
@@ -40,7 +39,6 @@ struct FavoritesView: View {
         .offset(y: 8)
         .background(
             BluredBackgroundView()
-                .id(settingsVM.refreshedID)
         )
         .onDisappear() {
             AdsViewModel.shared.showInterstitial = true

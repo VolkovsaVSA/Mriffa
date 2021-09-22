@@ -12,8 +12,6 @@ class SettingsViewModel: ObservableObject {
 
     @Published var ads = AdsManager.init()
 
-    @Published var refreshedID = UUID()
-    
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
@@ -24,6 +22,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     var selectedTheme: ThemeModel!
+    let iCloudFolder: ICloudDocumentsManager.ICloudFolder = .mainHiddenFolder
     
     var categoryBackgroundFrame: CGFloat {
 //        print(UIScreen.main.bounds.width)
@@ -36,6 +35,22 @@ class SettingsViewModel: ObservableObject {
             }
         @unknown default:
             return UIScreen.main.bounds.width / 2.3
+        }
+    }
+    
+    func downloadFromIcloud() {
+        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL, folder: SettingsViewModel.shared.iCloudFolder, containerName: "Mriffa") { error in
+            if let downloadError = error {
+                print("download error: \(downloadError)")
+            } else {
+                UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
+                AffirmationViewModel.shared.affirmation = DataManager.Affirmation.loadAffirmations()
+                CategoryViewModel.shared.selectedCategories = DataManager.Category.loadSelectedCategory()
+                ThemeViewModel.shared.selectedTheme = DataManager.Theme.loadSelectedTheme() ?? ThemeViewModel.shared.randomTheme()
+                AffirmationViewModel.shared.updateAffirmation()
+                CategoryViewModel.shared.updatedID = UUID()
+            }
+            
         }
     }
    

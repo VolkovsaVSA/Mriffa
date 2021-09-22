@@ -14,7 +14,7 @@ struct MriffaApp: App {
     let affirmationVM = AffirmationViewModel.shared
     let categoryVM = CategoryViewModel.shared
     let settingsVM = SettingsViewModel.shared
-    let themeVM = ThemeViewModel()
+    let themeVM = ThemeViewModel.shared
     let adsVM = AdsViewModel.shared
     
     init() {
