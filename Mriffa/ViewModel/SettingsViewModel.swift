@@ -11,6 +11,8 @@ class SettingsViewModel: ObservableObject {
     static let shared = SettingsViewModel()
 
     @Published var ads = AdsManager.init()
+    @Published var showAlert = false
+    @Published var downloadError: Error?
 
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
@@ -23,6 +25,7 @@ class SettingsViewModel: ObservableObject {
     
     var selectedTheme: ThemeModel!
     let iCloudFolder: ICloudDocumentsManager.ICloudFolder = .mainHiddenFolder
+    let containerName = "Mriffa"
     
     var categoryBackgroundFrame: CGFloat {
 //        print(UIScreen.main.bounds.width)
@@ -39,9 +42,13 @@ class SettingsViewModel: ObservableObject {
     }
     
     func downloadFromIcloud() {
-        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL, folder: SettingsViewModel.shared.iCloudFolder, containerName: "Mriffa") { error in
-            if let downloadError = error {
-                print("download error: \(downloadError)")
+        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
+                                                       folder: SettingsViewModel.shared.iCloudFolder,
+                                                       containerName: containerName) { error in
+            if let localDownloadError = error {
+                self.downloadError = localDownloadError
+                self.showAlert = true
+                print("download error: \(localDownloadError)")
             } else {
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 AffirmationViewModel.shared.affirmation = DataManager.Affirmation.loadAffirmations()
@@ -53,5 +60,53 @@ class SettingsViewModel: ObservableObject {
             
         }
     }
+    private func saveDataError(_ downloadError: Error) {
+        AlertManager.shared.alertTitle = "Save backup error"
+        AlertManager.shared.alertText = downloadError.localizedDescription
+        AlertManager.shared.alertAction = {}
+        AlertManager.shared.alertType = .oneButton
+    }
+    private func saveDataSuccess() {
+        AlertManager.shared.alertTitle = "Success"
+        AlertManager.shared.alertText = "Backup data has been saved in your iCloud"
+        AlertManager.shared.alertAction = {}
+        AlertManager.shared.alertType = .oneButton
+    }
+    private func saveDataToCloud() {
+        do {
+            try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: SettingsViewModel.shared.iCloudFolder)
+//            saveDataSuccess()
+        } catch {
+            saveDataError(error)
+        }
+        
+    }
+    
+    
+    
+    func saveDataToIcloud() {
+
+        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
+                                                       folder: SettingsViewModel.shared.iCloudFolder,
+                                                       containerName: SettingsViewModel.shared.containerName) { error in
+            if let downloadError = error {
+                switch downloadError {
+                case ICloudDocumentsManager.ICloudError.iCloudAccessDenied:
+                    SettingsViewModel.shared.saveDataError(downloadError)
+                default: break
+                }
+                self.saveDataToCloud()
+            } else {
+                AlertManager.shared.alertTitle = "Attention!"
+                AlertManager.shared.alertText = "You have backup data! If you save your current data, then the backup will be overwritten! Do you want to save your data?"
+                AlertManager.shared.secondButtonTitle = "Save"
+                AlertManager.shared.alertAction = {
+                    self.saveDataToCloud()
+                }
+                AlertManager.shared.alertType = .twoButton
+            }
+        }
+    }
+    
    
 }

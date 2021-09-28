@@ -16,6 +16,9 @@ struct MriffaApp: App {
     let settingsVM = SettingsViewModel.shared
     let themeVM = ThemeViewModel.shared
     let adsVM = AdsViewModel.shared
+    let alertManager = AlertManager.shared
+    
+    @State var showAlert = false
     
     init() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -24,7 +27,6 @@ struct MriffaApp: App {
     var body: some Scene {
         WindowGroup {
             AffirmationView()
-//                .id(affirmationVM.updatedID)
                 .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
@@ -32,6 +34,7 @@ struct MriffaApp: App {
                 .environmentObject(categoryVM)
                 .environmentObject(themeVM)
                 .environmentObject(adsVM)
+                .environmentObject(alertManager)
                 .onAppear() {
                     AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.filter {
                         CategoryViewModel
@@ -45,6 +48,14 @@ struct MriffaApp: App {
                     .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
                 }
+//                .alert(isPresented: $showAlert, content: {
+//                    Alert(title: Text("Attention!"),
+//                          message: Text("You have backup data! Do you want to restore this data?"),
+//                          primaryButton: .default(Text("Restore"), action: {
+//                        settingsVM.downloadFromIcloud()
+//                    }),
+//                          secondaryButton: .cancel())
+//                })
         }
     }
 }

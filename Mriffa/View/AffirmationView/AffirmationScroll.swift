@@ -13,7 +13,7 @@ struct AffirmationScroll: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     
     let affirmations: [AffirmationModel]
-    @State private var index: Int = 0
+    @Binding var index: Int
     
     private func dragGestureFunction(_ value: _ChangedGesture<DragGesture>.Value, scrollProxy: ScrollViewProxy) {
         let horizontalAmount = value.translation.width as CGFloat
@@ -34,8 +34,9 @@ struct AffirmationScroll: View {
     }
     
     var body: some View {
+        
         ScrollViewReader { scrollProxy in
-            ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: true) {
                 ForEach(0..<affirmations.count) { localIndex in
 
                     ZStack {
@@ -43,7 +44,7 @@ struct AffirmationScroll: View {
                         VStack {
                             if localIndex < affirmations.count {
                                 Spacer()
-                                Text(affirmations[localIndex].text)
+                                Text(/*localIndex.description + " " + */affirmations[localIndex].text)
                                     .font(.custom(themeVM.selectedTheme.font, size: themeVM.selectedTheme.fontSize).bold())
                                     .multilineTextAlignment(.center)
                                     .padding()
@@ -53,29 +54,25 @@ struct AffirmationScroll: View {
                                 EmptyView()
                             }
                         }
-                        .id(localIndex)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-                    }.foregroundColor(.white)
 
+                    }
+                    .foregroundColor(.white)
+                    .id(localIndex)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+                    
+                    
                 }
-                .padding(.horizontal)
+//                .padding(.horizontal)
+            }
+            .onAppear() {
+                withAnimation {
+                    scrollProxy.scrollTo(index, anchor: .center)
+                }
             }
             .id(affirmationVM.updatedID)
-            .onAppear() {
-                if affirmationVM.index == 0 {
-                    withAnimation {
-                        scrollProxy.scrollTo(affirmationVM.index)
-                    }
-                }
-            }
             .gesture(
                 DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onChanged { value in
-//                                print(value.location)
-//                                dragGestureFunction(value, scrollProxy: scrollProxy)
-                    }
                     .onEnded { value in
-//                        affirmationVM.dragGestureFunction(value, scrollProxy: scrollProxy)
                         dragGestureFunction(value, scrollProxy: scrollProxy)
                     }
             )

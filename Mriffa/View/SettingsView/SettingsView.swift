@@ -9,20 +9,23 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage(UDKeys.autoSaveInIcloud) var autoSave: Bool = false
+    @AppStorage(UDKeys.fv) var isFullVersion: Bool = false
+    
     @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
+    @EnvironmentObject var alertManager: AlertManager
 
-    @AppStorage(UDKeys.autoSaveInIcloud) var autoSave: Bool = false
-    @AppStorage(UDKeys.fv) var isFullVersion: Bool = false
-    
     @State var sheetType: SheetTypes? = nil
+    @State private var downloadError: Error!
     
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
     }
+    
     
     var body: some View {
         
@@ -43,11 +46,7 @@ struct SettingsView: View {
                         .foregroundColor(isFullVersion ? .white : .gray)
                     if !autoSave {
                         SettingsButton(label: "Save data", systemImage: "icloud.and.arrow.up") {
-                            do {
-                                try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: SettingsViewModel.shared.iCloudFolder)
-                            } catch {
-                                print(error.localizedDescription)
-                            }
+                            settingsVM.saveDataToIcloud()
                         }
                         SettingsButton(label: "Restore data", systemImage: "icloud.and.arrow.down") {
                             settingsVM.downloadFromIcloud()
@@ -55,7 +54,7 @@ struct SettingsView: View {
                     }
                     
                 }
-//                .disabled(!isFullVersion)
+                .disabled(!isFullVersion)
                 Section(header: Text("User's data").foregroundColor(.white)) {
                     SettingsButton(label: "Favorites", systemImage: "heart.fill") {
                         sheetType = .favorites
@@ -80,6 +79,9 @@ struct SettingsView: View {
                 case .themes: ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
                 default: EmptyView()
                 }
+            }
+            .alert(item: $alertManager.alertType) { item in
+                alertManager.createAlert(alertType: item)
             }
         }
         .colorScheme(.dark)

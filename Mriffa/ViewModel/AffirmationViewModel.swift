@@ -32,32 +32,19 @@ class AffirmationViewModel: ObservableObject {
             }
         }
     }
-    @Published var index = 0
+
     @Published var updatedID = UUID()
     @Published var filteredAffirmation: [AffirmationModel] = []
+    
+    @Published var mainIndex = 0
+    @Published var favoritesIndex = 0
+    
     var favorites: [AffirmationModel] {
         return affirmation.filter { $0.isFavorite }
     }
 
     func checkFavorite(index: Int)->String {
         return affirmation[index].isFavorite ? "heart" : "heart.fill"
-    }
-    func dragGestureFunction(_ value: _ChangedGesture<DragGesture>.Value, scrollProxy: ScrollViewProxy) {
-        let horizontalAmount = value.translation.width as CGFloat
-        let verticalAmount = value.translation.height as CGFloat
-        
-        if abs(horizontalAmount) < abs(verticalAmount) {
-            if verticalAmount < 0 {
-                guard (index + 1) < affirmation.count else {return}
-                index += 1
-            } else {
-                guard (index - 1) >= 0 else {return}
-                index -= 1
-            }
-        }
-        withAnimation {
-            scrollProxy.scrollTo(index, anchor: .center)
-        }
     }
     func updateAffirmation() {
         AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.lazy.filter {
@@ -66,6 +53,10 @@ class AffirmationViewModel: ObservableObject {
                                                                                image: $0.category.rawValue))
         }
         .shuffled()
-        AffirmationViewModel.shared.updatedID = UUID()
+        withAnimation {
+            AffirmationViewModel.shared.updatedID = UUID()
+        }
+        
+        
     }
 }

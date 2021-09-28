@@ -85,6 +85,7 @@ struct ICloudDocumentsManager {
                 try FileManager.default.startDownloadingUbiquitousItem(at: container)
             } catch {
                 completion(error)
+                
             }
             if let fileList = try? FileManager().contentsOfDirectory(at: localFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
                 fileList.forEach { fileUrl in
@@ -138,6 +139,17 @@ struct ICloudDocumentsManager {
             } catch {
                throw error
             }
+        }
+    }
+}
+
+extension ICloudDocumentsManager.ICloudError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .iCloudAccessDenied:
+            return NSLocalizedString("Access denied to iCloud. Please sign into your icloud account in to iphone. Check internet connection.", comment: "error description")
+        case .noFilesInContainer:
+            return NSLocalizedString("No files in iCloud", comment: "error description")
         }
     }
 }

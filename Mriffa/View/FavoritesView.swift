@@ -25,14 +25,14 @@ struct FavoritesView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .padding()
             } else {
-                AffirmationScroll(affirmations: affirmationVM.favorites)
+                AffirmationScroll(affirmations: affirmationVM.favorites, index: $affirmationVM.favoritesIndex)
             }
             
             FavoritesDismissButton {
                 presentationMode.wrappedValue.dismiss()
             }
             .padding(.top, 50)
-            .padding(.trailing, 30)
+            .padding(.trailing, 10)
         }
         .ignoresSafeArea()
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 8, alignment: .center)

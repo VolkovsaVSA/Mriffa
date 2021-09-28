@@ -22,7 +22,19 @@ struct AffirmationButtons: View {
     private func isFavoriteToggle() {
         for (index, value) in affirmationVM.affirmation.enumerated() {
             if value.id == affirmation.id {
-                affirmationVM.affirmation[index].isFavorite.toggle()
+                if affirmationVM.favorites.last?.id == affirmationVM.affirmation[index].id {
+                    if affirmationVM.favoritesIndex != 0 {
+                        affirmationVM.favoritesIndex -= 1
+                        withAnimation {
+                            affirmationVM.updatedID = UUID()
+                        }
+                        
+                    }
+                }
+                withAnimation {
+                    affirmationVM.affirmation[index].isFavorite.toggle()
+                    affirmationVM.updatedID = UUID()
+                }
                 withAnimation(.interactiveSpring()) {
                     if affirmationVM.affirmation[index].isFavorite {
                         affirmationVM.showHeart = true

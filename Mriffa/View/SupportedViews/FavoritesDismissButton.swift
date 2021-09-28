@@ -18,6 +18,7 @@ struct FavoritesDismissButton: View {
                 NavDismissButton {
                     action()
                 }
+                .frame(width: 30, height: 30)
                 .padding(.top, 6)
                 .padding(.trailing, 6)
             }

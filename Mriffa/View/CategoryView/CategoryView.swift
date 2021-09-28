@@ -32,7 +32,9 @@ struct CategoryView: View {
         } else {
             categoryVM.selectedCategories.update(with: categoryVM.categories[index])
         }
-        affrimationVM.index = 0
+        withAnimation {
+            affrimationVM.mainIndex = 0
+        }
         DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
     

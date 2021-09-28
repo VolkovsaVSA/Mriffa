@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */; };
+		C81F25CD26FD93650026DD22 /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CC26FD93650026DD22 /* AlertTypes.swift */; };
 		C83BD4F826E7C524001FE902 /* SheetTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4F726E7C524001FE902 /* SheetTypes.swift */; };
 		C83BD4FB26E7C91D001FE902 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */; };
 		C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4FC26E7CC68001FE902 /* AffirmationScroll.swift */; };
@@ -51,6 +53,8 @@
 		88E024EBA739EB656CFAAB17 /* Pods-Mriffa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.release.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.release.xcconfig"; sourceTree = "<group>"; };
 		9C23E771FF3D91DB3FE12C81 /* Pods-Mriffa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.debug.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.debug.xcconfig"; sourceTree = "<group>"; };
 		C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mriffa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C81F25CC26FD93650026DD22 /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
 		C83BD4F726E7C524001FE902 /* SheetTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTypes.swift; sourceTree = "<group>"; };
 		C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		C83BD4FC26E7CC68001FE902 /* AffirmationScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationScroll.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				C85580E326D54E020099CDAB /* DataManager.swift */,
 				C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */,
 				C83BD58E26F4D3F4001FE902 /* ShareSheet.swift */,
+				C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -195,8 +200,9 @@
 			children = (
 				C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */,
 				C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */,
-				C83BD4F726E7C524001FE902 /* SheetTypes.swift */,
 				C8802A1626D180DA00C3E96E /* ThemeModel.swift */,
+				C81F25CC26FD93650026DD22 /* AlertTypes.swift */,
+				C83BD4F726E7C524001FE902 /* SheetTypes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C8A4617626C43E7F00C8CCDE;
 			productRefGroup = C8A4618026C43E7F00C8CCDE /* Products */;
@@ -398,6 +405,8 @@
 				C8802A0C26C9B67600C3E96E /* AffirmationViewModel.swift in Sources */,
 				C83BD59826F64D17001FE902 /* BluredBackgroundView.swift in Sources */,
 				C83BD4F826E7C524001FE902 /* SheetTypes.swift in Sources */,
+				C81F25CD26FD93650026DD22 /* AlertTypes.swift in Sources */,
+				C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */,
 				C8802A0E26CFB27A00C3E96E /* AffirmationButtons.swift in Sources */,
 				C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */,
 				C83BD4FB26E7C91D001FE902 /* FavoritesView.swift in Sources */,
