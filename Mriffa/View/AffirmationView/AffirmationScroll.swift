@@ -35,6 +35,17 @@ struct AffirmationScroll: View {
     
     var body: some View {
         
+//        TabView {
+//            Group {
+//                FirstView()
+//                SecondView()
+//                ThirdView()
+//            }
+//            .rotationEffect(Angle(degrees: -90))
+//        }
+//        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//        .rotationEffect(Angle(degrees: 90))
+        
         ScrollViewReader { scrollProxy in
             ScrollView(.vertical, showsIndicators: true) {
                 ForEach(0..<affirmations.count) { localIndex in

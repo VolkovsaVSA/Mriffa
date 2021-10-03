@@ -63,6 +63,18 @@ struct SettingsView: View {
                         sheetType = .themes
                     }
                 }
+                Section(header: Text("Feedback").foregroundColor(.white)) {
+                    SettingsButton(label: LocalTxt.rateApp, systemImage: "star.fill") {
+                        
+                    }
+                    SettingsButton(label: LocalTxt.sendEmailToTheDeveloper, systemImage: "mail.fill") {
+
+                    }
+                    SettingsButton(label: LocalTxt.otherApplications, systemImage: "arrow.down.app.fill") {
+                        
+                    }
+                }
+
                 
             }
             

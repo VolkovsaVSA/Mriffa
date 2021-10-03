@@ -12,4 +12,5 @@ struct UDKeys {
     static let fv = "fullVersion"
     static let autoSaveInIcloud = "autoSaveInIcloud"
     static let firstCheckBackup = "firstCheckBackup"
+    static let startView = "startView"
 }

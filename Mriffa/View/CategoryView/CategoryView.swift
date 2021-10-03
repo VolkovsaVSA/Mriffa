@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoryView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var affrimationVM: AffirmationViewModel
+    @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
@@ -33,7 +33,7 @@ struct CategoryView: View {
             categoryVM.selectedCategories.update(with: categoryVM.categories[index])
         }
         withAnimation {
-            affrimationVM.mainIndex = 0
+            affirmationVM.mainIndex = 0
         }
         DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
@@ -62,17 +62,10 @@ struct CategoryView: View {
                     }
             )
             .background(
-                ZStack {
-                    Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
-                        .resizable()
-                        .overlay(Color.black.opacity(0.6))
-                        .scaledToFill()
-                        .blur(radius: 20)
-//                    Blur(style: .light)
-                }
-                .ignoresSafeArea()
+                BluredBackgroundView()
             )
         }
+
         .colorScheme(.dark)
         .onAppear() {
             incomeCategories = categoryVM.selectedCategories

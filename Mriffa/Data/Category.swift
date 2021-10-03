@@ -15,7 +15,6 @@ enum Category: String, CaseIterable, Codable {
     case selfConfidence = "Self confidence"
     case stressAndAnxiety = "Stress and anxiety"
     case personalGrowth = "Personal growth"
-    
     case positiveThinking = "Positive thinking"
     case relationship = "Relationship"
     case womans = "Woman's"

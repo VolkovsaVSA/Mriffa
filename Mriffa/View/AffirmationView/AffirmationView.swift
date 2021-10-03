@@ -15,7 +15,7 @@ struct AffirmationView: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var alertManager: AlertManager
     
-//    @State var alertType: AlertTypes?
+    @AppStorage(UDKeys.startView) var noStartupView: Bool = false
     
     var body: some View {
         
@@ -40,13 +40,18 @@ struct AffirmationView: View {
             }
             .padding(.bottom, 30)
             
+            if !noStartupView {
+                StartView()
+            }
+            
+               
            
         }
         .background(
             Image(uiImage: UIImage(named: themeVM.selectedTheme.image)!)
                 .resizable()
                 .scaledToFill()
-                .overlay(Color.black.opacity(0.4))
+                .overlay(Color.black.opacity(0.5))
 //                .blur(radius: 4)
         )
         .onAppear() {

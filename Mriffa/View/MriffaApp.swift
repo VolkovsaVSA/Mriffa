@@ -48,14 +48,7 @@ struct MriffaApp: App {
                     .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
                 }
-//                .alert(isPresented: $showAlert, content: {
-//                    Alert(title: Text("Attention!"),
-//                          message: Text("You have backup data! Do you want to restore this data?"),
-//                          primaryButton: .default(Text("Restore"), action: {
-//                        settingsVM.downloadFromIcloud()
-//                    }),
-//                          secondaryButton: .cancel())
-//                })
+
         }
     }
 }
