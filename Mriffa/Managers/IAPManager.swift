@@ -22,13 +22,7 @@ class IAPManager: NSObject, ObservableObject {
     enum Products: String, CaseIterable {
         case MriffaProVersion
     }
-    
-//    enum ProductsState: String {
-//        case restored = "RestoredParchase"
-//        case errored = "ErroredPurchase"
-//        case completed = "CompletedPurchase"
-//    }
-//    
+
     public func setupPurchases(completion: @escaping(Bool)->()) {
         if SKPaymentQueue.canMakePayments() {
             SKPaymentQueue.default().add(self)

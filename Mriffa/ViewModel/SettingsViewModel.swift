@@ -61,14 +61,14 @@ class SettingsViewModel: ObservableObject {
         }
     }
     private func saveDataError(_ downloadError: Error) {
-        AlertManager.shared.alertTitle = "Save backup error"
+        AlertManager.shared.alertTitle = NSLocalizedString("Save backup error", comment: " ")
         AlertManager.shared.alertText = downloadError.localizedDescription
         AlertManager.shared.alertAction = {}
         AlertManager.shared.alertType = .oneButton
     }
     private func saveDataSuccess() {
-        AlertManager.shared.alertTitle = "Success"
-        AlertManager.shared.alertText = "Backup data has been saved in your iCloud"
+        AlertManager.shared.alertTitle = LocalTxt.success
+        AlertManager.shared.alertText = NSLocalizedString("Backup data has been saved in your iCloud", comment: " ")
         AlertManager.shared.alertAction = {}
         AlertManager.shared.alertType = .oneButton
     }
@@ -97,9 +97,9 @@ class SettingsViewModel: ObservableObject {
                 }
                 self.saveDataToCloud()
             } else {
-                AlertManager.shared.alertTitle = "Attention!"
-                AlertManager.shared.alertText = "You have backup data! If you save your current data, then the backup will be overwritten! Do you want to save your data?"
-                AlertManager.shared.secondButtonTitle = "Save"
+                AlertManager.shared.alertTitle = LocalTxt.attention
+                AlertManager.shared.alertText = NSLocalizedString("You have backup data! If you save your current data, then the backup will be overwritten! Do you want to save your data?", comment: " ")
+                AlertManager.shared.secondButtonTitle = NSLocalizedString("Save", comment: " ")
                 AlertManager.shared.alertAction = {
                     self.saveDataToCloud()
                 }

@@ -35,17 +35,6 @@ struct AffirmationScroll: View {
     
     var body: some View {
         
-//        TabView {
-//            Group {
-//                FirstView()
-//                SecondView()
-//                ThirdView()
-//            }
-//            .rotationEffect(Angle(degrees: -90))
-//        }
-//        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//        .rotationEffect(Angle(degrees: 90))
-        
         ScrollViewReader { scrollProxy in
             ScrollView(.vertical, showsIndicators: true) {
                 ForEach(0..<affirmations.count) { localIndex in
@@ -55,7 +44,7 @@ struct AffirmationScroll: View {
                         VStack {
                             if localIndex < affirmations.count {
                                 Spacer()
-                                Text(/*localIndex.description + " " + */affirmations[localIndex].text)
+                                Text(affirmations[localIndex].text)
                                     .font(.custom(themeVM.selectedTheme.font, size: themeVM.selectedTheme.fontSize).bold())
                                     .multilineTextAlignment(.center)
                                     .padding()
@@ -70,10 +59,9 @@ struct AffirmationScroll: View {
                     .foregroundColor(.white)
                     .id(localIndex)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-                    
-                    
+
                 }
-//                .padding(.horizontal)
+
             }
             .onAppear() {
                 withAnimation {

@@ -25,6 +25,37 @@ enum Category: String, CaseIterable, Codable {
     
     
     var localizedTitle: String {
-        return NSLocalizedString(self.rawValue, comment: "enum category")
+        
+        switch self {
+        case .health:
+            return NSLocalizedString("Health", comment: "enum category")
+        case .success:
+            return NSLocalizedString("Success", comment: "enum category")
+        case .energy:
+            return NSLocalizedString("Energy, power", comment: "enum category")
+        case .luck:
+            return NSLocalizedString("Luck", comment: "enum category")
+        case .selfConfidence:
+            return NSLocalizedString("Self confidence", comment: "enum category")
+        case .stressAndAnxiety:
+            return NSLocalizedString("Stress and anxiety", comment: "enum category")
+        case .personalGrowth:
+            return NSLocalizedString("Personal growth", comment: "enum category")
+        case .positiveThinking:
+            return NSLocalizedString("Positive thinking", comment: "enum category")
+        case .relationship:
+            return NSLocalizedString("Relationship", comment: "enum category")
+        case .womans:
+            return NSLocalizedString("Woman's", comment: "enum category")
+        case .gratitude:
+            return NSLocalizedString("Gratitude", comment: "enum category")
+        case .money:
+            return NSLocalizedString("Money", comment: "enum category")
+        case .wisdom:
+            return NSLocalizedString("Wisdom", comment: "enum category")
+        case .love:
+            return NSLocalizedString("Love", comment: "enum category")
+        }
+        
     }
 }

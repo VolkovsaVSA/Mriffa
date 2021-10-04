@@ -24,4 +24,5 @@ struct LocalTxt {
     static let success = NSLocalizedString("Success", comment: " ")
     static let purchasesRestored = NSLocalizedString("Purchases restored", comment: " ")
     static let error = NSLocalizedString("Error", comment: " ")
+    static let attention = NSLocalizedString("Attention!", comment: " ")
 }

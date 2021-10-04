@@ -54,7 +54,7 @@ struct CategoryView: View {
                 .padding()
             }
             .id(categoryVM.updatedID)
-            .navigationTitle("Categories")
+            .navigationTitle(NSLocalizedString("Categories", comment: "nav title"))
             .navigationBarItems(
                 trailing:
                     NavDismissButton() {

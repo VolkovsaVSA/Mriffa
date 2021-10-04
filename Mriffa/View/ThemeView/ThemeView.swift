@@ -64,7 +64,7 @@ struct ThemeView: View {
                         
                     }
                     
-                    ThemeCard(text: "Random",
+                    ThemeCard(text: NSLocalizedString("Random", comment: "theme card"),
                               font: .system(size: settingsVM.affirmationFontSize),
                               columnWidth: columnWidth,
                               theme: nil,

@@ -61,15 +61,11 @@ struct AffirmationView: View {
                                                                containerName: settingsVM.containerName) { error in
                     if let downloadError = error {
                         print("download error: \(downloadError)")
-//                        alertManager.alertType = .oneButton
-//                        alertManager.alertTitle = "Backup download error"
-//                        alertManager.alertText = downloadError.localizedDescription
-//                        alertManager.alertAction = {}
                     } else {
                         alertManager.alertType = .twoButton
-                        alertManager.alertTitle = "Attention!"
-                        alertManager.alertText = "You have backup data! Do you want to restore this data?"
-                        alertManager.secondButtonTitle = "Restore"
+                        alertManager.alertTitle = LocalTxt.attention
+                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
+                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
                         alertManager.alertAction = {settingsVM.downloadFromIcloud()}
                     }
                 }

@@ -41,8 +41,8 @@ struct AffirmationTabView: View {
                 FavoritesView()
             case .themes:
                 ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
-            case .fonts:
-                FontsView()
+//            case .fonts:
+//                FontsView()
             case .settings:
                 SettingsView()
             default: EmptyView()

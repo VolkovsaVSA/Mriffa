@@ -33,10 +33,6 @@ struct StartViewPage2: View {
         DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
     
-//    init(columnWidth: CGFloat) {
-//        self.columnWidth = columnWidth
-//        self.columns = [GridItem(.adaptive(minimum: columnWidth))]
-//    }
     
     var body: some View {
         
@@ -93,56 +89,6 @@ struct StartViewPage2: View {
             
             }
         }
-        
-        
-//        VStack {
-//            Text("Select the categories that interest you")
-//                .multilineTextAlignment(.center)
-//                .foregroundColor(.white)
-//                .padding()
-//                .background(
-//                    Blur(style: .systemUltraThinMaterialDark)
-//                )
-//                .cornerRadius(10)
-//
-//            ScrollView {
-//                LazyVGrid(columns: columns, spacing: 14) {
-//                    ForEach(0..<categoryVM.categories.count) { index in
-//                        Button(action: {
-//                            updateCategories(index: index)
-//                        }, label: {
-//                            CategoryButtonLabel(item: $categoryVM.categories[index], columnWidth: columnWidth)
-//                        })
-//                    }
-//                }
-//                .padding()
-//            }
-//            .edgesIgnoringSafeArea(.bottom)
-////            .id(categoryVM.updatedID)
-//
-//            Spacer()
-//
-//            Button(action: {
-//                withAnimation {
-//                    tabSelection = 2
-////                    noStartView = true
-//                }
-//            }, label: {
-//                Text("Get started")
-//                    .background(
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
-//                            .foregroundColor(.white)
-//                    )
-//
-//
-//            })
-//                .foregroundColor(.black)
-//                .padding(.bottom, 20)
-//                .opacity(categoryVM.selectedCategories.isEmpty ? 0.5 : 1)
-//                .disabled(categoryVM.selectedCategories.isEmpty)
-//
-//        }
         .background(
             Color.black
                 .ignoresSafeArea()
