@@ -13,12 +13,15 @@ class AdsViewModel: ObservableObject {
     @Published var interstitial = AdsManager.Interstitial()
     @Published var showInterstitial = false {
         didSet {
-            if showInterstitial {
-                interstitial.showAd()
-                showInterstitial = false
-            } else {
-                interstitial.requestInterstitialAds()
+            if !UserDefaults.standard.bool(forKey: UDKeys.fv) {
+                if showInterstitial {
+                    interstitial.showAd()
+                    showInterstitial = false
+                } else {
+                    interstitial.requestInterstitialAds()
+                }
             }
+            
         }
     }
 }

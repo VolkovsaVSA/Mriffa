@@ -13,45 +13,10 @@ struct StartView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     
     @State private var tabSelection = 0
+    @State private var isDisabled = true
 
     var body: some View {
-//
-//        GeometryReader { geometryProxy in
-//            ScrollViewReader { scrollProxy in
-//                ScrollView(.horizontal, showsIndicators: false) {
-//                    HStack {
-//                        StartViewPage0() {
-//                            withAnimation {
-//                                scrollProxy.scrollTo(1, anchor: .center)
-//                            }
-//                        }
-//                            .frame(width: geometryProxy.size.width, height: geometryProxy.size.height)
-//                            .id(0)
-//                        StartViewPage1() {
-//                            withAnimation {
-//                                scrollProxy.scrollTo(2, anchor: .center)
-//                            }
-//                        }
-//                            .frame(width: geometryProxy.size.width, height: geometryProxy.size.height)
-//                            .id(1)
-//                        StartViewPage2(columnWidth: settingsVM.categoryBackgroundFrame,
-//                                       columns: [GridItem(.adaptive(minimum: settingsVM.categoryBackgroundFrame))])
-//                            .frame(width: geometryProxy.size.width, height: geometryProxy.size.height)
-//                            .id(2)
-//                    }
-//
-//
-//                }
-//                .gesture(
-//                    DragGesture(minimumDistance: 0, coordinateSpace: .local)
-//                        .onEnded { value in
-//
-//                        }
-//                )
-//            }
-//        }
-        
-        
+
         TabView(selection: $tabSelection) {
 
             StartViewPage0() {
@@ -70,15 +35,18 @@ struct StartView: View {
                            columns: [GridItem(.adaptive(minimum: settingsVM.categoryBackgroundFrame))])
                 .tag(2)
 
-
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
+//        .disabled(isDisabled)
 //        .gesture(
 //            DragGesture(minimumDistance: 0, coordinateSpace: .local)
 //                .onEnded { value in
-//                    
+////                    isDisabled = true
 //                }
 //        )
+//        .onTapGesture(count: 1) {
+//            isDisabled = false
+//        }
         
     }
 }

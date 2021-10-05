@@ -30,13 +30,16 @@ struct AffirmationView: View {
                 AffirmationScroll(affirmations: affirmationVM.filteredAffirmation, index: $affirmationVM.mainIndex)
             }
             VStack {
-                AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))
-                    .frame(width: UIScreen.main.bounds.width,
-                           height: 80,
-                           alignment: .center)
-                    .offset(y: 36)
-                Spacer()
+                if !UserDefaults.standard.bool(forKey: UDKeys.fv) {
+                    AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))
+                        .frame(width: UIScreen.main.bounds.width,
+                               height: 80,
+                               alignment: .center)
+                        .offset(y: 36)
+                    Spacer()
+                }
                 AffirmationTabView()
+                    .disabled(!noStartupView)
             }
             .padding(.bottom, 30)
             

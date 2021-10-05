@@ -58,7 +58,7 @@ struct StartViewPage1: View {
                 .scaledToFit()
                 .ignoresSafeArea()
             
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 Text("Mriffa")
                     .font(.system(size: 30,
                                   weight: .bold,
