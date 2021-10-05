@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8399858472733455~2749002676</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -26,6 +26,18 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
+	</dict>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.VSA.Mriffa</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>Mriffa</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>Any</string>
+		</dict>
 	</dict>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>This identifier will be used to deliver personalized ads to you.</string>
@@ -200,20 +212,9 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <key>NSUbiquitousContainers</key>
-        <dict>
-            <key>iCloud.VSA.Mriffa</key>
-            <dict>
-                <key>NSUbiquitousContainerIsDocumentScopePublic</key>
-                <true/>
-                <key>NSUbiquitousContainerSupportedFolderLevels</key>
-                <string>Any</string>
-                <key>NSUbiquitousContainerName</key>
-                <string>Mriffa</string>
-            </dict>
-        </dict>
-    
 </dict>
 </plist>

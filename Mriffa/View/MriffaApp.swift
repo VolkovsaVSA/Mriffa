@@ -22,6 +22,9 @@ struct MriffaApp: App {
     
     init() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        IAPManager.shared.getProducts()
+        UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
+//        AppUtility.lockOrientation(.portrait)
     }
     
     var body: some Scene {

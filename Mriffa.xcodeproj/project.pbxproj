@@ -30,6 +30,9 @@
 		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
 		C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */; };
 		C85580EE26D664640099CDAB /* ShowHeart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580ED26D664630099CDAB /* ShowHeart.swift */; };
+		C87E528B270B700B002D2A04 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E528A270B700B002D2A04 /* LoadingView.swift */; };
+		C87E528D270CD904002D2A04 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E528C270CD904002D2A04 /* AppID.swift */; };
+		C87E528F270CDAA8002D2A04 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E528E270CDAA8002D2A04 /* MailView.swift */; };
 		C8802A0726C76D0E00C3E96E /* AffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0626C76D0E00C3E96E /* AffirmationView.swift */; };
 		C8802A0926C83E7900C3E96E /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0826C83E7900C3E96E /* Data.swift */; };
 		C8802A0C26C9B67600C3E96E /* AffirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0B26C9B67600C3E96E /* AffirmationViewModel.swift */; };
@@ -83,6 +86,9 @@
 		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		C85580EB26D6625D0099CDAB /* AffirmationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationTabView.swift; sourceTree = "<group>"; };
 		C85580ED26D664630099CDAB /* ShowHeart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHeart.swift; sourceTree = "<group>"; };
+		C87E528A270B700B002D2A04 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C87E528C270CD904002D2A04 /* AppID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppID.swift; sourceTree = "<group>"; };
+		C87E528E270CDAA8002D2A04 /* MailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		C8802A0626C76D0E00C3E96E /* AffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationView.swift; sourceTree = "<group>"; };
 		C8802A0826C83E7900C3E96E /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		C8802A0B26C9B67600C3E96E /* AffirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 				C8802A1426D17F5C00C3E96E /* Blur.swift */,
 				C83BD56026EBC472001FE902 /* FavoritesDismissButton.swift */,
 				C83BD56426EBDC62001FE902 /* NavDismissButton.swift */,
+				C87E528A270B700B002D2A04 /* LoadingView.swift */,
+				C87E528E270CDAA8002D2A04 /* MailView.swift */,
 			);
 			path = SupportedViews;
 			sourceTree = "<group>";
@@ -263,6 +271,7 @@
 				C83BD59026F4D49B001FE902 /* Managers */,
 				C85580E726D65B650099CDAB /* UDKeys.swift */,
 				C8B2117C2704C05F00757643 /* LocalTxt.swift */,
+				C87E528C270CD904002D2A04 /* AppID.swift */,
 				C8B2117E2704C37600757643 /* Configuration.storekit */,
 				C8A4618626C43E8100C8CCDE /* Assets.xcassets */,
 				C8A4618B26C43E8100C8CCDE /* Info.plist */,
@@ -439,6 +448,7 @@
 				C8B2117D2704C05F00757643 /* LocalTxt.swift in Sources */,
 				C83BD4F826E7C524001FE902 /* SheetTypes.swift in Sources */,
 				C81F25CD26FD93650026DD22 /* AlertTypes.swift in Sources */,
+				C87E528F270CDAA8002D2A04 /* MailView.swift in Sources */,
 				C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */,
 				C8802A0E26CFB27A00C3E96E /* AffirmationButtons.swift in Sources */,
 				C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */,
@@ -447,6 +457,7 @@
 				C83BD56126EBC472001FE902 /* FavoritesDismissButton.swift in Sources */,
 				C8CF3DD626D8CBDD0066B614 /* CategoryViewModel.swift in Sources */,
 				C8802A0926C83E7900C3E96E /* Data.swift in Sources */,
+				C87E528B270B700B002D2A04 /* LoadingView.swift in Sources */,
 				C83BD56326EBD397001FE902 /* ThemeView.swift in Sources */,
 				C83BD56E26EFBDCC001FE902 /* SettingsView.swift in Sources */,
 				C8E48A9826C444E000C12CE2 /* AffirmationModel.swift in Sources */,
@@ -463,6 +474,7 @@
 				C8802A1026CFB31400C3E96E /* SettingsViewModel.swift in Sources */,
 				C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */,
 				C85580EC26D6625D0099CDAB /* AffirmationTabView.swift in Sources */,
+				C87E528D270CD904002D2A04 /* AppID.swift in Sources */,
 				C83BD59226F4F459001FE902 /* SettingsButton.swift in Sources */,
 				C85580EE26D664640099CDAB /* ShowHeart.swift in Sources */,
 			);
@@ -599,6 +611,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
@@ -623,6 +636,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;

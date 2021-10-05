@@ -41,6 +41,12 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    func openUrl(openurl: URL?) {
+        if let url = openurl {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     func downloadFromIcloud() {
         ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
                                                        folder: SettingsViewModel.shared.iCloudFolder,

@@ -157,7 +157,7 @@ extension IAPManager: SKPaymentTransactionObserver {
 extension IAPManager: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         self.products = response.products
-        print(#function, #line, self.products.description)
+        print(#function, self.products.description)
     }
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         print("\(#function) \(error.localizedDescription)")

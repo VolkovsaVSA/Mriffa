@@ -12,35 +12,44 @@ struct StartViewPage1: View {
     @State private var text1Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                text2Animation.toggle()
+                if text1Animation {
+                    text2Animation = true
+                }
             }
         }
     }
     @State private var text2Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                text3Animation.toggle()
+                if text2Animation {
+                    text3Animation = true
+                }
             }
         }
     }
     @State private var text3Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                text4Animation.toggle()
+                if text3Animation {
+                    text4Animation = true
+                }
             }
         }
     }
     @State private var text4Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                buttonAnimation.toggle()
+                if text4Animation {
+                    buttonAnimation = true
+                }
+                
             }
         }
     }
     @State private var buttonAnimation = false
     @State private var duration: Double = 2
-    
-    @Binding var tabSelection: Int
+
+    let action: ()->()
     
     var body: some View {
         VStack {
@@ -48,6 +57,7 @@ struct StartViewPage1: View {
                 .resizable()
                 .scaledToFit()
                 .ignoresSafeArea()
+            
             VStack(spacing: 30) {
                 Text("Mriffa")
                     .font(.system(size: 30,
@@ -76,14 +86,12 @@ struct StartViewPage1: View {
             Spacer()
             
             Button(action: {
-                withAnimation {
-                    tabSelection = 2
-                }
+                action()
             }, label: {
                 Text("Select Categories")
+                    .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                             .foregroundColor(.white)
                     )
                 
@@ -103,7 +111,7 @@ struct StartViewPage1: View {
         
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                text1Animation.toggle()
+                text1Animation = true
             }
             
         }

@@ -13,8 +13,9 @@ struct StartViewPage2: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
     @EnvironmentObject var affirmationVM: AffirmationViewModel
+//    
+//    @Binding var tabSelection: Int
     
-    @Binding var tabSelection: Int
     
     let columnWidth: CGFloat!
     let columns: [GridItem]!
@@ -64,19 +65,20 @@ struct StartViewPage2: View {
                 
                 
                 .edgesIgnoringSafeArea(.bottom)
-    //            .id(categoryVM.updatedID)
+//                .id(categoryVM.updatedID)
                 
                 Spacer()
                 
                 Button(action: {
+                    AffirmationViewModel.shared.updateAffirmation()
                     withAnimation {
                         noStartView = true
                     }
                 }, label: {
                     Text("Get started")
+                        .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                                 .foregroundColor(.white)
                         )
                     

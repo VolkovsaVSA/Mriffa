@@ -12,28 +12,40 @@ struct StartViewPage0: View {
     @State private var text1Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                text2Animation.toggle()
+                withAnimation(.easeIn(duration: 1)) {
+                    if text1Animation {
+                        text2Animation = true
+                    }
+                }
             }
         }
     }
     @State private var text2Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                text3Animation.toggle()
+                withAnimation(.easeIn(duration: 1)) {
+                    if text2Animation {
+                        text3Animation = true
+                    }
+                }
             }
         }
     }
     @State private var text3Animation = false {
         didSet {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                buttonAnimation.toggle()
+                withAnimation(.easeIn(duration: 1)) {
+                    if text3Animation {
+                        buttonAnimation = true
+                    }
+                }
             }
         }
     }
     @State private var buttonAnimation = false
     @State private var duration: Double = 2
-    
-    @Binding var tabSelection: Int
+
+    let action: ()->()
     
     var body: some View {
         VStack {
@@ -44,13 +56,10 @@ struct StartViewPage0: View {
             VStack(spacing: 10) {
                 Text("Self love")
                     .opacity(text1Animation ? 1 : 0)
-                    .animation(.easeIn(duration: duration))
                 Text("Antistress")
                     .opacity(text2Animation ? 1 : 0)
-                    .animation(.easeIn(duration: duration))
                 Text("Self improvement")
                     .opacity(text3Animation ? 1 : 0)
-                    .animation(.easeIn(duration: duration))
             }
             .font(.title)
             .foregroundColor(.white)
@@ -58,22 +67,20 @@ struct StartViewPage0: View {
             Spacer()
             
             Button(action: {
-                withAnimation {
-                    tabSelection = 1
-                }
+                action()
             }, label: {
                 Text("Next")
+                    .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
-                            .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                             .foregroundColor(.white)
                     )
             })
+                
                 .foregroundColor(.black)
                 .padding(.bottom, 20)
                 .disabled(!buttonAnimation)
                 .opacity(buttonAnimation ? 1 : 0)
-                .animation(.easeIn(duration: 2))
         }
         .background(
             Color.black
@@ -82,9 +89,12 @@ struct StartViewPage0: View {
         
         .onAppear() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                text1Animation = true
+                withAnimation(.easeIn(duration: 1)) {
+                    text1Animation = true
+                }
+                
             }
-            
+
         }
     }
 }
