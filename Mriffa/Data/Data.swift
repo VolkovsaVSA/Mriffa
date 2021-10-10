@@ -226,7 +226,7 @@ let Health = [
     ),
     AffirmationModel(
         category: .health,
-        text: NSLocalizedString("All unhealthy habits are sifted from me like unnecessary huskse",
+        text: NSLocalizedString("All unhealthy habits fall off me like unnecessary husk",
                                 comment: "health044")
     ),
     AffirmationModel(
@@ -565,7 +565,7 @@ let Success = [
     ),
     AffirmationModel(
         category: .success,
-        text: NSLocalizedString("I allow myself to thrive in all aspects of lifer",
+        text: NSLocalizedString("I allow myself to thrive in all aspects of life",
                                 comment: "success052")
     ),
     AffirmationModel(
@@ -2396,7 +2396,7 @@ let Womans = [
                      text: NSLocalizedString("I appreciate myself as a woman, I appreciate my femininity",
                                              comment: "womans025")),
     AffirmationModel(category: .womans,
-                     text: NSLocalizedString("It is i essential in this mortal life to feel as a woman, to have thoughts as a woman and to act as a womang",
+                     text: NSLocalizedString("It is essential in this mortal life to feel like a woman, to have thoughts as a woman, and to act as a woman",
                                              comment: "womans026")),
     AffirmationModel(category: .womans,
                      text: NSLocalizedString("Femininity is beautiful",
@@ -3001,7 +3001,7 @@ let Money = [
                      text: NSLocalizedString("I'm willing to be rich",
                                              comment: "money070")),
     AffirmationModel(category: .money,
-                     text: NSLocalizedString("Having ....k dollars is simple for me! (insert desired amount)",
+                     text: NSLocalizedString("Having 100k dollars is simple for me!",
                                              comment: "money071")),
     AffirmationModel(category: .money,
                      text: NSLocalizedString("It's simple for me to embrace cash flow!",

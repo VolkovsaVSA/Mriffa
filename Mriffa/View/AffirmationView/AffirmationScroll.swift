@@ -46,6 +46,7 @@ struct AffirmationScroll: View {
                                 Spacer()
                                 Text(affirmations[localIndex].text)
                                     .font(.custom(themeVM.selectedTheme.font, size: themeVM.selectedTheme.fontSize).bold())
+                                    .minimumScaleFactor(0.005)
                                     .multilineTextAlignment(.center)
                                     .padding()
                                 Spacer()

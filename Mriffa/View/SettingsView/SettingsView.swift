@@ -37,12 +37,19 @@ struct SettingsView: View {
         LoadingView(isShowing: $purchaseVM.purchaseLoading, text: purchaseVM.purchasingText) {
             NavigationView {
                 Form {
-                    Section(header: Text("Purchases").foregroundColor(.white)) {
+                    Section(header: Text(NSLocalizedString("Purchases", comment: "settingsView header")).foregroundColor(.white)) {
                         SettingsButton(label: NSLocalizedString("Pro version", comment: "settings button"),
                                        systemImage: "crown.fill") {
-                            if !purchaseVM.products.isEmpty {
-                                purchaseVM.purshase(product: purchaseVM.products.first!)
-                            }
+                            settingsVM.purchasingFullversion()
+//                            alertManager.alertTitle = NSLocalizedString(LocalTxt.attention, comment: "purchasing alert")
+//                            alertManager.alertText = NSLocalizedString("Buying the Pro version you get:\n1. No ads in the app\n2. Saving a backup to icloud\n\nDo you want buy Pro version?", comment: "purchasing alert")
+//                            alertManager.secondButtonTitle = "Buy Pro version"
+//                            alertManager.alertAction = {
+//                                if !purchaseVM.products.isEmpty {
+//                                    purchaseVM.purshase(product: purchaseVM.products.first!)
+//                                }
+//                            }
+//                            alertManager.alertType = .twoButton
                         }
                         SettingsButton(label: NSLocalizedString("Restore purchases", comment: "settings button"),
                                        systemImage: "purchased.circle") {
@@ -50,8 +57,8 @@ struct SettingsView: View {
                         }
                     }
                     Section(header: Text("iCloud").foregroundColor(.white),
-                            footer: isFullVersion ? Text("") : Text("Saving data to iCloud is only available in the Pro version!")) {
-                        Toggle("Auto save", isOn: $autoSave)
+                            footer: isFullVersion ? Text("") : Text(NSLocalizedString("Saving data to iCloud is only available in the Pro version!", comment: "settingsView header"))) {
+                        Toggle(NSLocalizedString("Auto save", comment: "settingsView toggle"), isOn: $autoSave)
                             .foregroundColor(isFullVersion ? .white : .gray)
                         if !autoSave {
                             SettingsButton(label: NSLocalizedString("Save data", comment: "settings button"),
@@ -66,7 +73,7 @@ struct SettingsView: View {
                         
                     }
                     .disabled(!isFullVersion)
-                    Section(header: Text("User's data").foregroundColor(.white)) {
+                    Section(header: Text(NSLocalizedString("User's data", comment: "settingsView header")).foregroundColor(.white)) {
                         SettingsButton(label: NSLocalizedString("Favorites", comment: "settings button"),
                                        systemImage: "heart.fill") {
                             sheetType = .favorites
@@ -76,7 +83,7 @@ struct SettingsView: View {
                             sheetType = .themes
                         }
                     }
-                    Section(header: Text("Feedback").foregroundColor(.white)) {
+                    Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white)) {
                         SettingsButton(label: LocalTxt.rateApp,
                                        systemImage: "star.fill") {
                             settingsVM.openUrl(openurl: AppId.appUrl)
@@ -96,7 +103,7 @@ struct SettingsView: View {
                     
                 }
                 
-                .navigationTitle("Settings")
+                .navigationTitle(NSLocalizedString("Settings", comment: "settingsView navTitle"))
                 .navigationBarItems(trailing: NavDismissButton() {
                     presentationMode.wrappedValue.dismiss()
                 })

@@ -47,6 +47,18 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    func purchasingFullversion() {
+        AlertManager.shared.alertTitle = NSLocalizedString(LocalTxt.attention, comment: "purchasing alert")
+        AlertManager.shared.alertText = NSLocalizedString("Buying the Pro version you get:\n1. No ads in the app\n2. Saving a backup to icloud\n\nDo you want buy Pro version?", comment: "purchasing alert")
+        AlertManager.shared.secondButtonTitle = NSLocalizedString("Buy Pro version", comment: "purchasing alert")
+        AlertManager.shared.alertAction = {
+            if !IAPManager.shared.products.isEmpty {
+                IAPManager.shared.purshase(product: IAPManager.shared.products.first!)
+            }
+        }
+        AlertManager.shared.alertType = .twoButton
+    }
+    
     func downloadFromIcloud() {
         ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
                                                        folder: SettingsViewModel.shared.iCloudFolder,
@@ -87,9 +99,7 @@ class SettingsViewModel: ObservableObject {
         }
         
     }
-    
-    
-    
+
     func saveDataToIcloud() {
 
         ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,

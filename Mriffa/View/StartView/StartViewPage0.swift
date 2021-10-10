@@ -54,22 +54,23 @@ struct StartViewPage0: View {
                 .scaledToFit()
                 .ignoresSafeArea()
             VStack(spacing: 10) {
-                Text("Self love")
+                Text(NSLocalizedString("Self love", comment: "startView"))
                     .opacity(text1Animation ? 1 : 0)
-                Text("Antistress")
+                Text(NSLocalizedString("Antistress", comment: "startView"))
                     .opacity(text2Animation ? 1 : 0)
-                Text("Self improvement")
+                Text(NSLocalizedString("Self improvement", comment: "startView"))
                     .opacity(text3Animation ? 1 : 0)
             }
             .font(.title)
             .foregroundColor(.white)
+            .minimumScaleFactor(0.05)
             
             Spacer()
             
             Button(action: {
                 action()
             }, label: {
-                Text("Next")
+                Text(NSLocalizedString("Next", comment: "startView"))
                     .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
                     .background(
                         RoundedRectangle(cornerRadius: 10)
