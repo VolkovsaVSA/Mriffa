@@ -161,8 +161,14 @@ extension IAPManager: SKProductsRequestDelegate {
     }
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         print("\(#function) \(error.localizedDescription)")
+        DispatchQueue.main.async {
+            self.purchaseLoading = false
+        }
     }
     public func requestDidFinish(_ request: SKRequest) {
         print("\(#function)")
+        DispatchQueue.main.async {
+            self.purchaseLoading = false
+        }
     }
 }

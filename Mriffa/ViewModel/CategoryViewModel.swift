@@ -20,7 +20,7 @@ class CategoryViewModel: ObservableObject {
     @Published var updatedID = UUID()
     
     init() {
-        selectedCategories = DataManager.Category.loadSelectedCategory()
+        selectedCategories = DataManager.Categories.loadSelectedCategory()
         Category.allCases.forEach { category in
             categories.append(CategoryModel(category: category, title: category.localizedTitle, image: category.rawValue))
         }

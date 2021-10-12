@@ -16,8 +16,8 @@ struct AffirmationButtons: View {
 
     let affirmation: AffirmationModel
     
-    private var globalAffirmation: AffirmationModel {
-        return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first!
+    private var globalAffirmation: AffirmationModel? {
+        return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first
     }
     private func isFavoriteToggle() {
         for (index, value) in affirmationVM.affirmation.enumerated() {
@@ -58,7 +58,7 @@ struct AffirmationButtons: View {
                 Button {
                     isFavoriteToggle()
                 } label: {
-                    Image(systemName: globalAffirmation.isFavorite ? "heart.fill" : "heart")
+                    Image(systemName: (globalAffirmation?.isFavorite ?? false) ? "heart.fill" : "heart")
                 }
             }
             .font(.system(size: settingsVM.affirmationFontSize, weight: .light, design: .default))

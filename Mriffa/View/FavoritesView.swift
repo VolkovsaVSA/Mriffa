@@ -16,7 +16,8 @@ struct FavoritesView: View {
     
     var body: some View {
         
-        ZStack {
+        NavigationView {
+           
             if affirmationVM.favorites.isEmpty {
                 Text("No favorite affirmations")
                     .foregroundColor(.white)
@@ -24,19 +25,30 @@ struct FavoritesView: View {
                     .multilineTextAlignment(.center)
                     .frame(width: UIScreen.main.bounds.width)
                     .padding()
+                    .ignoresSafeArea()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
+                    .background(
+                        BluredBackgroundView()
+                    )
+                    .navigationBarItems(trailing: NavDismissButton() {
+                        presentationMode.wrappedValue.dismiss()
+                    })
             } else {
                 AffirmationScroll(affirmations: affirmationVM.favorites, index: $affirmationVM.favoritesIndex)
+                    .ignoresSafeArea()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 8, alignment: .center)
+                    .background(
+                        BluredBackgroundView()
+                    )
+                    .navigationTitle(NSLocalizedString("Favorites", comment: "settingsView navTitle"))
+                    .navigationBarItems(trailing: NavDismissButton() {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                   
             }
-            
-            FavoritesDismissButton {
-                presentationMode.wrappedValue.dismiss()
-            }
-            .padding(.top, 50)
-            .padding(.trailing, 10)
+                
         }
-        .ignoresSafeArea()
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 8, alignment: .center)
-        .offset(y: 8)
+        .colorScheme(.dark)
         .background(
             BluredBackgroundView()
         )

@@ -197,8 +197,8 @@
 				C8CF3DDB26DC16910066B614 /* CategoryView */,
 				C83BD56C26EE4CBB001FE902 /* ThemeView */,
 				C83BD59626F6354E001FE902 /* SettingsView */,
-				C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */,
 				C83BD4F926E7C8FD001FE902 /* SupportedViews */,
+				C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
@@ -667,7 +667,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;

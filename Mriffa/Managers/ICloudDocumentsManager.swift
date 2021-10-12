@@ -20,6 +20,27 @@ struct ICloudDocumentsManager {
         case noFilesInContainer
     }
     
+    //public functions
+    
+    static func checkFilesInIcloud(folder: ICloudFolder, completion: @escaping (Result<[String], Error>)->Void) {
+        if let container = containerUrl(folder: folder) {
+            if let containerFiles = try? FileManager().contentsOfDirectory(at: container, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
+                if containerFiles.isEmpty {
+                    completion(.failure(ICloudError.noFilesInContainer))
+                } else {
+                    var files = [String]()
+                    containerFiles.forEach { containerFileUrl in
+                        if let fileName = containerFileUrl.path.components(separatedBy: "/").last {
+                            files.append(fileName)
+                        }
+                    }
+                    completion(.success(files))
+                }
+            } else {
+                completion(.failure(ICloudError.iCloudAccessDenied))
+            }
+        }
+    }
     static func saveFilesToICloudDOcuments(localFilePaths: [String], icloudFolder: ICloudFolder) throws {
         localFilePaths.forEach { filePath in
             if let fileName = filePath.components(separatedBy: "/").last {
@@ -29,7 +50,59 @@ struct ICloudDocumentsManager {
             }
         }
     }
+    static func downloadFilesFromIcloud(localFolder: URL, folder: ICloudFolder, containerName: String?, completion: @escaping (Error?)->Void) {
+        if let container = containerUrl(folder: folder) {
+            do {
+                try FileManager.default.startDownloadingUbiquitousItem(at: container)
+            } catch {
+                completion(error)
+                
+            }
+//            if let fileList = try? FileManager().contentsOfDirectory(at: localFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
+//                fileList.forEach { fileUrl in
+//                    try? removeOldFile(path: fileUrl.path)
+//                }
+//            }
+            
+            if let containerFiles = try? FileManager().contentsOfDirectory(at: container, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
+                if containerFiles.isEmpty {
+                    completion(ICloudError.noFilesInContainer)
+                } else {
+                    
+                    containerFiles.forEach { containerFileUrl in
+                        if let fileName = containerFileUrl.path.components(separatedBy: "/").last {
+                            print(fileName)
+                            if FileManager.default.fileExists(atPath: DataManager.localFolderURL.appendingPathComponent(fileName).path) {
+                                do {
+                                    try removeOldFile(path: DataManager.localFolderURL.appendingPathComponent(fileName).path)
+                                } catch let removeError {
+                                    print(removeError)
+                                    completion(removeError)
+                                }
+                            }
+                            
+                            do {
+                                try FileManager.default.copyItem(atPath: containerFileUrl.path,
+                                                                 toPath: localFolder.appendingPathComponent(fileName).path)
+                            } catch {
+                                completion(error)
+                            }
+                            print("copy file: \(fileName)")
+
+                        }
+                        
+                    }
+                    completion(nil)
+                }
+            }
+            
+            
+        } else {
+            completion(ICloudError.iCloudAccessDenied)
+        }
+    }
     
+    //internal functions
     private static func containerUrl(folder: ICloudFolder) -> URL? {
         return FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(folder.rawValue)
     }
@@ -78,59 +151,6 @@ struct ICloudDocumentsManager {
         }
 
     }
-    
-    static func downloadFilesFromIcloud(localFolder: URL, folder: ICloudFolder, containerName: String?, completion: @escaping (Error?)->Void) {
-        if let container = containerUrl(folder: folder) {
-            do {
-                try FileManager.default.startDownloadingUbiquitousItem(at: container)
-            } catch {
-                completion(error)
-                
-            }
-            if let fileList = try? FileManager().contentsOfDirectory(at: localFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
-                fileList.forEach { fileUrl in
-                    try? removeOldFile(path: fileUrl.path)
-                }
-            }
-            
-            if let containerFiles = try? FileManager().contentsOfDirectory(at: container, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
-                if containerFiles.isEmpty {
-                    completion(ICloudError.noFilesInContainer)
-                } else {
-                    
-                    containerFiles.forEach { containerFileUrl in
-                        if let fileName = containerFileUrl.path.components(separatedBy: "/").last {
-                            
-                            if FileManager.default.fileExists(atPath: DataManager.localFolderURL.appendingPathComponent(fileName).path) {
-                                do {
-                                    try removeOldFile(path: DataManager.localFolderURL.appendingPathComponent(fileName).path)
-                                } catch let removeError {
-                                    print(removeError)
-                                    completion(removeError)
-                                }
-                            }
-                            
-                            do {
-                                try FileManager.default.copyItem(atPath: containerFileUrl.path,
-                                                                 toPath: localFolder.appendingPathComponent(fileName).path)
-                            } catch {
-                                completion(error)
-                            }
-                            print("copy file: \(fileName)")
-
-                        }
-                        
-                    }
-                    completion(nil)
-                }
-            }
-            
-            
-        } else {
-            completion(ICloudError.iCloudAccessDenied)
-        }
-    }
-    
     private static func removeOldFile (path: String) throws {
         var isDir:ObjCBool = false
         if FileManager.default.fileExists(atPath: path, isDirectory: &isDir) {

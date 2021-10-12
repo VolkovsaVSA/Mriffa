@@ -35,7 +35,7 @@ struct CategoryView: View {
         withAnimation {
             affirmationVM.mainIndex = 0
         }
-        DataManager.Category.saveSelectedCategory(categories: categoryVM.selectedCategories)
+        DataManager.Categories.saveSelectedCategory(categories: categoryVM.selectedCategories)
     }
     
     var body: some View {

@@ -15,7 +15,26 @@ struct AffirmationView: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var alertManager: AlertManager
     
-    @AppStorage(UDKeys.startView) var noStartupView: Bool = false
+    @AppStorage(UDKeys.startView) var noStartupView: Bool = false {
+        didSet {
+            if noStartupView {
+                ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
+                                                               folder: settingsVM.iCloudFolder,
+                                                               containerName: settingsVM.containerName) { error in
+                    if let downloadError = error {
+                        print("download error: \(downloadError)")
+                    } else {
+                        alertManager.alertTitle = LocalTxt.attention
+                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
+                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
+                        alertManager.alertAction = {settingsVM.downloadFromIcloud()}
+                        alertManager.alertType = .twoButton
+                    }
+                }
+                UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
+            }
+        }
+    }
     
     var body: some View {
         
@@ -36,8 +55,9 @@ struct AffirmationView: View {
                                height: 80,
                                alignment: .center)
                         .offset(y: 36)
-                    Spacer()
+                    
                 }
+                Spacer()
                 AffirmationTabView()
                     .disabled(!noStartupView)
             }
@@ -58,23 +78,23 @@ struct AffirmationView: View {
 //                .blur(radius: 4)
         )
         .onAppear() {
-            if !UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
-                ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
-                                                               folder: settingsVM.iCloudFolder,
-                                                               containerName: settingsVM.containerName) { error in
-                    if let downloadError = error {
-                        print("download error: \(downloadError)")
-                    } else {
-                        alertManager.alertType = .twoButton
-                        alertManager.alertTitle = LocalTxt.attention
-                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
-                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
-                        alertManager.alertAction = {settingsVM.downloadFromIcloud()}
-                    }
-                }
-                UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
-            }
-            
+//            if !UserDefaults.standard.bool(forKey: UDKeys.noFirstRun) {
+//                ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
+//                                                               folder: settingsVM.iCloudFolder,
+//                                                               containerName: settingsVM.containerName) { error in
+//                    if let downloadError = error {
+//                        print("download error: \(downloadError)")
+//                    } else {
+//                        alertManager.alertTitle = LocalTxt.attention
+//                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
+//                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
+//                        alertManager.alertAction = {settingsVM.downloadFromIcloud()}
+//                        alertManager.alertType = .twoButton
+//                    }
+//                }
+//                UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
+//            }
+//            
         }
         .alert(item: $alertManager.alertType) { item in
             alertManager.createAlert(alertType: item)

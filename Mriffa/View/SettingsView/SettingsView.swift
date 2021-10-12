@@ -41,15 +41,6 @@ struct SettingsView: View {
                         SettingsButton(label: NSLocalizedString("Pro version", comment: "settings button"),
                                        systemImage: "crown.fill") {
                             settingsVM.purchasingFullversion()
-//                            alertManager.alertTitle = NSLocalizedString(LocalTxt.attention, comment: "purchasing alert")
-//                            alertManager.alertText = NSLocalizedString("Buying the Pro version you get:\n1. No ads in the app\n2. Saving a backup to icloud\n\nDo you want buy Pro version?", comment: "purchasing alert")
-//                            alertManager.secondButtonTitle = "Buy Pro version"
-//                            alertManager.alertAction = {
-//                                if !purchaseVM.products.isEmpty {
-//                                    purchaseVM.purshase(product: purchaseVM.products.first!)
-//                                }
-//                            }
-//                            alertManager.alertType = .twoButton
                         }
                         SettingsButton(label: NSLocalizedString("Restore purchases", comment: "settings button"),
                                        systemImage: "purchased.circle") {
@@ -63,7 +54,7 @@ struct SettingsView: View {
                         if !autoSave {
                             SettingsButton(label: NSLocalizedString("Save data", comment: "settings button"),
                                            systemImage: "icloud.and.arrow.up") {
-                                settingsVM.saveDataToIcloud()
+                                settingsVM.checkDataToIcloud()
                             }
                             SettingsButton(label: NSLocalizedString("Restore data", comment: "settings button"),
                                            systemImage: "icloud.and.arrow.down") {

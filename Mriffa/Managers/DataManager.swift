@@ -37,7 +37,6 @@ struct DataManager {
                   let affirmations = try? decoder.decode([AffirmationModel].self, from: data)
             else
             { return AffirmationDefaultData }
-            print(#function, affirmations.filter() {$0.isFavorite}.description)
             return affirmations
         }
         
@@ -65,13 +64,17 @@ struct DataManager {
         }
     }
 
-    struct Category {
+    struct Categories {
         static func loadSelectedCategory() -> Set<CategoryModel> {
             let decoder = PropertyListDecoder()
             
             guard let data = try? Data.init(contentsOf: selectedCategoriesURL),
                   let preferences = try? decoder.decode([CategoryModel].self, from: data)
-            else { return [] }
+            else {
+                return Set(arrayLiteral: CategoryModel(category: Category.health,
+                                                       title: Category.health.localizedTitle,
+                                                       image: Category.health.rawValue))
+            }
             return Set(preferences)
         }
         static func saveSelectedCategory(categories: Set<CategoryModel>) {

@@ -70,10 +70,11 @@ class SettingsViewModel: ObservableObject {
             } else {
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 AffirmationViewModel.shared.affirmation = DataManager.Affirmation.loadAffirmations()
-                CategoryViewModel.shared.selectedCategories = DataManager.Category.loadSelectedCategory()
+                CategoryViewModel.shared.selectedCategories = DataManager.Categories.loadSelectedCategory()
                 ThemeViewModel.shared.selectedTheme = DataManager.Theme.loadSelectedTheme() ?? ThemeViewModel.shared.randomTheme()
-                AffirmationViewModel.shared.updateAffirmation()
                 CategoryViewModel.shared.updatedID = UUID()
+                AffirmationViewModel.shared.updateAffirmation()
+                
             }
             
         }
@@ -90,7 +91,7 @@ class SettingsViewModel: ObservableObject {
         AlertManager.shared.alertAction = {}
         AlertManager.shared.alertType = .oneButton
     }
-    private func saveDataToCloud() {
+    private func saveFilesToCloud() {
         do {
             try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: SettingsViewModel.shared.iCloudFolder)
 //            saveDataSuccess()
@@ -100,28 +101,29 @@ class SettingsViewModel: ObservableObject {
         
     }
 
-    func saveDataToIcloud() {
+    func checkDataToIcloud() {
 
-        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
-                                                       folder: SettingsViewModel.shared.iCloudFolder,
-                                                       containerName: SettingsViewModel.shared.containerName) { error in
-            if let downloadError = error {
-                switch downloadError {
+        ICloudDocumentsManager.checkFilesInIcloud(folder: SettingsViewModel.shared.iCloudFolder) { result in
+            switch result {
+            case .failure(let error):
+                switch error {
                 case ICloudDocumentsManager.ICloudError.iCloudAccessDenied:
-                    SettingsViewModel.shared.saveDataError(downloadError)
-                default: break
+                    SettingsViewModel.shared.saveDataError(error)
+                default: self.saveFilesToCloud()
                 }
-                self.saveDataToCloud()
-            } else {
+            case .success(let files):
+                print(files)
+                
                 AlertManager.shared.alertTitle = LocalTxt.attention
                 AlertManager.shared.alertText = NSLocalizedString("You have backup data! If you save your current data, then the backup will be overwritten! Do you want to save your data?", comment: " ")
                 AlertManager.shared.secondButtonTitle = NSLocalizedString("Save", comment: " ")
                 AlertManager.shared.alertAction = {
-                    self.saveDataToCloud()
+                    self.saveFilesToCloud()
                 }
                 AlertManager.shared.alertType = .twoButton
             }
         }
+
     }
     
    
