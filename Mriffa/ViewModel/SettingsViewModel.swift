@@ -11,8 +11,6 @@ class SettingsViewModel: ObservableObject {
     static let shared = SettingsViewModel()
 
     @Published var ads = AdsManager.init()
-    @Published var showAlert = false
-    @Published var downloadError: Error?
 
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
@@ -64,8 +62,7 @@ class SettingsViewModel: ObservableObject {
                                                        folder: SettingsViewModel.shared.iCloudFolder,
                                                        containerName: containerName) { error in
             if let localDownloadError = error {
-                self.downloadError = localDownloadError
-                self.showAlert = true
+                self.icloudDataError(localDownloadError)
                 print("download error: \(localDownloadError)")
             } else {
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
@@ -75,28 +72,32 @@ class SettingsViewModel: ObservableObject {
                 CategoryViewModel.shared.updatedID = UUID()
                 AffirmationViewModel.shared.updateAffirmation()
                 
+                self.icloudDataSuccess(text: NSLocalizedString("Backup data has been restored from your iCloud", comment: ""))
             }
             
         }
     }
-    private func saveDataError(_ downloadError: Error) {
-        AlertManager.shared.alertTitle = NSLocalizedString("Save backup error", comment: " ")
-        AlertManager.shared.alertText = downloadError.localizedDescription
+    private func icloudDataError(_ dataError: Error) {
+        AlertManager.shared.alertTitle = LocalTxt.error
+        AlertManager.shared.alertText = dataError.localizedDescription
         AlertManager.shared.alertAction = {}
         AlertManager.shared.alertType = .oneButton
     }
-    private func saveDataSuccess() {
+    private func icloudDataSuccess(text: String) {
         AlertManager.shared.alertTitle = LocalTxt.success
-        AlertManager.shared.alertText = NSLocalizedString("Backup data has been saved in your iCloud", comment: " ")
+        AlertManager.shared.alertText = text
         AlertManager.shared.alertAction = {}
         AlertManager.shared.alertType = .oneButton
     }
     private func saveFilesToCloud() {
-        do {
-            try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(), icloudFolder: SettingsViewModel.shared.iCloudFolder)
-//            saveDataSuccess()
-        } catch {
-            saveDataError(error)
+        ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(),
+                                                          icloudFolder: SettingsViewModel.shared.iCloudFolder) { result in
+            switch result {
+            case .failure(let error):
+                self.icloudDataError(error)
+            case .success(_):
+                self.icloudDataSuccess(text: NSLocalizedString("Backup data has been saved in your iCloud", comment: " "))
+            }
         }
         
     }
@@ -108,7 +109,7 @@ class SettingsViewModel: ObservableObject {
             case .failure(let error):
                 switch error {
                 case ICloudDocumentsManager.ICloudError.iCloudAccessDenied:
-                    SettingsViewModel.shared.saveDataError(error)
+                    SettingsViewModel.shared.icloudDataError(error)
                 default: self.saveFilesToCloud()
                 }
             case .success(let files):

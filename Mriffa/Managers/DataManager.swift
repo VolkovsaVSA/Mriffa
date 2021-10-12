@@ -53,11 +53,9 @@ struct DataManager {
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 
                 if UserDefaults.standard.bool(forKey: UDKeys.autoSaveInIcloud) {
-                    do {
-                        try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [affirmationURL.path], icloudFolder: SettingsViewModel.shared.iCloudFolder)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [affirmationURL.path],
+                                                                      icloudFolder: SettingsViewModel.shared.iCloudFolder) {_ in}
+                    
                 }
                 
             }
@@ -87,11 +85,8 @@ struct DataManager {
                 }
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 if UserDefaults.standard.bool(forKey: UDKeys.autoSaveInIcloud) {
-                    do {
-                        try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [selectedCategoriesURL.path], icloudFolder: SettingsViewModel.shared.iCloudFolder)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [selectedCategoriesURL.path],
+                                                                      icloudFolder: SettingsViewModel.shared.iCloudFolder) {_ in}
                 }
                 
             }
@@ -117,11 +112,8 @@ struct DataManager {
                 }
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 if UserDefaults.standard.bool(forKey: UDKeys.autoSaveInIcloud) {
-                    do {
-                        try ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [selectedThemeURL.path], icloudFolder: SettingsViewModel.shared.iCloudFolder)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: [selectedThemeURL.path],
+                                                                      icloudFolder: SettingsViewModel.shared.iCloudFolder) {_ in}
                 }
                 
             }

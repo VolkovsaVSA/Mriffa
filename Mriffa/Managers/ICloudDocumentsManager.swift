@@ -41,14 +41,21 @@ struct ICloudDocumentsManager {
             }
         }
     }
-    static func saveFilesToICloudDOcuments(localFilePaths: [String], icloudFolder: ICloudFolder) throws {
+    static func saveFilesToICloudDOcuments(localFilePaths: [String], icloudFolder: ICloudFolder, completion: @escaping (Result<[String], Error>)->Void) {
+        
+        var files = [String]()
         localFilePaths.forEach { filePath in
             if let fileName = filePath.components(separatedBy: "/").last {
-                try? copyFileToICloud(localPath: filePath,
-                                      icloudFolder: icloudFolder,
-                                      fileName: fileName)
+                do {
+                    try copyFileToICloud(localPath: filePath, icloudFolder: icloudFolder, fileName: fileName)
+                } catch {
+                    completion(.failure(error))
+                }
+                files.append(fileName)
             }
         }
+        completion(.success(files))
+        
     }
     static func downloadFilesFromIcloud(localFolder: URL, folder: ICloudFolder, containerName: String?, completion: @escaping (Error?)->Void) {
         if let container = containerUrl(folder: folder) {
