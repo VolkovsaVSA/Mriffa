@@ -37,24 +37,7 @@ struct StartView: View {
 
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-//        .disabled(isDisabled)
-//        .gesture(
-//            DragGesture(minimumDistance: 0, coordinateSpace: .local)
-//                .onEnded { value in
-////                    isDisabled = true
-//                }
-//        )
-//        .onTapGesture(count: 1) {
-//            isDisabled = false
-//        }
+
         
     }
 }
-
-//
-//struct StartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StartView()
-//            .ignoresSafeArea()
-//    }
-//}
