@@ -24,7 +24,7 @@ struct ThemeCard: View {
         } label: {
             
             if let themeCard = theme {
-                Image(uiImage: UIImage(named: themeCard.image)!)
+                Image(uiImage: UIImage(named: themeCard.image + "_preview")!)
                     .resizable()
                     .scaledToFill()
                     .overlay(Color.black.opacity(0.3))
