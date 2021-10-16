@@ -1,3 +1,6 @@
+/* No comment provided by engineer. */
+" minute" = " минут";
+
 /* luck026 */
 "A million opportunities come into my life each day" = "Каждый день в мою жизнь входит миллион возможностей";
 
@@ -2558,6 +2561,15 @@
 /* stressAndAnxiety022 */
 "Most things one worries about will never materialize. And I let go of my anxious thoughts" = "Большинство вещей, о которых беспокоятся, никогда не исполнятся. И я отпускаю свои беспокойные мысли";
 
+/* No comment provided by engineer. */
+"Mriffa" = "";
+
+/* widget name */
+"Mriffa Widget" = "Виджет Mriffa";
+
+/* widget description */
+"Mriffa widget shows random affirmation from favorites." = "Виджет Mriffa показывает случайные утверждения из избранного.";
+
 /* health022 */
 "My blood pressure is regular and stable" = "Мое кровяное давление нормальное и стабильное";
 
@@ -2960,6 +2972,9 @@
 /* No comment provided by engineer. */
 "Read and repeat affirmations several times a day to help you build a positive mindset" = "Читайте и повторяйте утверждения (аффирмации) несколько раз в день, чтобы сформировать позитивный настрой.";
 
+/* No comment provided by engineer. */
+"Refresh widget every" = "Обновлять виджет каждые";
+
 /* enum category */
 "Relationship" = "Отношение";
 
@@ -3176,6 +3191,9 @@
 
 /* selfConfidence050 */
 "When I take a breath, I inhale certainty and exhale shyness and timidity" = "Когда я дышу, я вдыхаю уверенность и выдыхаю стеснительность и робость";
+
+/* settingsView header */
+"Widget settings" = "Настройки виджета";
 
 /* enum category */
 "Wisdom" = "Мудрость";
