@@ -65,9 +65,36 @@ struct ICloudDocumentsManager {
                 completion(error)
                 
             }
-//            if let fileList = try? FileManager().contentsOfDirectory(at: localFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
-//                fileList.forEach { fileUrl in
-//                    try? removeOldFile(path: fileUrl.path)
+
+//            if let containerFiles = try? FileManager().contentsOfDirectory(at: container, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
+//                if containerFiles.isEmpty {
+//                    completion(ICloudError.noFilesInContainer)
+//                } else {
+//
+//                    containerFiles.forEach { containerFileUrl in
+//                        if let fileName = containerFileUrl.path.components(separatedBy: "/").last {
+//                            print(fileName)
+//                            if FileManager.default.fileExists(atPath: DataManager.localFolderURL.appendingPathComponent(fileName).path) {
+//                                do {
+//                                    try removeOldFile(path: DataManager.localFolderURL.appendingPathComponent(fileName).path)
+//                                } catch let removeError {
+//                                    print(removeError)
+//                                    completion(removeError)
+//                                }
+//                            }
+//
+//                            do {
+//                                try FileManager.default.copyItem(atPath: containerFileUrl.path,
+//                                                                 toPath: localFolder.appendingPathComponent(fileName).path)
+//                            } catch {
+//                                completion(error)
+//                            }
+//                            print("copy file: \(fileName)")
+//
+//                        }
+//
+//                    }
+//                    completion(nil)
 //                }
 //            }
             
@@ -79,9 +106,9 @@ struct ICloudDocumentsManager {
                     containerFiles.forEach { containerFileUrl in
                         if let fileName = containerFileUrl.path.components(separatedBy: "/").last {
                             print(fileName)
-                            if FileManager.default.fileExists(atPath: DataManager.localFolderURL.appendingPathComponent(fileName).path) {
+                            if FileManager.default.fileExists(atPath: DataManager.groupContainer.appendingPathComponent(fileName).path) {
                                 do {
-                                    try removeOldFile(path: DataManager.localFolderURL.appendingPathComponent(fileName).path)
+                                    try removeOldFile(path: DataManager.groupContainer.appendingPathComponent(fileName).path)
                                 } catch let removeError {
                                     print(removeError)
                                     completion(removeError)
@@ -102,6 +129,7 @@ struct ICloudDocumentsManager {
                     completion(nil)
                 }
             }
+            
             
             
         } else {

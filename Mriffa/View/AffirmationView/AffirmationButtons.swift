@@ -64,7 +64,7 @@ struct AffirmationButtons: View {
             .font(.system(size: settingsVM.affirmationFontSize, weight: .light, design: .default))
             .offset(y: -140)
             .sheet(isPresented: $showShareSheet) {
-                ShareSheet(sharing: [affirmation.text])
+                ShareSheet(sharing: [affirmation.text, "\n" + "Mriffa: " + AppId.appUrl!.description])
             }
         }
         

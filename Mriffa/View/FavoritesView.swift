@@ -19,7 +19,7 @@ struct FavoritesView: View {
         NavigationView {
            
             if affirmationVM.favorites.isEmpty {
-                Text("No favorite affirmations")
+                Text(LocalTxt.noFavoritesAffirmations)
                     .foregroundColor(.white)
                     .font(.system(size: settingsVM.affirmationFontSize, weight: .bold, design: .default))
                     .multilineTextAlignment(.center)
@@ -34,7 +34,7 @@ struct FavoritesView: View {
                         presentationMode.wrappedValue.dismiss()
                     })
             } else {
-                AffirmationScroll(affirmations: affirmationVM.favorites, index: $affirmationVM.favoritesIndex)
+                AffirmationScroll(affirmations: affirmationVM.favorites, index: $affirmationVM.favoritesIndex, isMainAffrmationScroll: false)
                     .ignoresSafeArea()
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 8, alignment: .center)
                     .background(

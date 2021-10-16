@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */; };
 		C81F25CD26FD93650026DD22 /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CC26FD93650026DD22 /* AlertTypes.swift */; };
+		C825A3AB2717E5490094F3EE /* AffirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */; };
+		C825A3AC2717E5570094F3EE /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A4619126C440A600C8CCDE /* Category.swift */; };
+		C825A3AD2717E55D0094F3EE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */; };
+		C825A3AE2717E5600094F3EE /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A1626D180DA00C3E96E /* ThemeModel.swift */; };
+		C825A3B12717E6100094F3EE /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8802A0826C83E7900C3E96E /* Data.swift */; };
+		C825A3B3271864740094F3EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8A4618626C43E8100C8CCDE /* Assets.xcassets */; };
+		C825A3B42718656A0094F3EE /* MriffaWidgetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C825A3AF2717E5B20094F3EE /* MriffaWidgetDataManager.swift */; };
 		C83BD4F826E7C524001FE902 /* SheetTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4F726E7C524001FE902 /* SheetTypes.swift */; };
 		C83BD4FB26E7C91D001FE902 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */; };
 		C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD4FC26E7CC68001FE902 /* AffirmationScroll.swift */; };
@@ -56,6 +63,8 @@
 		C8CF3DD626D8CBDD0066B614 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */; };
 		C8CF3DD826DBF6BF0066B614 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */; };
 		C8CF3DDA26DC152D0066B614 /* CategoryButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */; };
+		C8E0D70A271ACAA60079B4B5 /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
+		C8E0D70B271ADDF00079B4B5 /* LocalTxt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B2117C2704C05F00757643 /* LocalTxt.swift */; };
 		C8E48A9826C444E000C12CE2 /* AffirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */; };
 		C8E4908F2716C8FE00053F85 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E4908E2716C8FE00053F85 /* WidgetKit.framework */; };
 		C8E490912716C8FE00053F85 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E490902716C8FE00053F85 /* SwiftUI.framework */; };
@@ -95,6 +104,7 @@
 		C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mriffa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C81F25CC26FD93650026DD22 /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
+		C825A3AF2717E5B20094F3EE /* MriffaWidgetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MriffaWidgetDataManager.swift; sourceTree = "<group>"; };
 		C83BD4F726E7C524001FE902 /* SheetTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetTypes.swift; sourceTree = "<group>"; };
 		C83BD4FA26E7C91D001FE902 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		C83BD4FC26E7CC68001FE902 /* AffirmationScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationScroll.swift; sourceTree = "<group>"; };
@@ -148,6 +158,7 @@
 		C8CF3DD526D8CBDD0066B614 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		C8CF3DD726DBF6BF0066B614 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		C8CF3DD926DC152D0066B614 /* CategoryButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonLabel.swift; sourceTree = "<group>"; };
+		C8E0B2DF2718710300413BD9 /* MriffaWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MriffaWidgetExtension.entitlements; sourceTree = "<group>"; };
 		C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationModel.swift; sourceTree = "<group>"; };
 		C8E4908D2716C8FE00053F85 /* MriffaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MriffaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E4908E2716C8FE00053F85 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -297,6 +308,7 @@
 		C8A4617626C43E7F00C8CCDE = {
 			isa = PBXGroup;
 			children = (
+				C8E0B2DF2718710300413BD9 /* MriffaWidgetExtension.entitlements */,
 				C8A4618126C43E7F00C8CCDE /* Mriffa */,
 				C8E490922716C8FE00053F85 /* MriffaWidget */,
 				C8A4618026C43E7F00C8CCDE /* Products */,
@@ -368,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				C8E490932716C8FE00053F85 /* MriffaWidget.swift */,
+				C825A3AF2717E5B20094F3EE /* MriffaWidgetDataManager.swift */,
 				C8E490952716C90100053F85 /* Assets.xcassets */,
 				C8E490972716C90100053F85 /* Info.plist */,
 			);
@@ -477,6 +490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C825A3B3271864740094F3EE /* Assets.xcassets in Resources */,
 				C8E490962716C90100053F85 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,7 +597,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C825A3AB2717E5490094F3EE /* AffirmationModel.swift in Sources */,
+				C825A3B12717E6100094F3EE /* Data.swift in Sources */,
+				C825A3AD2717E55D0094F3EE /* CategoryModel.swift in Sources */,
+				C825A3B42718656A0094F3EE /* MriffaWidgetDataManager.swift in Sources */,
+				C8E0D70A271ACAA60079B4B5 /* UDKeys.swift in Sources */,
+				C825A3AE2717E5600094F3EE /* ThemeModel.swift in Sources */,
 				C8E490942716C8FE00053F85 /* MriffaWidget.swift in Sources */,
+				C825A3AC2717E5570094F3EE /* Category.swift in Sources */,
+				C8E0D70B271ADDF00079B4B5 /* LocalTxt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,8 +819,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;
@@ -826,8 +849,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;

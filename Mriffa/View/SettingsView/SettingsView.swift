@@ -12,6 +12,7 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @AppStorage(UDKeys.autoSaveInIcloud) var autoSave: Bool = false
     @AppStorage(UDKeys.fv) var isFullVersion: Bool = false
+    @AppStorage(UDKeys.refreshMinutes, store: UserDefaults(suiteName: "group.VSA.Mriffa")) var selectedMinutes = 30
     
     @EnvironmentObject var affirmationVM: AffirmationViewModel
     @EnvironmentObject var categoryVM: CategoryViewModel
@@ -26,9 +27,14 @@ struct SettingsView: View {
     
     @State var mailResult: Result<MFMailComposeResult, Error>? = nil
     
+    private let minutes: [Int] = Array(stride(from: 5, through: 60, by: 5))
+//    @State var selectedMinutes = 5
+    
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
+        
+        print(minutes)
     }
     
     
@@ -73,6 +79,18 @@ struct SettingsView: View {
                                        systemImage: "paintbrush") {
                             sheetType = .themes
                         }
+                    }
+                    Section(header: Text(NSLocalizedString("Widget settings", comment: "settingsView header")).foregroundColor(.white)) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise.circle.fill").foregroundColor(.blue)
+                            Picker(NSLocalizedString("Refresh widget every", comment: ""), selection: $selectedMinutes) {
+                                ForEach(minutes, id: \.self) { item in
+                                    Text(item.description + NSLocalizedString(" minute", comment: ""))
+                                }
+                            }
+                        }
+                        
+                        
                     }
                     Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white)) {
                         SettingsButton(label: LocalTxt.rateApp,

@@ -8,6 +8,11 @@
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
+    
+    init() {
+//        self.selectedTheme = ThemeModel(image: <#T##String#>, font: <#T##String#>, index: <#T##Int#>, fontSize: <#T##CGFloat#>)
+    }
+    
     static let shared = SettingsViewModel()
 
     @Published var ads = AdsManager.init()
@@ -58,7 +63,10 @@ class SettingsViewModel: ObservableObject {
     }
     
     func downloadFromIcloud() {
-        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
+        
+        
+        
+        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.groupContainer,
                                                        folder: SettingsViewModel.shared.iCloudFolder,
                                                        containerName: containerName) { error in
             if let localDownloadError = error {
@@ -76,6 +84,7 @@ class SettingsViewModel: ObservableObject {
             }
             
         }
+        
     }
     private func icloudDataError(_ dataError: Error) {
         AlertManager.shared.alertTitle = LocalTxt.error
@@ -90,7 +99,7 @@ class SettingsViewModel: ObservableObject {
         AlertManager.shared.alertType = .oneButton
     }
     private func saveFilesToCloud() {
-        ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFilePaths(),
+        ICloudDocumentsManager.saveFilesToICloudDOcuments(localFilePaths: DataManager.localFileContainerPaths(),
                                                           icloudFolder: SettingsViewModel.shared.iCloudFolder) { result in
             switch result {
             case .failure(let error):

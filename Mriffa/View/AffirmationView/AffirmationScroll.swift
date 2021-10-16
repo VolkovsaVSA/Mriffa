@@ -14,6 +14,7 @@ struct AffirmationScroll: View {
     
     let affirmations: [AffirmationModel]
     @Binding var index: Int
+    let isMainAffrmationScroll: Bool
     
     private func dragGestureFunction(_ value: _ChangedGesture<DragGesture>.Value, scrollProxy: ScrollViewProxy) {
         let horizontalAmount = value.translation.width as CGFloat
@@ -76,6 +77,13 @@ struct AffirmationScroll: View {
                         dragGestureFunction(value, scrollProxy: scrollProxy)
                     }
             )
+            .onOpenURL { url in
+                guard url.scheme == "widget-deeplink" else { return }
+                let message = url.host?.removingPercentEncoding
+                print(message)
+                
+//                print(#function, #line, url.scheme?.description)
+            }
         }
     }
 }

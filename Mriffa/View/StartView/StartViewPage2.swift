@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct StartViewPage2: View {
     
@@ -71,6 +72,10 @@ struct StartViewPage2: View {
                 
                 Button(action: {
                     AffirmationViewModel.shared.updateAffirmation()
+                    DataManager.Affirmation.saveAffirmations(affirmations: affirmationVM.affirmation)
+                    DataManager.Categories.saveSelectedCategory(categories: categoryVM.selectedCategories)
+                    DataManager.Theme.saveSelectedTheme(theme: ThemeViewModel.shared.selectedTheme)
+                    WidgetCenter.shared.reloadAllTimelines()
                     withAnimation {
                         noStartView = true
                     }

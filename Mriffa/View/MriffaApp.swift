@@ -51,6 +51,7 @@ struct MriffaApp: App {
                     .shuffled()
                     AffirmationViewModel.shared.updatedID = UUID()
                 }
+                
 
         }
     }
