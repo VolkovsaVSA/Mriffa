@@ -29,13 +29,7 @@ struct SettingsView: View {
     @State var mailResult: Result<MFMailComposeResult, Error>? = nil
     
     private let minutes: [Int] = Array(stride(from: 5, through: 60, by: 5))
-//    @State var selectedMinutes = UDKeys.AppGroup.load(key: UDKeys.refreshMinutes) as? Int ?? 30 {
-//        didSet {
-//            UDKeys.AppGroup.save(value: selectedMinutes as Int, key: UDKeys.refreshMinutes)
-//            print("set minutes")
-//        }
-//    }
-    
+
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear

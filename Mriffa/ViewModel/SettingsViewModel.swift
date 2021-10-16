@@ -9,10 +9,6 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     
-    init() {
-//        self.selectedTheme = ThemeModel(image: <#T##String#>, font: <#T##String#>, index: <#T##Int#>, fontSize: <#T##CGFloat#>)
-    }
-    
     static let shared = SettingsViewModel()
 
     @Published var ads = AdsManager.init()
@@ -29,6 +25,7 @@ class SettingsViewModel: ObservableObject {
     var selectedTheme: ThemeModel!
     let iCloudFolder: ICloudDocumentsManager.ICloudFolder = .mainHiddenFolder
     let containerName = "Mriffa"
+    var fullVersionUpdatedID = UUID()
     
     var categoryBackgroundFrame: CGFloat {
 //        print(UIScreen.main.bounds.width)

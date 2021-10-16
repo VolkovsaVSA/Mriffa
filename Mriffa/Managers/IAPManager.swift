@@ -137,11 +137,13 @@ extension IAPManager: SKPaymentTransactionObserver {
     private func completed(transaction: SKPaymentTransaction) {
         print(#function)
         UserDefaults.standard.setValue(true, forKey: UDKeys.fv)
+        SettingsViewModel.shared.fullVersionUpdatedID = UUID()
         finishTransaction(transaction)
     }
     private func restored(transaction: SKPaymentTransaction) {
         print(#function)
         UserDefaults.standard.setValue(true, forKey: UDKeys.fv)
+        SettingsViewModel.shared.fullVersionUpdatedID = UUID()
         finishTransaction(transaction)
     }
     

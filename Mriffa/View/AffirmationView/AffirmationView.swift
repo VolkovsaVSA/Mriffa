@@ -77,13 +77,12 @@ struct AffirmationView: View {
                 AffirmationTabView()
                     .disabled(!noStartupView)
             }
+            .id(SettingsViewModel.shared.fullVersionUpdatedID)
             .padding(.bottom, 30)
             
             if !noStartupView {
                 StartView()
             }
-            
-               
            
         }
         .background(

@@ -77,13 +77,13 @@ struct AffirmationScroll: View {
                         dragGestureFunction(value, scrollProxy: scrollProxy)
                     }
             )
-            .onOpenURL { url in
-                guard url.scheme == "widget-deeplink" else { return }
-                let message = url.host?.removingPercentEncoding
-                print(message)
-                
+//            .onOpenURL { url in
+//                guard url.scheme == "widget-deeplink" else { return }
+//                let message = url.host?.removingPercentEncoding
+//                print(message)
+//
 //                print(#function, #line, url.scheme?.description)
-            }
+//            }
         }
     }
 }
