@@ -30,6 +30,7 @@ struct MriffaApp: App {
     var body: some Scene {
         WindowGroup {
             AffirmationView()
+                
                 .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
@@ -52,7 +53,6 @@ struct MriffaApp: App {
                     AffirmationViewModel.shared.updatedID = UUID()
                 }
                 
-
         }
     }
 }

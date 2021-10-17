@@ -5,7 +5,11 @@
 //  Created by Sergei Volkov on 14.08.2021.
 //
 
+import Foundation
 import SwiftUI
+import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 struct AffirmationView: View {
     
@@ -15,42 +19,7 @@ struct AffirmationView: View {
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var alertManager: AlertManager
     
-    @AppStorage(UDKeys.startView) var noStartupView: Bool = false {
-        didSet {
-//            if noStartupView {
-//                ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.localFolderURL,
-//                                                               folder: settingsVM.iCloudFolder,
-//                                                               containerName: settingsVM.containerName) { error in
-//                    if let downloadError = error {
-//                        print("download error: \(downloadError)")
-//                    } else {
-//                        alertManager.alertTitle = LocalTxt.attention
-//                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
-//                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
-//                        alertManager.alertAction = {settingsVM.downloadFromIcloud()}
-//                        alertManager.alertType = .twoButton
-//                    }
-//                }
-//                UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
-//            }
-            if noStartupView {
-                ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.groupContainer,
-                                                               folder: settingsVM.iCloudFolder,
-                                                               containerName: settingsVM.containerName) { error in
-                    if let downloadError = error {
-                        print("download error: \(downloadError)")
-                    } else {
-                        alertManager.alertTitle = LocalTxt.attention
-                        alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
-                        alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
-                        alertManager.alertAction = {settingsVM.downloadFromIcloud()}
-                        alertManager.alertType = .twoButton
-                    }
-                }
-                UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
-            }
-        }
-    }
+    @AppStorage(UDKeys.startView) var noStartupView: Bool = false
     
     var body: some View {
         
@@ -66,12 +35,13 @@ struct AffirmationView: View {
             }
             VStack {
                 if !UserDefaults.standard.bool(forKey: UDKeys.fv) {
-                    AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))
-                        .frame(width: UIScreen.main.bounds.width,
-                               height: 80,
-                               alignment: .center)
-                        .offset(y: 36)
-                    
+                    if noStartupView {
+                        AdsManager.BannerVC(size: CGSize(width: UIScreen.main.bounds.width, height: 80))
+                            .frame(width: UIScreen.main.bounds.width,
+                                   height: 80,
+                                   alignment: .center)
+                            .offset(y: 36)
+                    }
                 }
                 Spacer()
                 AffirmationTabView()
@@ -94,6 +64,36 @@ struct AffirmationView: View {
         )
         .alert(item: $alertManager.alertType) { item in
             alertManager.createAlert(alertType: item)
+        }
+        .onChange(of: noStartupView) { newValue in
+            
+            if newValue {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    ATTrackingManager.requestTrackingAuthorization { status in
+                        ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.groupContainer,
+                                                                       folder: settingsVM.iCloudFolder,
+                                                                       containerName: settingsVM.containerName) { error in
+                            if let downloadError = error {
+                                print("download error: \(downloadError)")
+                            } else {
+                                DispatchQueue.main.async {
+                                    alertManager.alertTitle = LocalTxt.attention
+                                    alertManager.alertText = NSLocalizedString("You have backup data! Do you want to restore this data?", comment: " ")
+                                    alertManager.secondButtonTitle = NSLocalizedString("Restore", comment: " ")
+                                    alertManager.alertAction = {settingsVM.downloadFromIcloud()}
+                                    alertManager.alertType = .twoButton
+                                }
+                                
+                            }
+                        }
+                        UserDefaults.standard.set(true, forKey: UDKeys.noFirstRun)
+                    }
+                }
+                
+                
+                
+            }
         }
         
         

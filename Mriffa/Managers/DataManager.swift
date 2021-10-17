@@ -93,7 +93,6 @@ struct DataManager {
                 } else {
                     FileManager.default.createFile(atPath: selectedCategoriesContainerURL.path, contents: data, attributes: nil)
                 }
-                
                 UserDefaults.standard.setValue(true, forKey: UDKeys.noFirstRun)
                 
                 if UserDefaults.standard.bool(forKey: UDKeys.autoSaveInIcloud) {

@@ -51,7 +51,13 @@ struct AffirmationScroll: View {
                                     .multilineTextAlignment(.center)
                                     .padding()
                                 Spacer()
-                                AffirmationButtons(affirmation: affirmations[localIndex])
+                                AffirmationButtons(affirmation: affirmations[localIndex]) {
+                                    if !isMainAffrmationScroll {
+                                        withAnimation {
+                                            scrollProxy.scrollTo(index, anchor: .center)
+                                        }
+                                    }
+                                }
                             } else {
                                 EmptyView()
                             }
@@ -61,13 +67,6 @@ struct AffirmationScroll: View {
                     .foregroundColor(.white)
                     .id(localIndex)
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-
-                }
-
-            }
-            .onAppear() {
-                withAnimation {
-                    scrollProxy.scrollTo(index, anchor: .center)
                 }
             }
             .id(affirmationVM.updatedID)
@@ -77,6 +76,11 @@ struct AffirmationScroll: View {
                         dragGestureFunction(value, scrollProxy: scrollProxy)
                     }
             )
+            .onAppear() {
+                withAnimation {
+                    scrollProxy.scrollTo(index, anchor: .center)
+                }
+            }
 //            .onOpenURL { url in
 //                guard url.scheme == "widget-deeplink" else { return }
 //                let message = url.host?.removingPercentEncoding

@@ -21,6 +21,17 @@ struct StartViewPage2: View {
     let columnWidth: CGFloat!
     let columns: [GridItem]!
     
+    private func getStarted() {
+        AffirmationViewModel.shared.updateAffirmation()
+        DataManager.Affirmation.saveAffirmations(affirmations: affirmationVM.affirmation)
+        DataManager.Categories.saveSelectedCategory(categories: categoryVM.selectedCategories)
+        DataManager.Theme.saveSelectedTheme(theme: ThemeViewModel.shared.selectedTheme)
+        WidgetCenter.shared.reloadAllTimelines()
+        withAnimation {
+            noStartView = true
+        }
+    }
+    
     private func updateCategories(index: Int) {
         if categoryVM.selectedCategories.contains(categoryVM.categories[index]) {
             if categoryVM.selectedCategories.count != 1 {
@@ -64,21 +75,12 @@ struct StartViewPage2: View {
                     )
                     .cornerRadius(10)
                 
-                
                 .edgesIgnoringSafeArea(.bottom)
-//                .id(categoryVM.updatedID)
                 
                 Spacer()
                 
                 Button(action: {
-                    AffirmationViewModel.shared.updateAffirmation()
-                    DataManager.Affirmation.saveAffirmations(affirmations: affirmationVM.affirmation)
-                    DataManager.Categories.saveSelectedCategory(categories: categoryVM.selectedCategories)
-                    DataManager.Theme.saveSelectedTheme(theme: ThemeViewModel.shared.selectedTheme)
-                    WidgetCenter.shared.reloadAllTimelines()
-                    withAnimation {
-                        noStartView = true
-                    }
+                    getStarted()
                 }, label: {
                     Text("Get started")
                         .frame(width: UIScreen.main.bounds.width/1.3, height: 40)
@@ -86,8 +88,6 @@ struct StartViewPage2: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.white)
                         )
-                    
-                    
                 })
                     .foregroundColor(.black)
                     .padding(.bottom, 20)
@@ -104,9 +104,3 @@ struct StartViewPage2: View {
         
     }
 }
-
-//struct StartViewPage2_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StartViewPage2()
-//    }
-//}

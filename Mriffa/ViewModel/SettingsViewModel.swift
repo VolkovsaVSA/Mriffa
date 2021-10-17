@@ -11,8 +11,6 @@ class SettingsViewModel: ObservableObject {
     
     static let shared = SettingsViewModel()
 
-    @Published var ads = AdsManager.init()
-
     var affirmationFontSize: CGFloat {
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
@@ -60,9 +58,6 @@ class SettingsViewModel: ObservableObject {
     }
     
     func downloadFromIcloud() {
-        
-        
-        
         ICloudDocumentsManager.downloadFilesFromIcloud(localFolder: DataManager.groupContainer,
                                                        folder: SettingsViewModel.shared.iCloudFolder,
                                                        containerName: containerName) { error in
@@ -76,7 +71,6 @@ class SettingsViewModel: ObservableObject {
                 ThemeViewModel.shared.selectedTheme = DataManager.Theme.loadSelectedTheme() ?? ThemeViewModel.shared.randomTheme()
                 CategoryViewModel.shared.updatedID = UUID()
                 AffirmationViewModel.shared.updateAffirmation()
-                
                 self.icloudDataSuccess(text: NSLocalizedString("Backup data has been restored from your iCloud", comment: ""))
             }
             

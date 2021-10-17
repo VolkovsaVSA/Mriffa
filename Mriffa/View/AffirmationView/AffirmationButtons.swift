@@ -15,6 +15,7 @@ struct AffirmationButtons: View {
     @State var showShareSheet = false
 
     let affirmation: AffirmationModel
+    let action: ()->()
     
     private var globalAffirmation: AffirmationModel? {
         return affirmationVM.affirmation.filter {$0.id == affirmation.id}.first
@@ -25,15 +26,16 @@ struct AffirmationButtons: View {
                 if affirmationVM.favorites.last?.id == affirmationVM.affirmation[index].id {
                     if affirmationVM.favoritesIndex != 0 {
                         affirmationVM.favoritesIndex -= 1
-                        withAnimation {
-                            affirmationVM.updatedID = UUID()
-                        }
+                        action()
+//                        withAnimation {
+//                            affirmationVM.updatedID = UUID()
+//                        }
                         
                     }
                 }
                 withAnimation {
                     affirmationVM.affirmation[index].isFavorite.toggle()
-                    affirmationVM.updatedID = UUID()
+//                    affirmationVM.updatedID = UUID()
                 }
                 withAnimation(.interactiveSpring()) {
                     if affirmationVM.affirmation[index].isFavorite {

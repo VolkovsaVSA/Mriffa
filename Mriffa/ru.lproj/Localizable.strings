@@ -210,6 +210,9 @@
 /* relationship063 */
 "Friendships nourish my soul" = "Гармоничные отношения питают мою душу";
 
+/* No comment provided by engineer. */
+"Get started" = "Начать";
+
 /* gratitude019 */
 "Give thanks to the Universe for giving whatever you can in life, as long as all you can give it is a \"thank you\"" = "Благодари Вселенную за то, что ты можешь отдать что угодно в жизни, даже если все, что ты можешь ей дать, это «спасибо»";
 
@@ -3014,6 +3017,9 @@
 /* No comment provided by engineer. */
 "Select Categories" = "Выберите категории";
 
+/* No comment provided by engineer. */
+"Select the categories that interest you" = "Выберите категории, которые вас интересуют";
+
 /* enum category */
 "Self confidence" = "Уверенность в себе";
 
@@ -3172,6 +3178,9 @@
 
 /* settingsView header */
 "User's data" = "Данные пользователя";
+
+/* version footer */
+"Version:" = "Версия:";
 
 /* money038 */
 "Wealth is my innate state" = "Богатство - моё естественное состояние";

@@ -14,7 +14,7 @@ struct StartView: View {
     
     @State private var tabSelection = 0
     @State private var isDisabled = true
-
+    
     var body: some View {
 
         TabView(selection: $tabSelection) {
@@ -37,7 +37,5 @@ struct StartView: View {
 
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-
-        
     }
 }

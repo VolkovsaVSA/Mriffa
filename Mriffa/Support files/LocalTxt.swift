@@ -9,8 +9,6 @@ import Foundation
 
 struct LocalTxt {
     
-//    String.localizedStringWithFormat(NSLocalizedString("It's time to check your %@", comment: ""), recipeName)
-    ///SettingsView
     static let removeAds = NSLocalizedString("Remove ads", comment: " ")
     static let restorePurchases = NSLocalizedString("Restore purchases", comment: " ")
     static let sendEmailToTheDeveloper = NSLocalizedString("Send email to the developer", comment: " ")

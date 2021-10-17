@@ -33,6 +33,7 @@
 		C83BD59226F4F459001FE902 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59126F4F459001FE902 /* SettingsButton.swift */; };
 		C83BD59526F62239001FE902 /* ICloudDocumentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */; };
 		C83BD59826F64D17001FE902 /* BluredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83BD59726F64D17001FE902 /* BluredBackgroundView.swift */; };
+		C852D56D271C5111003C27EE /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C852D56C271C5111003C27EE /* Extentions.swift */; };
 		C85580E426D54E020099CDAB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E326D54E020099CDAB /* DataManager.swift */; };
 		C85580E826D65B650099CDAB /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E726D65B650099CDAB /* UDKeys.swift */; };
 		C85580EA26D661D60099CDAB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85580E926D661D60099CDAB /* CategoryView.swift */; };
@@ -123,6 +124,7 @@
 		C83BD59326F4F6AF001FE902 /* Mriffa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mriffa.entitlements; sourceTree = "<group>"; };
 		C83BD59426F62239001FE902 /* ICloudDocumentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudDocumentsManager.swift; sourceTree = "<group>"; };
 		C83BD59726F64D17001FE902 /* BluredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluredBackgroundView.swift; sourceTree = "<group>"; };
+		C852D56C271C5111003C27EE /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		C85580E326D54E020099CDAB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C85580E726D65B650099CDAB /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		C85580E926D661D60099CDAB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,17 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		C852D56E271C511D003C27EE /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				C85580E726D65B650099CDAB /* UDKeys.swift */,
+				C8B2117C2704C05F00757643 /* LocalTxt.swift */,
+				C87E528C270CD904002D2A04 /* AppID.swift */,
+				C852D56C271C5111003C27EE /* Extentions.swift */,
+			);
+			path = "Support files";
+			sourceTree = "<group>";
+		};
 		C85580E526D659D40099CDAB /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,9 +349,7 @@
 				C8802A1126CFB89A00C3E96E /* ViewModel */,
 				C85580E526D659D40099CDAB /* View */,
 				C83BD59026F4D49B001FE902 /* Managers */,
-				C85580E726D65B650099CDAB /* UDKeys.swift */,
-				C8B2117C2704C05F00757643 /* LocalTxt.swift */,
-				C87E528C270CD904002D2A04 /* AppID.swift */,
+				C852D56E271C511D003C27EE /* Support files */,
 				C8B2117E2704C37600757643 /* Configuration.storekit */,
 				C8A4618626C43E8100C8CCDE /* Assets.xcassets */,
 				C8A4618B26C43E8100C8CCDE /* Info.plist */,
@@ -583,6 +594,7 @@
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */,
 				C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */,
+				C852D56D271C5111003C27EE /* Extentions.swift in Sources */,
 				C83BD58F26F4D3F4001FE902 /* ShareSheet.swift in Sources */,
 				C83BD59526F62239001FE902 /* ICloudDocumentsManager.swift in Sources */,
 				C8B2117B2704BFCC00757643 /* IAPManager.swift in Sources */,
@@ -772,7 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
@@ -798,7 +810,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
@@ -823,7 +835,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;
@@ -853,7 +865,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;

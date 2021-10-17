@@ -91,7 +91,14 @@ struct SettingsView: View {
                         
                         
                     }
-                    Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white)) {
+                    Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white),
+                            footer:
+                                HStack {
+                        Spacer()
+                        Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) \(Bundle.main.appBuild)")
+                        Spacer()
+                    }
+                    ) {
                         SettingsButton(label: LocalTxt.rateApp,
                                        systemImage: "star.fill") {
                             settingsVM.openUrl(openurl: AppId.appUrl)
@@ -143,8 +150,6 @@ struct SettingsView: View {
                 }
             }
         }
-        
-        
         .colorScheme(.dark)
         
     }

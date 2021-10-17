@@ -34,14 +34,19 @@ final class AdsManager: NSObject, ObservableObject {
             viewController.view.addSubview(view)
             viewController.view.frame = CGRect(origin: .zero, size: size)
             
+            let gadRequest = GADRequest()
+            DispatchQueue.main.async {
+                gadRequest.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            }
+            view.load(gadRequest)
             
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                let gadRequest = GADRequest()
-                DispatchQueue.main.async {
-                    gadRequest.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                }
-                view.load(gadRequest)
-            })
+//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+//                let gadRequest = GADRequest()
+//                DispatchQueue.main.async {
+//                    gadRequest.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+//                }
+//                view.load(gadRequest)
+//            })
             return viewController
         }
         func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
@@ -59,15 +64,23 @@ final class AdsManager: NSObject, ObservableObject {
         func requestInterstitialAds() {
             let request = GADRequest()
             request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
-                    if let error = error {
-                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                        return
-                    }
-                    interstitial = ad
-                    interstitial?.fullScreenContentDelegate = self
-                })
+//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+//                GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
+//                    if let error = error {
+//                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                        return
+//                    }
+//                    interstitial = ad
+//                    interstitial?.fullScreenContentDelegate = self
+//                })
+//            })
+            GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
             })
         }
         func showAd() {
