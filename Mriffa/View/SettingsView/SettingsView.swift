@@ -95,7 +95,7 @@ struct SettingsView: View {
                             footer:
                                 HStack {
                         Spacer()
-                        Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) \(Bundle.main.appBuild)")
+                        Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
                         Spacer()
                     }
                     ) {

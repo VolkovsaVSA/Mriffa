@@ -38,20 +38,20 @@ class ThemeViewModel: ObservableObject {
                                    fontSize: SettingsViewModel.shared.affirmationFontSize)
             case 65:
                 model = ThemeModel(image: index.description,
-                                   font: Fonts[index+1],
+                                   font: Fonts[index],
                                    index: index,
                                    fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 80 : 50)
             case 70:
                 model = ThemeModel(image: index.description,
-                                   font: Fonts[index+1],
+                                   font: Fonts[index],
                                    index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 100 : 24)
             case 80:
                 model = ThemeModel(image: index.description,
-                                   font: Fonts[index+1],
+                                   font: Fonts[index],
                                    index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 40 : 24)
                 
             default: model = ThemeModel(image: index.description,
-                                            font: Fonts[index+1],
+                                            font: Fonts[index],
                                             index: index, fontSize: SettingsViewModel.shared.affirmationFontSize)
             }
 

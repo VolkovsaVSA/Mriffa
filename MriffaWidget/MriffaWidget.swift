@@ -63,14 +63,6 @@ struct MriffaEntry: TimelineEntry {
         print(#function, theme.image.description)
     }
     
-//    var filteredAffirmation: AffirmationModel {
-//        affirmations.lazy.filter {
-//            categories.contains(CategoryModel(category: $0.category,
-//                                              title: $0.category.localizedTitle,
-//                                                                               image: $0.category.rawValue))
-//        }
-//        .randomElement()!
-//    }
     var filteredAffirmation: AffirmationModel? {
         affirmations.filter { $0.isFavorite }
         .randomElement()
@@ -118,21 +110,6 @@ struct MriffaWidgetEntryView : View {
     @ViewBuilder
     var body: some View {
         switch family {
-//        case .systemSmall:
-//            MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation.text, fontSize: 16)
-//                .widgetURL(URL(string: MriffaWidgetEntryView.deeplink + "\(entry.filteredAffirmation.text)")!)
-//        case .systemMedium:
-//            MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation.text, fontSize: 20)
-//                .widgetURL(Self.deeplinkURL)
-//        case .systemLarge:
-//            MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation.text, fontSize: 30)
-//                .widgetURL(Self.deeplinkURL)
-//        case .systemExtraLarge:
-//            MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation.text, fontSize: 36)
-//                .widgetURL(Self.deeplinkURL)
-//        default:
-//            MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation.text, fontSize: 20)
-//                .widgetURL(Self.deeplinkURL)
         case .systemSmall:
             MriffaWidgetView(theme: entry.theme, affirmation: entry.filteredAffirmation?.text ?? LocalTxt.noFavoritesAffirmations, fontSize: 16)
                 
@@ -163,8 +140,6 @@ struct MriffaWidget: Widget {
         }
         .configurationDisplayName(NSLocalizedString("Mriffa Widget", comment: "widget name"))
         .description(NSLocalizedString("Mriffa widget shows random affirmation from favorites.", comment: "widget description"))
-//        .supportedFamilies([.systemSmall])
-//
     }
 }
 
