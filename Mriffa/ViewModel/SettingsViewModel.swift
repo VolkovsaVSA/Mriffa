@@ -50,9 +50,17 @@ class SettingsViewModel: ObservableObject {
         AlertManager.shared.alertText = NSLocalizedString("Buying the Pro version you get:\n1. No ads in the app\n2. Saving a backup to icloud\n\nDo you want buy Pro version?", comment: "purchasing alert")
         AlertManager.shared.secondButtonTitle = NSLocalizedString("Buy Pro version", comment: "purchasing alert")
         AlertManager.shared.alertAction = {
-            if !IAPManager.shared.products.isEmpty {
-                IAPManager.shared.purshase(product: IAPManager.shared.products.first!)
+//            if !IAPManager.shared.products.isEmpty {
+//                IAPManager.shared.purshase(product: IAPManager.shared.products.first!)
+//            }
+            
+            if let product = StoreManager.shared.products?.first {
+                Task.init {
+                    try await StoreManager.shared.purchase(product)
+                }
             }
+            
+            
         }
         AlertManager.shared.alertType = .twoButton
     }

@@ -17,12 +17,13 @@ struct MriffaApp: App {
     let themeVM = ThemeViewModel.shared
     let adsVM = AdsViewModel.shared
     let alertManager = AlertManager.shared
+    let storeManager = StoreManager.shared
     
     @State var showAlert = false
     
     init() {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        IAPManager.shared.getProducts()
+//        IAPManager.shared.getProducts()
         UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
 //        AppUtility.lockOrientation(.portrait)
     }
@@ -30,7 +31,6 @@ struct MriffaApp: App {
     var body: some Scene {
         WindowGroup {
             AffirmationView()
-                
                 .colorScheme(.dark)
                 .edgesIgnoringSafeArea(.all)
                 .environmentObject(affirmationVM)
@@ -39,6 +39,7 @@ struct MriffaApp: App {
                 .environmentObject(themeVM)
                 .environmentObject(adsVM)
                 .environmentObject(alertManager)
+                .environmentObject(storeManager)
                 .onAppear() {
                     AffirmationViewModel.shared.filteredAffirmation = AffirmationViewModel.shared.affirmation.filter {
                         CategoryViewModel

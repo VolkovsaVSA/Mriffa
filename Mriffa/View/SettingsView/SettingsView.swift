@@ -20,8 +20,9 @@ struct SettingsView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var themeVM: ThemeViewModel
     @EnvironmentObject var alertManager: AlertManager
+    @EnvironmentObject private var storeManager: StoreManager
     
-    @ObservedObject var purchaseVM = IAPManager.shared
+//    @ObservedObject var purchaseVM = IAPManager.shared
 
     @State var sheetType: SheetTypes? = nil
     @State private var downloadError: Error!
@@ -38,119 +39,220 @@ struct SettingsView: View {
     
     var body: some View {
         
-        LoadingView(isShowing: $purchaseVM.purchaseLoading, text: purchaseVM.purchasingText) {
-            NavigationView {
-                Form {
-                    Section(header: Text(NSLocalizedString("Purchases", comment: "settingsView header")).foregroundColor(.white)) {
-                        SettingsButton(label: NSLocalizedString("Pro version", comment: "settings button"),
-                                       systemImage: "crown.fill") {
-                            settingsVM.purchasingFullversion()
+        NavigationView {
+            Form {
+                PurchasesSection()
+                Section(header: Text("iCloud").foregroundColor(.white),
+                        footer: isFullVersion ? Text("") : Text(NSLocalizedString("Saving data to iCloud is only available in the Pro version!", comment: "settingsView header"))) {
+                    Toggle(NSLocalizedString("Auto save", comment: "settingsView toggle"), isOn: $autoSave.animation())
+                        .foregroundColor(isFullVersion ? .white : .gray)
+                    if !autoSave {
+                        SettingsButton(label: NSLocalizedString("Save data", comment: "settings button"),
+                                       systemImage: "icloud.and.arrow.up") {
+                            settingsVM.checkDataToIcloud()
                         }
-                        SettingsButton(label: NSLocalizedString("Restore purchases", comment: "settings button"),
-                                       systemImage: "purchased.circle") {
-                            purchaseVM.restoreCompletedTransaction()
-                        }
-                    }
-                    Section(header: Text("iCloud").foregroundColor(.white),
-                            footer: isFullVersion ? Text("") : Text(NSLocalizedString("Saving data to iCloud is only available in the Pro version!", comment: "settingsView header"))) {
-                        Toggle(NSLocalizedString("Auto save", comment: "settingsView toggle"), isOn: $autoSave)
-                            .foregroundColor(isFullVersion ? .white : .gray)
-                        if !autoSave {
-                            SettingsButton(label: NSLocalizedString("Save data", comment: "settings button"),
-                                           systemImage: "icloud.and.arrow.up") {
-                                settingsVM.checkDataToIcloud()
-                            }
-                            SettingsButton(label: NSLocalizedString("Restore data", comment: "settings button"),
-                                           systemImage: "icloud.and.arrow.down") {
-                                settingsVM.downloadFromIcloud()
-                            }
-                        }
-                        
-                    }
-                    .disabled(!isFullVersion)
-                    Section(header: Text(NSLocalizedString("User's data", comment: "settingsView header")).foregroundColor(.white)) {
-                        SettingsButton(label: NSLocalizedString("Favorites", comment: "settings button"),
-                                       systemImage: "heart.fill") {
-                            sheetType = .favorites
-                        }
-                        SettingsButton(label: NSLocalizedString("Themes", comment: "settings button"),
-                                       systemImage: "paintbrush") {
-                            sheetType = .themes
+                        SettingsButton(label: NSLocalizedString("Restore data", comment: "settings button"),
+                                       systemImage: "icloud.and.arrow.down") {
+                            settingsVM.downloadFromIcloud()
                         }
                     }
-                    Section(header: Text(NSLocalizedString("Widget settings", comment: "settingsView header")).foregroundColor(.white)) {
-                        HStack {
-                            Image(systemName: "arrow.clockwise.circle.fill").foregroundColor(.blue)
-                            Picker(NSLocalizedString("Refresh widget every", comment: ""), selection: $selectedMinutes) {
-                                ForEach(minutes, id: \.self) { item in
-                                    Text(item.description + NSLocalizedString(" minute", comment: ""))
-                                }
-                            }
-                            
-                        }
-                        
-                        
-                    }
-                    Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white),
-                            footer:
-                                HStack {
-                        Spacer()
-                        Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
-                        Spacer()
-                    }
-                    ) {
-                        SettingsButton(label: LocalTxt.rateApp,
-                                       systemImage: "star.fill") {
-                            settingsVM.openUrl(openurl: AppId.appUrl)
-                        }
-                        SettingsButton(label: LocalTxt.sendEmailToTheDeveloper,
-                                       systemImage: "mail.fill") {
-                            if MFMailComposeViewController.canSendMail() {
-                                sheetType = .sendMail
-                            }
-                        }
-                        SettingsButton(label: LocalTxt.otherApplications,
-                                       systemImage: "arrow.down.app.fill") {
-                            settingsVM.openUrl(openurl: AppId.developerUrl)
-                        }
-                    }
-
                     
                 }
-                
-                .navigationTitle(NSLocalizedString("Settings", comment: "settingsView navTitle"))
-                .navigationBarItems(trailing: NavDismissButton() {
-                    presentationMode.wrappedValue.dismiss()
-                })
-                .background(
-                    BluredBackgroundView()
-                )
-                .sheet(item: $sheetType) { item in
-                    switch item {
-                    case .favorites: FavoritesView()
-                    case .themes: ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
-                    case .sendMail:
-                        MailView(result: $mailResult,
-                                 recipients: [AppId.feedbackEmail],
-                                 messageBody: LocalTxt.feedbackOnApplication)
-                    default: EmptyView()
+                .disabled(!isFullVersion)
+                Section(header: Text(NSLocalizedString("User's data", comment: "settingsView header")).foregroundColor(.white)) {
+                    SettingsButton(label: NSLocalizedString("Favorites", comment: "settings button"),
+                                   systemImage: "heart.fill") {
+                        sheetType = .favorites
+                    }
+                    SettingsButton(label: NSLocalizedString("Themes", comment: "settings button"),
+                                   systemImage: "paintbrush") {
+                        sheetType = .themes
                     }
                 }
-                .alert(item: $alertManager.alertType) { item in
-                    alertManager.createAlert(alertType: item)
+                Section(header: Text(NSLocalizedString("Widget settings", comment: "settingsView header")).foregroundColor(.white)) {
+                    HStack {
+                        Image(systemName: "arrow.clockwise.circle.fill").foregroundColor(.blue)
+                        Picker(NSLocalizedString("Refresh widget every", comment: ""), selection: $selectedMinutes) {
+                            ForEach(minutes, id: \.self) { item in
+                                Text(item.description + NSLocalizedString(" minute", comment: ""))
+                            }
+                        }
+                        
+                    }
+                    
+                    
                 }
-                .onAppear() {
-                    purchaseVM.getProducts()
+                Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white),
+                        footer:
+                            HStack {
+                    Spacer()
+                    Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
+                    Spacer()
                 }
-                .onDisappear() {
-                    purchaseVM.purchaseLoading = false
+                ) {
+                    SettingsButton(label: LocalTxt.rateApp,
+                                   systemImage: "star.fill") {
+                        settingsVM.openUrl(openurl: AppId.appUrl)
+                    }
+                    SettingsButton(label: LocalTxt.sendEmailToTheDeveloper,
+                                   systemImage: "mail.fill") {
+                        if MFMailComposeViewController.canSendMail() {
+                            sheetType = .sendMail
+                        }
+                    }
+                    SettingsButton(label: LocalTxt.otherApplications,
+                                   systemImage: "arrow.down.app.fill") {
+                        settingsVM.openUrl(openurl: AppId.developerUrl)
+                    }
                 }
-                .onChange(of: selectedMinutes) { _ in
-                    WidgetCenter.shared.reloadAllTimelines()
+
+                
+            }
+            
+            .navigationTitle(NSLocalizedString("Settings", comment: "settingsView navTitle"))
+            .navigationBarItems(trailing: NavDismissButton() {
+                presentationMode.wrappedValue.dismiss()
+            })
+            .background(
+                BluredBackgroundView()
+            )
+            .sheet(item: $sheetType) { item in
+                switch item {
+                case .favorites: FavoritesView()
+                case .themes: ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
+                case .sendMail:
+                    MailView(result: $mailResult,
+                             recipients: [AppId.feedbackEmail],
+                             messageBody: LocalTxt.feedbackOnApplication)
+                default: EmptyView()
                 }
+            }
+            .alert(item: $alertManager.alertType) { item in
+                alertManager.createAlert(alertType: item)
+            }
+            .onAppear() {
+                storeManager.loadProducts()
+            }
+            .onChange(of: selectedMinutes) { _ in
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         .colorScheme(.dark)
+        
+//        LoadingView(isShowing: $purchaseVM.purchaseLoading, text: purchaseVM.purchasingText) {
+//            NavigationView {
+//                Form {
+//                    Section(header: Text(NSLocalizedString("Purchases", comment: "settingsView header")).foregroundColor(.white)) {
+//                        SettingsButton(label: NSLocalizedString("Pro version", comment: "settings button"),
+//                                       systemImage: "crown.fill") {
+//                            settingsVM.purchasingFullversion()
+//                        }
+//                        SettingsButton(label: NSLocalizedString("Restore purchases", comment: "settings button"),
+//                                       systemImage: "purchased.circle") {
+//                            purchaseVM.restoreCompletedTransaction()
+//                        }
+//                    }
+//                    Section(header: Text("iCloud").foregroundColor(.white),
+//                            footer: isFullVersion ? Text("") : Text(NSLocalizedString("Saving data to iCloud is only available in the Pro version!", comment: "settingsView header"))) {
+//                        Toggle(NSLocalizedString("Auto save", comment: "settingsView toggle"), isOn: $autoSave)
+//                            .foregroundColor(isFullVersion ? .white : .gray)
+//                        if !autoSave {
+//                            SettingsButton(label: NSLocalizedString("Save data", comment: "settings button"),
+//                                           systemImage: "icloud.and.arrow.up") {
+//                                settingsVM.checkDataToIcloud()
+//                            }
+//                            SettingsButton(label: NSLocalizedString("Restore data", comment: "settings button"),
+//                                           systemImage: "icloud.and.arrow.down") {
+//                                settingsVM.downloadFromIcloud()
+//                            }
+//                        }
+//
+//                    }
+//                    .disabled(!isFullVersion)
+//                    Section(header: Text(NSLocalizedString("User's data", comment: "settingsView header")).foregroundColor(.white)) {
+//                        SettingsButton(label: NSLocalizedString("Favorites", comment: "settings button"),
+//                                       systemImage: "heart.fill") {
+//                            sheetType = .favorites
+//                        }
+//                        SettingsButton(label: NSLocalizedString("Themes", comment: "settings button"),
+//                                       systemImage: "paintbrush") {
+//                            sheetType = .themes
+//                        }
+//                    }
+//                    Section(header: Text(NSLocalizedString("Widget settings", comment: "settingsView header")).foregroundColor(.white)) {
+//                        HStack {
+//                            Image(systemName: "arrow.clockwise.circle.fill").foregroundColor(.blue)
+//                            Picker(NSLocalizedString("Refresh widget every", comment: ""), selection: $selectedMinutes) {
+//                                ForEach(minutes, id: \.self) { item in
+//                                    Text(item.description + NSLocalizedString(" minute", comment: ""))
+//                                }
+//                            }
+//
+//                        }
+//
+//
+//                    }
+//                    Section(header: Text(NSLocalizedString("Feedback", comment: "settingsView header")).foregroundColor(.white),
+//                            footer:
+//                                HStack {
+//                        Spacer()
+//                        Text("\(NSLocalizedString("Version:", comment: "version footer"))  \(Bundle.main.appVersionLong) (\(Bundle.main.appBuild))")
+//                        Spacer()
+//                    }
+//                    ) {
+//                        SettingsButton(label: LocalTxt.rateApp,
+//                                       systemImage: "star.fill") {
+//                            settingsVM.openUrl(openurl: AppId.appUrl)
+//                        }
+//                        SettingsButton(label: LocalTxt.sendEmailToTheDeveloper,
+//                                       systemImage: "mail.fill") {
+//                            if MFMailComposeViewController.canSendMail() {
+//                                sheetType = .sendMail
+//                            }
+//                        }
+//                        SettingsButton(label: LocalTxt.otherApplications,
+//                                       systemImage: "arrow.down.app.fill") {
+//                            settingsVM.openUrl(openurl: AppId.developerUrl)
+//                        }
+//                    }
+//
+//
+//                }
+//
+//                .navigationTitle(NSLocalizedString("Settings", comment: "settingsView navTitle"))
+//                .navigationBarItems(trailing: NavDismissButton() {
+//                    presentationMode.wrappedValue.dismiss()
+//                })
+//                .background(
+//                    BluredBackgroundView()
+//                )
+//                .sheet(item: $sheetType) { item in
+//                    switch item {
+//                    case .favorites: FavoritesView()
+//                    case .themes: ThemeView(columnWidth: settingsVM.categoryBackgroundFrame)
+//                    case .sendMail:
+//                        MailView(result: $mailResult,
+//                                 recipients: [AppId.feedbackEmail],
+//                                 messageBody: LocalTxt.feedbackOnApplication)
+//                    default: EmptyView()
+//                    }
+//                }
+//                .alert(item: $alertManager.alertType) { item in
+//                    alertManager.createAlert(alertType: item)
+//                }
+//                .onAppear() {
+//                    purchaseVM.getProducts()
+//                    storeManager.loadProducts()
+//                }
+//                .onDisappear() {
+//                    purchaseVM.purchaseLoading = false
+//                }
+//                .onChange(of: selectedMinutes) { _ in
+//                    WidgetCenter.shared.reloadAllTimelines()
+//                }
+//            }
+//        }
+//        .colorScheme(.dark)
         
     }
 }

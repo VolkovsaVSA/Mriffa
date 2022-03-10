@@ -31,7 +31,7 @@ class ThemeViewModel: ObservableObject {
             var model: ThemeModel!
             
             switch index {
-            case 15:
+            case 16:
                 model = ThemeModel(image: index.description,
                                    font: Fonts[17],
                                    index: index,
@@ -44,11 +44,11 @@ class ThemeViewModel: ObservableObject {
             case 70:
                 model = ThemeModel(image: index.description,
                                    font: Fonts[index],
-                                   index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 100 : 24)
+                                   index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 80 : 50)
             case 80:
                 model = ThemeModel(image: index.description,
                                    font: Fonts[index],
-                                   index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 40 : 24)
+                                   index: index, fontSize: UIDevice.current.userInterfaceIdiom == .pad ? 50 : 30)
                 
             default: model = ThemeModel(image: index.description,
                                             font: Fonts[index],

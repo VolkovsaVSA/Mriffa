@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C803D8AB271AE8B400E03D29 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C87E5293270CFBCA002D2A04 /* Localizable.strings */; };
+		C81440FB27D3B2AF00E519BB /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81440FA27D3B2AF00E519BB /* StoreManager.swift */; };
+		C81440FD27D3B5CA00E519BB /* PurchasesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81440FC27D3B5CA00E519BB /* PurchasesSection.swift */; };
 		C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */; };
 		C81F25CD26FD93650026DD22 /* AlertTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81F25CC26FD93650026DD22 /* AlertTypes.swift */; };
 		C825A3AB2717E5490094F3EE /* AffirmationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E48A9726C444E000C12CE2 /* AffirmationModel.swift */; };
@@ -104,6 +106,8 @@
 		88E024EBA739EB656CFAAB17 /* Pods-Mriffa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.release.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.release.xcconfig"; sourceTree = "<group>"; };
 		9C23E771FF3D91DB3FE12C81 /* Pods-Mriffa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mriffa.debug.xcconfig"; path = "Target Support Files/Pods-Mriffa/Pods-Mriffa.debug.xcconfig"; sourceTree = "<group>"; };
 		C26E510CD5768153BA25D86B /* Pods_Mriffa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mriffa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81440FA27D3B2AF00E519BB /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		C81440FC27D3B5CA00E519BB /* PurchasesSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesSection.swift; sourceTree = "<group>"; };
 		C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C81F25CC26FD93650026DD22 /* AlertTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTypes.swift; sourceTree = "<group>"; };
 		C825A3AF2717E5B20094F3EE /* MriffaWidgetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MriffaWidgetDataManager.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				C83BD58E26F4D3F4001FE902 /* ShareSheet.swift */,
 				C81F25CA26FD8F9F0026DD22 /* AlertManager.swift */,
 				C8B2117A2704BFCC00757643 /* IAPManager.swift */,
+				C81440FA27D3B2AF00E519BB /* StoreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				C83BD56D26EFBDCC001FE902 /* SettingsView.swift */,
+				C81440FC27D3B5CA00E519BB /* PurchasesSection.swift */,
 				C83BD59126F4F459001FE902 /* SettingsButton.swift */,
 			);
 			path = SettingsView;
@@ -578,6 +584,7 @@
 				C81F25CB26FD8F9F0026DD22 /* AlertManager.swift in Sources */,
 				C8802A0E26CFB27A00C3E96E /* AffirmationButtons.swift in Sources */,
 				C83BD4FD26E7CC68001FE902 /* AffirmationScroll.swift in Sources */,
+				C81440FB27D3B2AF00E519BB /* StoreManager.swift in Sources */,
 				C83BD4FB26E7C91D001FE902 /* FavoritesView.swift in Sources */,
 				C8B2119D270A3D4700757643 /* StartViewPage1.swift in Sources */,
 				C83BD56126EBC472001FE902 /* FavoritesDismissButton.swift in Sources */,
@@ -593,6 +600,7 @@
 				C83BD58D26F4B6BC001FE902 /* AdsViewModel.swift in Sources */,
 				C8A4618326C43E7F00C8CCDE /* MriffaApp.swift in Sources */,
 				C83BD56926ED11A1001FE902 /* ThemeViewModel.swift in Sources */,
+				C81440FD27D3B5CA00E519BB /* PurchasesSection.swift in Sources */,
 				C83BD56B26EE48D8001FE902 /* ThemeCard.swift in Sources */,
 				C852D56D271C5111003C27EE /* Extentions.swift in Sources */,
 				C83BD58F26F4D3F4001FE902 /* ShareSheet.swift in Sources */,
@@ -707,7 +715,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -764,7 +772,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -784,17 +792,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Mriffa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = VSA.Mriffa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -811,17 +819,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Mriffa/Mriffa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"Mriffa/Preview Content\"";
 				DEVELOPMENT_TEAM = 7C46924T49;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Mriffa/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = VSA.Mriffa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -837,19 +845,19 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MriffaWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = VSA.Mriffa.MriffaWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -867,19 +875,19 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = MriffaWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7C46924T49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MriffaWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MriffaWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = VSA.Mriffa.MriffaWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
